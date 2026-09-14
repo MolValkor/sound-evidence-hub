@@ -17,8 +17,11 @@ const {
 
 const siteName = 'Sound Evidence';
 const fullTitle = title === siteName ? title : `${title} · ${siteName}`;
-const canonical = new URL(canonicalPath, Astro.site).toString();
-const ogAbs = new URL(ogImage, Astro.site).toString();
+// Prefer Astro.site when set; otherwise fall back to the request origin so OG/canonical
+// still work locally and if site is temporarily unset in astro.config.
+const siteBase = Astro.site ?? Astro.url;
+const canonical = new URL(canonicalPath, siteBase).toString();
+const ogAbs = new URL(ogImage, siteBase).toString();
 const path = Astro.url.pathname;
 
 const nav = [
@@ -62,7 +65,7 @@ function isCurrent(href: string) {
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,400;0,600;0,700;1,400&family=Manrope:wght@500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Karla:ital,wght@0,400;0,600;0,700;1,400&family=Manrope:wght@500;600;700;800&display=swap"
       rel="stylesheet"
     />
   </head>

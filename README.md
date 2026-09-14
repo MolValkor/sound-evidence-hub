@@ -11,6 +11,25 @@ Static educational companion site for music, sound practices, and wellbeing rese
 - Netlify Forms newsletter signup
 - Deploy-ready `netlify.toml`
 
+## Site URL (provisional)
+
+`astro.config.mjs` currently sets:
+
+```js
+site: 'https://sound-evidence-hub.netlify.app'
+```
+
+That is a **placeholder Netlify-style hostname** until the real Netlify subdomain or custom domain is known. Replace it before (or right after) the first production deploy so absolute canonical and Open Graph URLs match the live origin.
+
+`BaseLayout.astro` also falls back to the request origin when `Astro.site` is unset, so local `astro dev` / preview still produce usable canonical/OG links.
+
+### Before deploy checklist
+
+1. Confirm the real public URL (Netlify subdomain or custom domain).
+2. Update `site` in `astro.config.mjs` to that exact origin (https, no trailing path).
+3. Rebuild (`npm run build`) and verify `/` canonical + `og:url` / `og:image` absolute URLs.
+4. Do **not** leave any `*.example.com` placeholder.
+
 ## Quick start
 
 ```bash
@@ -53,7 +72,11 @@ Schema lives in `src/content/config.ts`. After adding files, restart `astro dev`
 | Ink | `#2A221C` |
 | Muted | `#6B5E54` |
 
-Fonts: **Manrope** (headings), **Karla** (body). Optional script accent sparingly in the hero.
+Fonts (Google Fonts, loaded in `BaseLayout.astro`):
+
+- **Manrope** — headings
+- **Karla** — body
+- **Great Vibes** — sparse script accent (hero italic); free substitute echoing Meta Musician’s soft script look (do **not** use proprietary Sloop Script)
 
 ## Editorial / FTC posture
 
@@ -62,15 +85,17 @@ Fonts: **Manrope** (headings), **Karla** (body). Optional script accent sparingl
 - Singing bowls = **weak** evidence
 - No treat/cure; no 432/528-as-medicine claims
 - Music therapy ≠ sound baths
+- Abstract-only cards (e.g. Landry 2014, Garcia-Argibay 2019) must stay labeled as such
 
 ## Deploy (Netlify)
 
-1. Connect the repo (push is handled separately from this scaffold).
+1. Connect the repo (push is handled separately from this scaffold — Primark / deploy owner pushes).
 2. Build command: `npm run build`
 3. Publish directory: `dist`
-4. After first deploy, confirm the `newsletter` form appears under **Forms** (form uses `netlify` + honeypot `bot-field`).
+4. Set the real `site` URL in `astro.config.mjs` (see above).
+5. After first deploy, confirm the `newsletter` form appears under **Forms** (form uses `netlify` + honeypot `bot-field`).
 
-Optional: set a real `site` URL in `astro.config.mjs` for absolute canonical/OG URLs.
+Do **not** leave `https://soundevidence.example.com` or any other `.example.com` site value.
 
 ## Seed sources
 
