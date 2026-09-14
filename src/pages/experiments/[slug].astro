@@ -1,0 +1,33 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const items = await getCollection('experiments');
+  return items.map((item) => ({
+    params: { slug: item.slug },
+    props: { item },
+  }));
+}
+
+const { item } = Astro.props;
+const { Content } = await item.render();
+---
+
+<BaseLayout title={item.data.title} description={item.data.summary}>
+  <article class="section">
+    <div class="container prose">
+      <p><a href="/experiments/">← Experiments</a></p>
+      <div class="meta" style="margin-bottom:1rem">
+        <span class="pill pill-weak">{item.data.status}</span>
+        <span class="pill pill-muted">{item.data.date.toISOString().slice(0, 10)}</span>
+      </div>
+      <h1>{item.data.title}</h1>
+      <div class="callout">
+        <p><strong>Label:</strong> exploratory / educational. Not a clinical trial. Not medical advice.</p>
+        <p>{item.data.summary}</p>
+      </div>
+      <Content />
+    </div>
+  </article>
+</BaseLayout>

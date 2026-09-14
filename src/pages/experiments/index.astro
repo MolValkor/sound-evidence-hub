@@ -1,0 +1,44 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const items = (await getCollection('experiments')).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+---
+
+<BaseLayout
+  title="Experiments"
+  description="Labeled exploratory writeups — teaching demos, not clinical trials."
+>
+  <section class="page-hero">
+    <div class="container">
+      <span class="eyebrow">Exploratory only</span>
+      <h1>Experiments</h1>
+      <p class="lede">
+        Small, clearly labeled writeups that illustrate methods hygiene — why controls matter,
+        why VAT ≠ bowls, why sleep diaries are not insomnia cures. <strong>Not medical advice.</strong>
+      </p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0.5rem">
+    <div class="container card-grid">
+      {items.map((item) => (
+        <article class="card">
+          <div class="meta">
+            <span class="pill pill-weak">{item.data.status}</span>
+            <span class="pill pill-muted">{item.data.date.toISOString().slice(0, 10)}</span>
+          </div>
+          <a class="card-title" href={`/experiments/${item.slug}/`}>{item.data.title}</a>
+          <p class="small">{item.data.summary}</p>
+          <div class="meta">
+            {item.data.labels.map((label) => (
+              <span class="pill pill-muted">{label}</span>
+            ))}
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

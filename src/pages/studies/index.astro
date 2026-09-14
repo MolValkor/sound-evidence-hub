@@ -1,0 +1,72 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import StudyCard from '../../components/StudyCard.astro';
+import { getCollection } from 'astro:content';
+
+const studies = (await getCollection('studies')).sort((a, b) => b.data.year - a.data.year);
+---
+
+<BaseLayout
+  title="Studies"
+  description="Filterable study cards on music therapy, music listening, singing bowls, and vibroacoustic research."
+>
+  <section class="page-hero">
+    <div class="container">
+      <span class="eyebrow">Evidence library</span>
+      <h1>Studies</h1>
+      <p class="lede">
+        Filter by intervention or evidence strength. Singing-bowl cards are labeled <strong>weak</strong>
+        on purpose. Educational summaries — not medical advice.
+      </p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0.5rem">
+    <div class="container">
+      <div class="filters" role="group" aria-label="Filter studies">
+        <button class="filter-btn is-active" type="button" data-filter="all">All</button>
+        <button class="filter-btn" type="button" data-filter="intervention:music-therapy">Music therapy</button>
+        <button class="filter-btn" type="button" data-filter="intervention:music-listening">Music listening</button>
+        <button class="filter-btn" type="button" data-filter="intervention:singing-bowls">Singing bowls</button>
+        <button class="filter-btn" type="button" data-filter="intervention:vibroacoustic">Vibroacoustic</button>
+        <button class="filter-btn" type="button" data-filter="intervention:overview">Overview</button>
+        <button class="filter-btn" type="button" data-filter="strength:mixed">Mixed</button>
+        <button class="filter-btn" type="button" data-filter="strength:weak">Weak</button>
+      </div>
+
+      <div class="card-grid" id="study-grid">
+        {studies.map((study) => <StudyCard study={study} />)}
+      </div>
+      <p class="muted small" id="filter-empty" hidden>No studies match this filter.</p>
+    </div>
+  </section>
+
+  <script>
+    const buttons = document.querySelectorAll('.filter-btn');
+    const cards = document.querySelectorAll('#study-grid .card');
+    const empty = document.getElementById('filter-empty');
+
+    function applyFilter(value) {
+      let visible = 0;
+      cards.forEach((card) => {
+        let show = value === 'all';
+        if (value.startsWith('intervention:')) {
+          show = card.dataset.intervention === value.split(':')[1];
+        } else if (value.startsWith('strength:')) {
+          show = card.dataset.strength === value.split(':')[1];
+        }
+        card.classList.toggle('study-hidden', !show);
+        if (show) visible += 1;
+      });
+      if (empty) empty.hidden = visible > 0;
+    }
+
+    buttons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        buttons.forEach((b) => b.classList.remove('is-active'));
+        btn.classList.add('is-active');
+        applyFilter(btn.getAttribute('data-filter') || 'all');
+      });
+    });
+  </script>
+</BaseLayout>

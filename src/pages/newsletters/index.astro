@@ -1,0 +1,43 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SubscribeForm from '../../components/SubscribeForm.astro';
+import { getCollection } from 'astro:content';
+
+const items = (await getCollection('newsletters')).sort(
+  (a, b) => b.data.issue - a.data.issue
+);
+---
+
+<BaseLayout
+  title="Newsletters"
+  description="Short Sound Evidence issues on evidence ladders, bowls vs therapy, sleep and pain adjuncts."
+>
+  <section class="page-hero">
+    <div class="container">
+      <span class="eyebrow">Brief essays</span>
+      <h1>Newsletters</h1>
+      <p class="lede">
+        Roughly 300–500 words each. Educational tone, FTC-safe framing, soft Meta Musician credit in the site footer — never a course hard-sell here.
+      </p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0.5rem">
+    <div class="container stack-lg">
+      <div class="card-grid">
+        {items.map((item) => (
+          <article class="card">
+            <div class="meta">
+              <span class="pill">Issue {item.data.issue}</span>
+              <span class="pill pill-muted">{item.data.date.toISOString().slice(0, 10)}</span>
+              {item.data.readingTime && <span class="pill pill-muted">{item.data.readingTime}</span>}
+            </div>
+            <a class="card-title" href={`/newsletters/${item.slug}/`}>{item.data.title}</a>
+            <p class="small">{item.data.summary}</p>
+          </article>
+        ))}
+      </div>
+      <SubscribeForm heading="Subscribe to Sound Evidence notes" />
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,29 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="You're subscribed"
+  description="Thanks for joining Sound Evidence notes."
+>
+  <section class="section">
+    <div class="container">
+      <div class="success-box" style="max-width:36rem">
+        <span class="eyebrow">Netlify Forms</span>
+        <h1>You're on the list</h1>
+        <p>
+          Thanks for subscribing to Sound Evidence. We'll send occasional research briefs and
+          newsletter issues — educational framing only, no medical advice, no course hard-sell.
+        </p>
+        <p class="muted small">
+          If this page loaded after a local preview (without Netlify), the form POST may not persist;
+          on a Netlify deploy it will appear under Forms → newsletter.
+        </p>
+        <div class="btn-row">
+          <a class="btn btn-primary" href="/newsletters/">Back to newsletters</a>
+          <a class="btn btn-ghost" href="/studies/">Browse studies</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

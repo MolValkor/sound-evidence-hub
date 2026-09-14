@@ -1,0 +1,147 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  ogImage?: string;
+  canonicalPath?: string;
+}
+
+const {
+  title,
+  description = 'Sound Evidence — honest research notes on music, sound practices, and wellbeing. Educational companion site; not medical advice.',
+  ogImage = '/og-default.svg',
+  canonicalPath = Astro.url.pathname,
+} = Astro.props;
+
+const siteName = 'Sound Evidence';
+const fullTitle = title === siteName ? title : `${title} · ${siteName}`;
+const canonical = new URL(canonicalPath, Astro.site).toString();
+const ogAbs = new URL(ogImage, Astro.site).toString();
+const path = Astro.url.pathname;
+
+const nav = [
+  { href: '/', label: 'Home' },
+  { href: '/studies/', label: 'Studies' },
+  { href: '/news/', label: 'News' },
+  { href: '/experiments/', label: 'Experiments' },
+  { href: '/newsletters/', label: 'Newsletters' },
+  { href: '/about/', label: 'About' },
+];
+
+function isCurrent(href: string) {
+  if (href === '/') return path === '/' || path === '';
+  return path === href || path.startsWith(href);
+}
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#df4633" />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogAbs} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogAbs} />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,400;0,600;0,700;1,400&family=Manrope:wght@500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <a class="skip-link" href="#main" style="position:absolute;left:-9999px">Skip to content</a>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="logo" href="/">
+          <span class="logo-mark" aria-hidden="true">♪</span>
+          <span>Sound Evidence</span>
+        </a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" id="nav-toggle">
+          Menu
+        </button>
+        <nav class="nav" id="site-nav" aria-label="Primary">
+          {nav.map((item) => (
+            <a href={item.href} aria-current={isCurrent(item.href) ? 'page' : undefined}>
+              {item.label}
+            </a>
+          ))}
+        </nav>
+      </div>
+    </header>
+
+    <div class="disclaimer-banner">
+      <div class="container">
+        <strong>Educational only — not medical advice.</strong>
+        Content summarizes published research for learning. It does not diagnose, treat, cure, or prevent any disease.
+      </div>
+    </div>
+
+    <main id="main">
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div>
+            <h3>Sound Evidence</h3>
+            <p class="muted small">
+              A companion library for music, sound practices, and wellbeing research —
+              written to stay on the educational side of FTC health-claim lines.
+            </p>
+          </div>
+          <div>
+            <h3>Explore</h3>
+            <p class="small">
+              <a href="/studies/">Studies</a><br />
+              <a href="/news/">News</a><br />
+              <a href="/experiments/">Experiments</a><br />
+              <a href="/newsletters/">Newsletters</a>
+            </p>
+          </div>
+          <div>
+            <h3>Stay oriented</h3>
+            <p class="small">
+              <a href="/about/">About & disclaimer</a><br />
+              <a href="/newsletters/#subscribe">Subscribe</a>
+            </p>
+          </div>
+        </div>
+        <p class="footer-credit">
+          Soft credit: related to
+          <a href="https://themetamusician.com/" rel="noopener noreferrer">The Meta Musician</a>
+          — an education project about sound and musicianship. This hub is not a sales site and does not hard-sell courses.
+          <br />
+          © {new Date().getFullYear()} Sound Evidence. All study summaries paraphrase public sources; verify against originals.
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      const toggle = document.getElementById('nav-toggle');
+      const nav = document.getElementById('site-nav');
+      toggle?.addEventListener('click', () => {
+        const open = nav?.classList.toggle('is-open');
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+    </script>
+  </body>
+</html>

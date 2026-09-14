@@ -1,0 +1,36 @@
+---
+interface Props {
+  heading?: string;
+}
+const { heading = 'Get occasional research briefs' } = Astro.props;
+---
+
+<section class="callout" id="subscribe">
+  <h2>{heading}</h2>
+  <p class="muted small">
+    Low-frequency email about new study cards and newsletters. Educational content only — not medical advice.
+    No course hard-sell.
+  </p>
+  <form
+    class="form"
+    name="newsletter"
+    method="POST"
+    netlify
+    netlify-honeypot="bot-field"
+    action="/newsletters/success/"
+  >
+    <input type="hidden" name="form-name" value="newsletter" />
+    <p class="hp-field">
+      <label>Don’t fill this out: <input name="bot-field" /></label>
+    </p>
+    <label>
+      Name
+      <input type="text" name="name" autocomplete="name" />
+    </label>
+    <label>
+      Email
+      <input type="email" name="email" required autocomplete="email" />
+    </label>
+    <button class="btn btn-primary" type="submit">Subscribe</button>
+  </form>
+</section>

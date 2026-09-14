@@ -1,0 +1,48 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  study: CollectionEntry<'studies'>;
+}
+
+const { study } = Astro.props;
+const s = study.data;
+
+const strengthClass = {
+  strong: 'pill-strong',
+  mixed: 'pill-mixed',
+  weak: 'pill-weak',
+  none: 'pill-none',
+}[s.evidenceStrength];
+
+const interventionLabel: Record<string, string> = {
+  'music-therapy': 'Music therapy',
+  'music-listening': 'Music listening',
+  'singing-bowls': 'Singing bowls',
+  vibroacoustic: 'Vibroacoustic',
+  overview: 'Overview',
+  other: 'Other',
+};
+---
+
+<article
+  class="card"
+  data-intervention={s.intervention}
+  data-strength={s.evidenceStrength}
+  data-year={s.year}
+>
+  <div class="meta">
+    <span class={`pill ${strengthClass}`}>{s.evidenceStrength}</span>
+    <span class="pill pill-muted">{interventionLabel[s.intervention]}</span>
+    <span class="pill pill-muted">{s.year}</span>
+  </div>
+  <a class="card-title" href={`/studies/${study.slug}/`}>{s.title}</a>
+  <p class="small muted">{s.authors} · {s.studyType}</p>
+  <p class="small">{s.summary}</p>
+  <p class="small"><strong>Honest line:</strong> {s.honestLine}</p>
+  <p class="small" style="margin-top:auto">
+    <a href={`/studies/${study.slug}/`}>Read card</a>
+    ·
+    <a href={s.url} rel="noopener noreferrer" target="_blank">Source</a>
+  </p>
+</article>

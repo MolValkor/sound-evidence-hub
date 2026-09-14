@@ -1,0 +1,96 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import StudyCard from '../components/StudyCard.astro';
+import SubscribeForm from '../components/SubscribeForm.astro';
+import { getCollection } from 'astro:content';
+
+const studies = (await getCollection('studies'))
+  .sort((a, b) => b.data.year - a.data.year);
+const featured = studies.filter((s) => s.data.featured).slice(0, 4);
+const news = (await getCollection('news'))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 3);
+---
+
+<BaseLayout
+  title="Sound Evidence"
+  description="Honest research companion on music therapy, sound practices, and wellbeing. Educational — not medical advice."
+>
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <span class="eyebrow">Research companion</span>
+        <h1>
+          Sound Evidence
+          <span class="hero-italic"> — clear notes, careful claims</span>
+        </h1>
+        <p class="lede">
+          A polished library of peer-reviewed landmarks and institutional briefs on music,
+          singing bowls, and related practices — written for education, not sales.
+          We favor adjunct and short-term language, label weak evidence honestly, and
+          never claim treat or cure.
+        </p>
+        <div class="btn-row">
+          <a class="btn btn-primary" href="/studies/">Browse studies</a>
+          <a class="btn btn-ghost" href="/about/">How we label evidence</a>
+        </div>
+      </div>
+      <aside class="hero-card">
+        <h2>At a glance</h2>
+        <ul class="small">
+          <li><strong>Stronger lanes:</strong> short-term adjunct music for mood, perceived pain, subjective sleep</li>
+          <li><strong>Weak lanes:</strong> singing bowls, VAT for pain — high bias / sparse trials</li>
+          <li><strong>Out of bounds:</strong> 432/528-as-medicine, energy-field cure claims</li>
+        </ul>
+        <p class="small muted" style="margin-top:1rem">
+          Music therapy (credentialed) ≠ sound baths. We keep those files separate.
+        </p>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>Featured study cards</h2>
+          <p class="muted">Paraphrased from sources Magos opened — verify against originals.</p>
+        </div>
+        <a href="/studies/">All studies →</a>
+      </div>
+      <div class="card-grid">
+        {featured.map((study) => <StudyCard study={study} />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>Recent briefs</h2>
+          <p class="muted">Institutional and press notes we track for context.</p>
+        </div>
+        <a href="/news/">News →</a>
+      </div>
+      <div class="card-grid">
+        {news.map((item) => (
+          <article class="card">
+            <div class="meta">
+              <span class="pill pill-muted">{item.data.source}</span>
+              <span class="pill pill-muted">{item.data.date.toISOString().slice(0, 10)}</span>
+            </div>
+            <a class="card-title" href={`/news/${item.slug}/`}>{item.data.title}</a>
+            <p class="small">{item.data.summary}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="container">
+      <SubscribeForm />
+    </div>
+  </section>
+</BaseLayout>

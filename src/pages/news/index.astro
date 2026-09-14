@@ -1,0 +1,44 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const items = (await getCollection('news')).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+---
+
+<BaseLayout
+  title="News"
+  description="Institutional and press briefs related to music, sound, and health research."
+>
+  <section class="page-hero">
+    <div class="container">
+      <span class="eyebrow">Context briefs</span>
+      <h1>News</h1>
+      <p class="lede">
+        Public notes from Cochrane, NCCIH, NIH, and careful popular press. These are context —
+        not substitutes for primary study cards.
+      </p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0.5rem">
+    <div class="container card-grid">
+      {items.map((item) => (
+        <article class="card">
+          <div class="meta">
+            <span class="pill pill-muted">{item.data.source}</span>
+            <span class="pill pill-muted">{item.data.date.toISOString().slice(0, 10)}</span>
+          </div>
+          <a class="card-title" href={`/news/${item.slug}/`}>{item.data.title}</a>
+          <p class="small">{item.data.summary}</p>
+          <p class="small" style="margin-top:auto">
+            <a href={`/news/${item.slug}/`}>Read</a>
+            ·
+            <a href={item.data.url} rel="noopener noreferrer" target="_blank">Original</a>
+          </p>
+        </article>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

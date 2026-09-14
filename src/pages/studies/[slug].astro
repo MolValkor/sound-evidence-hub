@@ -1,0 +1,48 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const studies = await getCollection('studies');
+  return studies.map((study) => ({
+    params: { slug: study.slug },
+    props: { study },
+  }));
+}
+
+const { study } = Astro.props;
+const { Content } = await study.render();
+const s = study.data;
+
+const strengthClass = {
+  strong: 'pill-strong',
+  mixed: 'pill-mixed',
+  weak: 'pill-weak',
+  none: 'pill-none',
+}[s.evidenceStrength];
+---
+
+<BaseLayout title={s.title} description={s.summary}>
+  <article class="section">
+    <div class="container prose">
+      <p><a href="/studies/">← Studies</a></p>
+      <div class="meta" style="margin-bottom:1rem">
+        <span class={`pill ${strengthClass}`}>{s.evidenceStrength} evidence</span>
+        <span class="pill pill-muted">{s.year}</span>
+        <span class="pill pill-muted">{s.studyType}</span>
+      </div>
+      <h1>{s.title}</h1>
+      <p class="muted">{s.authors}</p>
+      <p class="small"><em>{s.journal}</em>{s.citationId ? ` · ${s.citationId}` : ''}{s.doi ? ` · DOI ${s.doi}` : ''}</p>
+      <div class="callout">
+        <p><strong>Summary:</strong> {s.summary}</p>
+        <p><strong>Honest line:</strong> {s.honestLine}</p>
+        <p class="small muted" style="margin-top:0.75rem">Educational only — not medical advice. Outcomes tagged: {s.outcomes.join(', ')}.</p>
+      </div>
+      <Content />
+      <p style="margin-top:2rem">
+        <a class="btn btn-primary" href={s.url} rel="noopener noreferrer" target="_blank">Open source</a>
+      </p>
+    </div>
+  </article>
+</BaseLayout>

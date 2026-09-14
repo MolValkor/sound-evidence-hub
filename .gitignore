@@ -1,0 +1,15 @@
+# dependencies
+node_modules/
+
+# build
+dist/
+.astro/
+
+# env / local
+.env
+.env.*
+!.env.example
+.DS_Store
+*.log
+.vscode/
+.idea/
