@@ -10,6 +10,14 @@ Checked on **2026-10-07** for the evidence-hub topics (`src/data/citations.ts`).
 
 Corrections made during verification: the 528 Hz study's DOI is `10.4236/health.2018.109088` (`.109087` is a different paper); the Jespersen 2022 Cochrane title is "Listening to music for insomnia in adults"; the Chen 2025 title and Rio-Alamos 2023 author list were corrected.
 
+## Automated re-check (citation checker)
+
+`npm run check:citations` now re-runs these checks and writes `docs/citation-report.md`. Its first run on **2026-10-07** found:
+
+- **Retraction:** Braun Janzen et al. 2019 (PLOS ONE, fibromyalgia rhythmic sensory stimulation, DOI 10.1371/journal.pone.0212021) was **retracted on 2020-03-06** ([notice](https://doi.org/10.1371/journal.pone.0230395)) because, without a sham control, its claims were not adequately supported. It stays listed with a *Retracted* label, no longer counts as support, and the vibroacoustic topic text was updated.
+- **Corrections (not retractions):** Iaccarino 2016 (Nature) has two author corrections: 2018 (an Extended Data figure; the authors say conclusions are unchanged) and 2024 (an author-name update). Calamassi 2019 (EXPLORE) has a 2020 corrigendum we could not read (paywalled); the PubMed abstract, which is the source of the numbers we quote, is unchanged.
+- No dead links, no DOI/PMID metadata mismatches, no superseded Cochrane versions.
+
 ## Sources
 
 | # | Source | PMID | DOI | Read |

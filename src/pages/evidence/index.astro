@@ -124,7 +124,7 @@ const topicsFor = (id: string) => topics.filter((t) => t.citations.includes(id))
                   <a href={primaryHref(c)} rel="noopener noreferrer" target="_blank">{c.title}</a>
                   <span class="small muted claim">{c.authors.split(',')[0]}{c.authors.includes(',') ? ' et al.' : ''} · {c.year} · {c.journal}</span>
                 </td>
-                <td data-label="Design" class="small">{c.type}</td>
+                <td data-label="Design" class="small">{c.retraction && <span class="pill pill-retracted">Retracted {c.retraction.date.slice(0, 4)}</span>} {c.type}</td>
                 <td data-label="Used in" class="small">
                   {topicsFor(c.id).map((t, i) => (
                     <>{i > 0 && ', '}<a href={`/evidence/${t.slug}/`}>{t.title}</a></>

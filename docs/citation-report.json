@@ -1,0 +1,1869 @@
+{
+  "checkedAt": "2026-10-07T15:42:08.019Z",
+  "summary": {
+    "citations": 39,
+    "ok": 38,
+    "redirect": 0,
+    "dead": 0,
+    "retracted": 1,
+    "retractedUnlabelled": 0,
+    "superseded": 0,
+    "mismatch": 0,
+    "unverified": 0,
+    "concerns": 0,
+    "corrections": 2,
+    "weakCitations": 13,
+    "weakClaims": 5,
+    "overratedClaims": 0,
+    "extraLinks": 23,
+    "extraDead": 0,
+    "missingRefs": 0,
+    "landingBlocked": 9
+  },
+  "topics": [
+    {
+      "slug": "surgery-anxiety-pain",
+      "title": "Anxiety & pain around surgery",
+      "rating": "strong",
+      "citations": [
+        "bradt2013preop",
+        "hole2015",
+        "kuhlmann2018"
+      ],
+      "maxStrength": 5,
+      "strongestLabel": "Meta-analysis",
+      "reviewLevelSources": 3,
+      "weakOnly": false,
+      "status": "ok",
+      "message": "Strongest source design: Meta-analysis."
+    },
+    {
+      "slug": "stress-anxiety",
+      "title": "Everyday stress & anxiety",
+      "rating": "moderate",
+      "citations": [
+        "dewitte2020",
+        "dewitte2022",
+        "nccih2022"
+      ],
+      "maxStrength": 5,
+      "strongestLabel": "Meta-analysis",
+      "reviewLevelSources": 2,
+      "weakOnly": false,
+      "status": "ok",
+      "message": "Strongest source design: Meta-analysis."
+    },
+    {
+      "slug": "sleep",
+      "title": "Sleep",
+      "rating": "moderate",
+      "citations": [
+        "jespersen2022",
+        "nccih2022"
+      ],
+      "maxStrength": 4,
+      "strongestLabel": "Systematic review",
+      "reviewLevelSources": 1,
+      "weakOnly": false,
+      "status": "ok",
+      "message": "Strongest source design: Systematic review."
+    },
+    {
+      "slug": "chronic-pain",
+      "title": "Chronic & everyday pain",
+      "rating": "moderate",
+      "citations": [
+        "lee2016",
+        "garza2017",
+        "chen2025",
+        "nccih2022"
+      ],
+      "maxStrength": 5,
+      "strongestLabel": "Meta-analysis",
+      "reviewLevelSources": 3,
+      "weakOnly": false,
+      "status": "ok",
+      "message": "Strongest source design: Meta-analysis."
+    },
+    {
+      "slug": "blood-pressure-hrv",
+      "title": "Blood pressure & heart rate variability",
+      "rating": "preliminary",
+      "citations": [
+        "bradt2013chd",
+        "kuhlmann2016",
+        "doamaral2016",
+        "mojtabavi2020"
+      ],
+      "maxStrength": 5,
+      "strongestLabel": "Meta-analysis",
+      "reviewLevelSources": 4,
+      "weakOnly": false,
+      "status": "ok",
+      "message": "Strongest source design: Meta-analysis."
+    },
+    {
+      "slug": "mood-depression",
+      "title": "Mood & depression",
+      "rating": "moderate",
+      "citations": [
+        "aalbers2017",
+        "tang2020"
+      ],
+      "maxStrength": 5,
+      "strongestLabel": "Meta-analysis",
+      "reviewLevelSources": 2,
+      "weakOnly": false,
+      "status": "ok",
+      "message": "Strongest source design: Meta-analysis."
+    },
+    {
+      "slug": "music-therapy-clinical",
+      "title": "Music therapy in clinical settings",
+      "rating": "moderate",
+      "citations": [
+        "bradt2021",
+        "vandersteen2025",
+        "geretsegger2022",
+        "nccih2022"
+      ],
+      "maxStrength": 5,
+      "strongestLabel": "Meta-analysis",
+      "reviewLevelSources": 3,
+      "weakOnly": false,
+      "status": "ok",
+      "message": "Strongest source design: Meta-analysis."
+    },
+    {
+      "slug": "singing-bowls",
+      "title": "Singing bowls",
+      "rating": "preliminary",
+      "citations": [
+        "stanhope2020",
+        "cai2025",
+        "rioalamos2023",
+        "landry2014",
+        "goldsby2017",
+        "bergmann2020"
+      ],
+      "maxStrength": 4,
+      "strongestLabel": "Systematic review",
+      "reviewLevelSources": 2,
+      "weakOnly": false,
+      "status": "ok",
+      "message": "Strongest source design: Systematic review."
+    },
+    {
+      "slug": "gongs-sound-baths",
+      "title": "Gongs & sound baths",
+      "rating": "preliminary",
+      "citations": [
+        "goldsby2017",
+        "goldsby2022"
+      ],
+      "maxStrength": 1,
+      "strongestLabel": "Observational / uncontrolled",
+      "reviewLevelSources": 0,
+      "weakOnly": true,
+      "status": "weak-only",
+      "message": "Supported only by weak designs (Observational / uncontrolled). Rating \"preliminary\" is consistent with that."
+    },
+    {
+      "slug": "binaural-beats",
+      "title": "Binaural beats",
+      "rating": "preliminary",
+      "citations": [
+        "garcia2019",
+        "ingendoh2023"
+      ],
+      "maxStrength": 5,
+      "strongestLabel": "Meta-analysis",
+      "reviewLevelSources": 2,
+      "weakOnly": false,
+      "status": "ok",
+      "message": "Strongest source design: Meta-analysis."
+    },
+    {
+      "slug": "vibroacoustic",
+      "title": "Vibroacoustic therapy",
+      "rating": "preliminary",
+      "citations": [
+        "kantor2022",
+        "braunjanzen2019"
+      ],
+      "maxStrength": 2,
+      "strongestLabel": "Scoping / narrative review",
+      "reviewLevelSources": 0,
+      "weakOnly": true,
+      "status": "weak-only",
+      "message": "Supported only by weak designs (Scoping / narrative review). Rating \"preliminary\" is consistent with that."
+    },
+    {
+      "slug": "gamma-40hz",
+      "title": "40 Hz sound & light (gamma stimulation)",
+      "rating": "preliminary",
+      "citations": [
+        "iaccarino2016",
+        "martorell2019",
+        "chan2022"
+      ],
+      "maxStrength": 2,
+      "strongestLabel": "Pilot or small trial (n < 100)",
+      "reviewLevelSources": 0,
+      "weakOnly": true,
+      "status": "weak-only",
+      "message": "Supported only by weak designs (Animal or lab study; Pilot or small trial (n < 100)). Rating \"preliminary\" is consistent with that."
+    },
+    {
+      "slug": "432-hz-solfeggio",
+      "title": "432 Hz & solfeggio frequencies",
+      "rating": "not-supported",
+      "citations": [
+        "iso16",
+        "calamassi2019",
+        "calamassi2020",
+        "akimoto2018"
+      ],
+      "maxStrength": 2,
+      "strongestLabel": "Pilot or small trial (n < 100)",
+      "reviewLevelSources": 0,
+      "weakOnly": true,
+      "status": "weak-only",
+      "message": "Supported only by weak designs (Pilot or small trial (n < 100)). Rating \"not-supported\" is consistent with that."
+    },
+    {
+      "slug": "chakras-energy",
+      "title": "Chakras, energy fields & \"frequency healing\"",
+      "rating": "not-supported",
+      "citations": [
+        "nccihReiki",
+        "rosa1998"
+      ],
+      "maxStrength": 2,
+      "strongestLabel": "Pilot or small trial (n < 100)",
+      "reviewLevelSources": 0,
+      "weakOnly": true,
+      "status": "weak-only",
+      "message": "Supported only by weak designs (Pilot or small trial (n < 100)). Rating \"not-supported\" is consistent with that."
+    }
+  ],
+  "citations": [
+    {
+      "id": "nccih2022",
+      "verdict": "ok",
+      "year": 2022,
+      "title": "Music and Health: What You Need To Know",
+      "doi": null,
+      "pmid": null,
+      "pmcid": null,
+      "url": "https://www.nccih.nih.gov/health/music-and-health-what-you-need-to-know",
+      "design": "overview",
+      "designLabel": "Agency evidence overview (secondary)",
+      "strength": null,
+      "designBasis": "stored type",
+      "links": [
+        {
+          "kind": "url",
+          "url": "https://www.nccih.nih.gov/health/music-and-health-what-you-need-to-know",
+          "status": "ok",
+          "detail": "HTTP 200",
+          "finalUrl": "https://www.nccih.nih.gov/health/music-and-health-what-you-need-to-know"
+        }
+      ],
+      "issues": [],
+      "notices": []
+    },
+    {
+      "id": "nccihReiki",
+      "verdict": "ok",
+      "year": 2018,
+      "title": "Reiki",
+      "doi": null,
+      "pmid": null,
+      "pmcid": null,
+      "url": "https://www.nccih.nih.gov/health/reiki",
+      "design": "overview",
+      "designLabel": "Agency evidence overview (secondary)",
+      "strength": null,
+      "designBasis": "stored type",
+      "links": [
+        {
+          "kind": "url",
+          "url": "https://www.nccih.nih.gov/health/reiki",
+          "status": "ok",
+          "detail": "HTTP 200",
+          "finalUrl": "https://www.nccih.nih.gov/health/reiki"
+        }
+      ],
+      "issues": [],
+      "notices": []
+    },
+    {
+      "id": "iso16",
+      "verdict": "ok",
+      "year": 1975,
+      "title": "ISO 16:1975 Acoustics — Standard tuning frequency (Standard musical pitch)",
+      "doi": null,
+      "pmid": null,
+      "pmcid": null,
+      "url": "https://www.iso.org/standard/3601.html",
+      "design": "standard",
+      "designLabel": "Technical standard (not health evidence)",
+      "strength": null,
+      "designBasis": "stored type",
+      "links": [
+        {
+          "kind": "url",
+          "url": "https://www.iso.org/standard/3601.html",
+          "status": "ok",
+          "detail": "HTTP 200",
+          "finalUrl": "https://www.iso.org/standard/3601.html"
+        }
+      ],
+      "issues": [],
+      "notices": []
+    },
+    {
+      "id": "dewitte2020",
+      "verdict": "ok",
+      "year": 2020,
+      "title": "Effects of music interventions on stress-related outcomes: a systematic review and two meta-analyses",
+      "doi": "10.1080/17437199.2019.1627897",
+      "pmid": "31167611",
+      "pmcid": null,
+      "url": null,
+      "design": "meta-analysis",
+      "designLabel": "Meta-analysis",
+      "strength": 5,
+      "designBasis": "stored type",
+      "links": [
+        {
+          "kind": "doi",
+          "url": "https://doi.org/10.1080/17437199.2019.1627897",
+          "status": "ok",
+          "landingBlocked": false,
+          "detail": "DOI registered; landing page: HTTP 200 at www.tandfonline.com",
+          "target": "https://www.tandfonline.com/doi/full/10.1080/17437199.2019.1627897",
+          "finalUrl": "https://www.tandfonline.com/action/cookieAbsent"
+        },
+        {
+          "kind": "pubmed",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/31167611/",
+          "status": "ok",
+          "detail": "PMID exists (E-utilities)"
+        }
+      ],
+      "issues": [],
+      "notices": []
+    },
+    {
+      "id": "dewitte2022",
+      "verdict": "ok",
+      "year": 2022,
+      "title": "Music therapy for stress reduction: a systematic review and meta-analysis",
+      "doi": "10.1080/17437199.2020.1846580",
+      "pmid": "33176590",
+      "pmcid": null,
+      "url": null,
+      "design": "meta-analysis",
+      "designLabel": "Meta-analysis",
+      "strength": 5,
+      "designBasis": "PubMed publication type",
+      "links": [
+        {
+          "kind": "doi",
+          "url": "https://doi.org/10.1080/17437199.2020.1846580",
+          "status": "ok",
+          "landingBlocked": false,
+          "detail": "DOI registered; landing page: HTTP 200 at www.tandfonline.com",
+          "target": "https://www.tandfonline.com/doi/full/10.1080/17437199.2020.1846580",
+          "finalUrl": "https://www.tandfonline.com/action/cookieAbsent"
+        },
+        {
+          "kind": "pubmed",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/33176590/",
+          "status": "ok",
+          "detail": "PMID exists (E-utilities)"
+        }
+      ],
+      "issues": [],
+      "notices": []
+    },
+    {
+      "id": "bradt2013preop",
+      "verdict": "ok",
+      "year": 2013,
+      "title": "Music interventions for preoperative anxiety",
+      "doi": "10.1002/14651858.CD006908.pub2",
+      "pmid": "23740695",
+      "pmcid": "PMC9758540",
+      "url": null,
+      "design": "meta-analysis",
+      "designLabel": "Meta-analysis",
+      "strength": 5,
+      "designBasis": "PubMed publication type",
+      "links": [
+        {
+          "kind": "doi",
+          "url": "https://doi.org/10.1002/14651858.CD006908.pub2",
+          "status": "ok",
+          "landingBlocked": true,
+          "detail": "DOI registered; landing page: doi.wiley.com refuses scripted requests (HTTP 403)",
+          "target": "http://doi.wiley.com/10.1002/14651858.CD006908.pub2",
+          "finalUrl": "http://doi.wiley.com/10.1002/14651858.CD006908.pub2"
+        },
+        {
+          "kind": "pmc",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9758540/",
+          "status": "ok",
+          "detail": "PMC id confirmed via PubMed"
+        },
+        {
+          "kind": "pubmed",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/23740695/",
+          "status": "ok",
+          "detail": "PMID exists (E-utilities)"
+        }
+      ],
+      "issues": [],
+      "notices": []
+    },
+    {
+      "id": "hole2015",
+      "verdict": "ok",
+      "year": 2015,
+      "title": "Music as an aid for postoperative recovery in adults: a systematic review and meta-analysis",
+      "doi": "10.1016/S0140-6736(15)60169-6",
+      "pmid": "26277246",
+      "pmcid": null,
+      "url": null,
+      "design": "meta-analysis",
+      "designLabel": "Meta-analysis",
+      "strength": 5,
+      "designBasis": "PubMed publication type",
+      "links": [
+        {
+          "kind": "doi",
+          "url": "https://doi.org/10.1016/S0140-6736(15)60169-6",
+          "status": "ok",
+          "landingBlocked": false,
+          "detail": "DOI registered; landing page: HTTP 200 at linkinghub.elsevier.com",
+          "target": "https://linkinghub.elsevier.com/retrieve/pii/S0140673615601696",
+          "finalUrl": "https://linkinghub.elsevier.com/retrieve/pii/S0140673615601696"
+        },
+        {
+          "kind": "pubmed",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/26277246/",
+          "status": "ok",
+          "detail": "PMID exists (E-utilities)"
+        }
+      ],
+      "issues": [],
+      "notices": []
+    },
+    {
+      "id": "kuhlmann2018",
+      "verdict": "ok",
+      "year": 2018,
+      "title": "Meta-analysis evaluating music interventions for anxiety and pain in surgery",
+      "doi": "10.1002/bjs.10853",
+      "pmid": "29665028",
+      "pmcid": "PMC6175460",
+      "url": null,
+      "design": "meta-analysis",
+      "designLabel": "Meta-analysis",
+      "strength": 5,
+      "designBasis": "PubMed publication type",
+      "links": [
+        {
+          "kind": "doi",
+          "url": "https://doi.org/10.1002/bjs.10853",
+          "status": "ok",
+          "landingBlocked": false,
+          "detail": "DOI registered; landing page: HTTP 200 at academic.oup.com",
+          "target": "https://academic.oup.com/bjs/article/105/7/773-783/6123225",
+          "finalUrl": "https://academic.oup.com/bjs/article/105/7/773/6123225"
+        },
+        {
+          "kind": "pmc",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6175460/",
+          "status": "ok",
+          "detail": "PMC id confirmed via PubMed"
+        },
+        {
+          "kind": "pubmed",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/29665028/",
+          "status": "ok",
+          "detail": "PMID exists (E-utilities)"
+        }
+      ],
+      "issues": [],
+      "notices": []
+    },
+    {
+      "id": "jespersen2022",
+      "verdict": "ok",
+      "year": 2022,
+      "title": "Listening to music for insomnia in adults",
+      "doi": "10.1002/14651858.CD010459.pub3",
+      "pmid": "36000763",
+      "pmcid": "PMC9400393",
+      "url": null,
+      "design": "systematic-review",
+      "designLabel": "Systematic review",
+      "strength": 4,
+      "designBasis": "stored type",
+      "links": [
+        {
+          "kind": "doi",
+          "url": "https://doi.org/10.1002/14651858.CD010459.pub3",
+          "status": "ok",
+          "landingBlocked": true,
+          "detail": "DOI registered; landing page: doi.wiley.com refuses scripted requests (HTTP 403)",
+          "target": "http://doi.wiley.com/10.1002/14651858.CD010459.pub3",
+          "finalUrl": "http://doi.wiley.com/10.1002/14651858.CD010459.pub3"
+        },
+        {
+          "kind": "pmc",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9400393/",
+          "status": "ok",
+          "detail": "PMC id confirmed via PubMed"
+        },
+        {
+          "kind": "pubmed",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/36000763/",
+          "status": "ok",
+          "detail": "PMID exists (E-utilities)"
+        }
+      ],
+      "issues": [],
+      "notices": []
+    },
+    {
+      "id": "lee2016",
+      "verdict": "ok",
+      "year": 2016,
+      "title": "The Effects of Music on Pain: A Meta-Analysis",
+      "doi": "10.1093/jmt/thw012",
+      "pmid": "27760797",
+      "pmcid": null,
+      "url": null,
+      "design": "meta-analysis",
+      "designLabel": "Meta-analysis",
+      "strength": 5,
+      "designBasis": "PubMed publication type",
+      "links": [
+        {
+          "kind": "doi",
+          "url": "https://doi.org/10.1093/jmt/thw012",
+          "status": "ok",
+          "landingBlocked": false,
+          "detail": "DOI registered; landing page: HTTP 200 at academic.oup.com",
+          "target": "https://academic.oup.com/jmt/article/53/4/430/2348275",
+          "finalUrl": "https://academic.oup.com/jmt/article-abstract/53/4/430/2348275?redirectedFrom=fulltext"
+        },
+        {
+          "kind": "pubmed",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/27760797/",
+          "status": "ok",
+          "detail": "PMID exists (E-utilities)"
+        }
+      ],
+      "issues": [],
+      "notices": []
+    },
+    {
+      "id": "garza2017",
+      "verdict": "ok",
+      "year": 2017,
+      "title": "Music-Induced Analgesia in Chronic Pain Conditions: A Systematic Review and Meta-Analysis",
+      "doi": null,
+      "pmid": "29149141",
+      "pmcid": null,
+      "url": null,
+      "design": "meta-analysis",
+      "designLabel": "Meta-analysis",
+      "strength": 5,
+      "designBasis": "PubMed publication type",
+      "links": [
+        {
+          "kind": "pubmed",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/29149141/",
+          "status": "ok",
+          "detail": "PMID exists (E-utilities)"
+        }
+      ],
+      "issues": [],
+      "notices": []
+    },
+    {
+      "id": "chen2025",
+      "verdict": "ok",
+      "year": 2025,
+      "title": "The effect of music therapy for patients with chronic pain: systematic review and meta-analysis",
+      "doi": "10.1186/s40359-025-02643-x",
+      "pmid": "40307940",
+      "pmcid": "PMC12042639",
+      "url": null,
+      "design": "meta-analysis",
+      "designLabel": "Meta-analysis",
+      "strength": 5,
+      "designBasis": "PubMed publication type",
+      "links": [
+        {
+          "kind": "doi",
+          "url": "https://doi.org/10.1186/s40359-025-02643-x",
+          "status": "ok",
+          "landingBlocked": false,
+          "detail": "DOI registered; landing page: HTTP 200 at link.springer.com",
+          "target": "https://bmcpsychology.biomedcentral.com/articles/10.1186/s40359-025-02643-x",
+          "finalUrl": "https://link.springer.com/article/10.1186/s40359-025-02643-x?error=cookies_not_supported&code=7dbd8333-65b4-48d9-a0d2-4622d60faee1"
+        },
+        {
+          "kind": "pmc",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12042639/",
+          "status": "ok",
+          "detail": "PMC id confirmed via PubMed"
+        },
+        {
+          "kind": "pubmed",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/40307940/",
+          "status": "ok",
+          "detail": "PMID exists (E-utilities)"
+        }
+      ],
+      "issues": [],
+      "notices": []
+    },
+    {
+      "id": "kuhlmann2016",
+      "verdict": "ok",
+      "year": 2016,
+      "title": "Systematic review and meta-analysis of music interventions in hypertension treatment: a quest for answers",
+      "doi": "10.1186/s12872-016-0244-0",
+      "pmid": "27095510",
+      "pmcid": "PMC4837643",
+      "url": null,
+      "design": "meta-analysis",
+      "designLabel": "Meta-analysis",
+      "strength": 5,
+      "designBasis": "PubMed publication type",
+      "links": [
+        {
+          "kind": "doi",
+          "url": "https://doi.org/10.1186/s12872-016-0244-0",
+          "status": "ok",
+          "landingBlocked": false,
+          "detail": "DOI registered; landing page: HTTP 200 at link.springer.com",
+          "target": "http://bmccardiovascdisord.biomedcentral.com/articles/10.1186/s12872-016-0244-0",
+          "finalUrl": "https://link.springer.com/article/10.1186/s12872-016-0244-0?error=cookies_not_supported&code=b381b639-5b85-4b24-adfc-1992c76e7cbf"
+        },
+        {
+          "kind": "pmc",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4837643/",
+          "status": "ok",
+          "detail": "PMC id confirmed via PubMed"
+        },
+        {
+          "kind": "pubmed",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/27095510/",
+          "status": "ok",
+          "detail": "PMID exists (E-utilities)"
+        }
+      ],
+      "issues": [],
+      "notices": []
+    },
+    {
+      "id": "doamaral2016",
+      "verdict": "ok",
+      "year": 2016,
+      "title": "Effect of music therapy on blood pressure of individuals with hypertension: A systematic review and Meta-analysis",
+      "doi": "10.1016/j.ijcard.2016.03.197",
+      "pmid": "27096963",
+      "pmcid": null,
+      "url": null,
+      "design": "meta-analysis",
+      "designLabel": "Meta-analysis",
+      "strength": 5,
+      "designBasis": "PubMed publication type",
+      "links": [
+        {
+          "kind": "doi",
+          "url": "https://doi.org/10.1016/j.ijcard.2016.03.197",
+          "status": "ok",
+          "landingBlocked": false,
+          "detail": "DOI registered; landing page: HTTP 200 at linkinghub.elsevier.com",
+          "target": "https://linkinghub.elsevier.com/retrieve/pii/S0167527316306623",
+          "finalUrl": "https://linkinghub.elsevier.com/retrieve/pii/S0167527316306623"
+        },
+        {
+          "kind": "pubmed",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/27096963/",
+          "status": "ok",
+          "detail": "PMID exists (E-utilities)"
+        }
+      ],
+      "issues": [],
+      "notices": []
+    },
+    {
+      "id": "mojtabavi2020",
+      "verdict": "ok",
+      "year": 2020,
+      "title": "Can music influence cardiac autonomic system? A systematic review and narrative synthesis to evaluate its impact on heart rate variability",
+      "doi": "10.1016/j.ctcp.2020.101162",
+      "pmid": "32379689",
+      "pmcid": null,
+      "url": null,
+      "design": "systematic-review",
+      "designLabel": "Systematic review",
+      "strength": 4,
+      "designBasis": "stored type",
+      "links": [
+        {
+          "kind": "doi",
+          "url": "https://doi.org/10.1016/j.ctcp.2020.101162",
+          "status": "ok",
+          "landingBlocked": false,
+          "detail": "DOI registered; landing page: HTTP 200 at linkinghub.elsevier.com",
+          "target": "https://linkinghub.elsevier.com/retrieve/pii/S1744388119302889",
+          "finalUrl": "https://linkinghub.elsevier.com/retrieve/pii/S1744388119302889"
+        },
+        {
+          "kind": "pubmed",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/32379689/",
+          "status": "ok",
+          "detail": "PMID exists (E-utilities)"
+        }
+      ],
+      "issues": [],
+      "notices": []
+    },
+    {
+      "id": "bradt2013chd",
+      "verdict": "ok",
+      "year": 2013,
+      "title": "Music for stress and anxiety reduction in coronary heart disease patients",
+      "doi": "10.1002/14651858.CD006577.pub3",
+      "pmid": "24374731",
+      "pmcid": "PMC8454043",
+      "url": null,
+      "design": "meta-analysis",
+      "designLabel": "Meta-analysis",
+      "strength": 5,
+      "designBasis": "PubMed publication type",
+      "links": [
+        {
+          "kind": "doi",
+          "url": "https://doi.org/10.1002/14651858.CD006577.pub3",
+          "status": "ok",
+          "landingBlocked": true,
+          "detail": "DOI registered; landing page: doi.wiley.com refuses scripted requests (HTTP 403)",
+          "target": "http://doi.wiley.com/10.1002/14651858.CD006577.pub3",
+          "finalUrl": "http://doi.wiley.com/10.1002/14651858.CD006577.pub3"
+        },
+        {
+          "kind": "pmc",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8454043/",
+          "status": "ok",
+          "detail": "PMC id confirmed via PubMed"
+        },
+        {
+          "kind": "pubmed",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/24374731/",
+          "status": "ok",
+          "detail": "PMID exists (E-utilities)"
+        }
+      ],
+      "issues": [],
+      "notices": []
+    },
+    {
+      "id": "aalbers2017",
+      "verdict": "ok",
+      "year": 2017,
+      "title": "Music therapy for depression",
+      "doi": "10.1002/14651858.CD004517.pub3",
+      "pmid": "29144545",
+      "pmcid": "PMC6486188",
+      "url": null,
+      "design": "meta-analysis",
+      "designLabel": "Meta-analysis",
+      "strength": 5,
+      "designBasis": "PubMed publication type",
+      "links": [
+        {
+          "kind": "doi",
+          "url": "https://doi.org/10.1002/14651858.CD004517.pub3",
+          "status": "ok",
+          "landingBlocked": true,
+          "detail": "DOI registered; landing page: doi.wiley.com refuses scripted requests (HTTP 403)",
+          "target": "http://doi.wiley.com/10.1002/14651858.CD004517.pub3",
+          "finalUrl": "http://doi.wiley.com/10.1002/14651858.CD004517.pub3"
+        },
+        {
+          "kind": "pmc",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6486188/",
+          "status": "ok",
+          "detail": "PMC id confirmed via PubMed"
+        },
+        {
+          "kind": "pubmed",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/29144545/",
+          "status": "ok",
+          "detail": "PMID exists (E-utilities)"
+        }
+      ],
+      "issues": [],
+      "notices": []
+    },
+    {
+      "id": "tang2020",
+      "verdict": "ok",
+      "year": 2020,
+      "title": "Effects of music therapy on depression: A meta-analysis of randomized controlled trials",
+      "doi": "10.1371/journal.pone.0240862",
+      "pmid": "33206656",
+      "pmcid": "PMC7673528",
+      "url": null,
+      "design": "meta-analysis",
+      "designLabel": "Meta-analysis",
+      "strength": 5,
+      "designBasis": "PubMed publication type",
+      "links": [
+        {
+          "kind": "doi",
+          "url": "https://doi.org/10.1371/journal.pone.0240862",
+          "status": "ok",
+          "landingBlocked": false,
+          "detail": "DOI registered; landing page: HTTP 200 at journals.plos.org",
+          "target": "https://dx.plos.org/10.1371/journal.pone.0240862",
+          "finalUrl": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0240862"
+        },
+        {
+          "kind": "pmc",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7673528/",
+          "status": "ok",
+          "detail": "PMC id confirmed via PubMed"
+        },
+        {
+          "kind": "pubmed",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/33206656/",
+          "status": "ok",
+          "detail": "PMID exists (E-utilities)"
+        }
+      ],
+      "issues": [],
+      "notices": []
+    },
+    {
+      "id": "bradt2021",
+      "verdict": "ok",
+      "year": 2021,
+      "title": "Music interventions for improving psychological and physical outcomes in people with cancer",
+      "doi": "10.1002/14651858.CD006911.pub4",
+      "pmid": "34637527",
+      "pmcid": "PMC8510511",
+      "url": null,
+      "design": "systematic-review",
+      "designLabel": "Systematic review",
+      "strength": 4,
+      "designBasis": "stored type",
+      "links": [
+        {
+          "kind": "doi",
+          "url": "https://doi.org/10.1002/14651858.CD006911.pub4",
+          "status": "ok",
+          "landingBlocked": true,
+          "detail": "DOI registered; landing page: doi.wiley.com refuses scripted requests (HTTP 403)",
+          "target": "http://doi.wiley.com/10.1002/14651858.CD006911.pub4",
+          "finalUrl": "http://doi.wiley.com/10.1002/14651858.CD006911.pub4"
+        },
+        {
+          "kind": "pmc",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8510511/",
+          "status": "ok",
+          "detail": "PMC id confirmed via PubMed"
+        },
+        {
+          "kind": "pubmed",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/34637527/",
+          "status": "ok",
+          "detail": "PMID exists (E-utilities)"
+        }
+      ],
+      "issues": [],
+      "notices": []
+    },
+    {
+      "id": "vandersteen2025",
+      "verdict": "ok",
+      "year": 2025,
+      "title": "Music-based therapeutic interventions for people with dementia",
+      "doi": "10.1002/14651858.CD003477.pub5",
+      "pmid": "40049590",
+      "pmcid": "PMC11884930",
+      "url": null,
+      "design": "meta-analysis",
+      "designLabel": "Meta-analysis",
+      "strength": 5,
+      "designBasis": "PubMed publication type",
+      "links": [
+        {
+          "kind": "doi",
+          "url": "https://doi.org/10.1002/14651858.CD003477.pub5",
+          "status": "ok",
+          "landingBlocked": true,
+          "detail": "DOI registered; landing page: doi.wiley.com refuses scripted requests (HTTP 403)",
+          "target": "http://doi.wiley.com/10.1002/14651858.CD003477.pub5",
+          "finalUrl": "http://doi.wiley.com/10.1002/14651858.CD003477.pub5"
+        },
+        {
+          "kind": "pmc",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11884930/",
+          "status": "ok",
+          "detail": "PMC id confirmed via PubMed"
+        },
+        {
+          "kind": "pubmed",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/40049590/",
+          "status": "ok",
+          "detail": "PMID exists (E-utilities)"
+        }
+      ],
+      "issues": [],
+      "notices": []
+    },
+    {
+      "id": "geretsegger2022",
+      "verdict": "ok",
+      "year": 2022,
+      "title": "Music therapy for autistic people",
+      "doi": "10.1002/14651858.CD004381.pub4",
+      "pmid": "35532041",
+      "pmcid": "PMC9082683",
+      "url": null,
+      "design": "systematic-review",
+      "designLabel": "Systematic review",
+      "strength": 4,
+      "designBasis": "stored type",
+      "links": [
+        {
+          "kind": "doi",
+          "url": "https://doi.org/10.1002/14651858.CD004381.pub4",
+          "status": "ok",
+          "landingBlocked": true,
+          "detail": "DOI registered; landing page: doi.wiley.com refuses scripted requests (HTTP 403)",
+          "target": "http://doi.wiley.com/10.1002/14651858.CD004381.pub4",
+          "finalUrl": "http://doi.wiley.com/10.1002/14651858.CD004381.pub4"
+        },
+        {
+          "kind": "pmc",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9082683/",
+          "status": "ok",
+          "detail": "PMC id confirmed via PubMed"
+        },
+        {
+          "kind": "pubmed",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/35532041/",
+          "status": "ok",
+          "detail": "PMID exists (E-utilities)"
+        }
+      ],
+      "issues": [],
+      "notices": []
+    },
+    {
+      "id": "stanhope2020",
+      "verdict": "ok",
+      "year": 2020,
+      "title": "The human health effects of singing bowls: A systematic review",
+      "doi": "10.1016/j.ctim.2020.102412",
+      "pmid": "32507429",
+      "pmcid": null,
+      "url": null,
+      "design": "systematic-review",
+      "designLabel": "Systematic review",
+      "strength": 4,
+      "designBasis": "stored type",
+      "links": [
+        {
+          "kind": "doi",
+          "url": "https://doi.org/10.1016/j.ctim.2020.102412",
+          "status": "ok",
+          "landingBlocked": false,
+          "detail": "DOI registered; landing page: HTTP 200 at linkinghub.elsevier.com",
+          "target": "https://linkinghub.elsevier.com/retrieve/pii/S096522991931756X",
+          "finalUrl": "https://linkinghub.elsevier.com/retrieve/pii/S096522991931756X"
+        },
+        {
+          "kind": "pubmed",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/32507429/",
+          "status": "ok",
+          "detail": "PMID exists (E-utilities)"
+        }
+      ],
+      "issues": [],
+      "notices": []
+    },
+    {
+      "id": "cai2025",
+      "verdict": "ok",
+      "year": 2025,
+      "title": "Therapeutic effects of singing bowls: A systematic review of clinical studies",
+      "doi": "10.1016/j.imr.2025.101144",
+      "pmid": "40352083",
+      "pmcid": "PMC12063014",
+      "url": null,
+      "design": "systematic-review",
+      "designLabel": "Systematic review",
+      "strength": 4,
+      "designBasis": "stored type",
+      "links": [
+        {
+          "kind": "doi",
+          "url": "https://doi.org/10.1016/j.imr.2025.101144",
+          "status": "ok",
+          "landingBlocked": false,
+          "detail": "DOI registered; landing page: HTTP 200 at linkinghub.elsevier.com",
+          "target": "https://linkinghub.elsevier.com/retrieve/pii/S2213422025000241",
+          "finalUrl": "https://linkinghub.elsevier.com/retrieve/pii/S2213422025000241"
+        },
+        {
+          "kind": "pmc",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12063014/",
+          "status": "ok",
+          "detail": "PMC id confirmed via PubMed"
+        },
+        {
+          "kind": "pubmed",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/40352083/",
+          "status": "ok",
+          "detail": "PMID exists (E-utilities)"
+        }
+      ],
+      "issues": [],
+      "notices": []
+    },
+    {
+      "id": "goldsby2017",
+      "verdict": "ok",
+      "year": 2017,
+      "title": "Effects of Singing Bowl Sound Meditation on Mood, Tension, and Well-being: An Observational Study",
+      "doi": "10.1177/2156587216668109",
+      "pmid": "27694559",
+      "pmcid": "PMC5871151",
+      "url": null,
+      "design": "observational",
+      "designLabel": "Observational / uncontrolled",
+      "strength": 1,
+      "designBasis": "stored type",
+      "links": [
+        {
+          "kind": "doi",
+          "url": "https://doi.org/10.1177/2156587216668109",
+          "status": "ok",
+          "landingBlocked": false,
+          "detail": "DOI registered; landing page: HTTP 200 at journals.sagepub.com",
+          "target": "http://journals.sagepub.com/doi/10.1177/2156587216668109",
+          "finalUrl": "https://journals.sagepub.com/action/cookieAbsent"
+        },
+        {
+          "kind": "pmc",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5871151/",
+          "status": "ok",
+          "detail": "PMC id confirmed via PubMed"
+        },
+        {
+          "kind": "pubmed",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/27694559/",
+          "status": "ok",
+          "detail": "PMID exists (E-utilities)"
+        }
+      ],
+      "issues": [],
+      "notices": []
+    },
+    {
+      "id": "landry2014",
+      "verdict": "ok",
+      "year": 2014,
+      "title": "Physiological and psychological effects of a Himalayan singing bowl in meditation practice: a quantitative analysis",
+      "doi": "10.4278/ajhp.121031-ARB-528",
+      "pmid": "23941101",
+      "pmcid": null,
+      "url": null,
+      "design": "small-trial",
+      "designLabel": "Pilot or small trial (n < 100)",
+      "strength": 2,
+      "designBasis": "stored type (n = 51)",
+      "links": [
+        {
+          "kind": "doi",
+          "url": "https://doi.org/10.4278/ajhp.121031-ARB-528",
+          "status": "ok",
+          "landingBlocked": false,
+          "detail": "DOI registered; landing page: HTTP 200 at journals.sagepub.com",
+          "target": "https://journals.sagepub.com/doi/10.4278/ajhp.121031-ARB-528",
+          "finalUrl": "https://journals.sagepub.com/action/cookieAbsent"
+        },
+        {
+          "kind": "pubmed",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/23941101/",
+          "status": "ok",
+          "detail": "PMID exists (E-utilities)"
+        }
+      ],
+      "issues": [],
+      "notices": []
+    },
+    {
+      "id": "rioalamos2023",
+      "verdict": "ok",
+      "year": 2023,
+      "title": "Acute Relaxation Response Induced by Tibetan Singing Bowl Sounds: A Randomized Controlled Trial",
+      "doi": "10.3390/ejihpe13020024",
+      "pmid": "36826208",
+      "pmcid": "PMC9955072",
+      "url": null,
+      "design": "small-trial",
+      "designLabel": "Pilot or small trial (n < 100)",
+      "strength": 2,
+      "designBasis": "stored type (n = 50)",
+      "links": [
+        {
+          "kind": "doi",
+          "url": "https://doi.org/10.3390/ejihpe13020024",
+          "status": "ok",
+          "landingBlocked": true,
+          "detail": "DOI registered; landing page: www.mdpi.com refuses scripted requests (HTTP 403)",
+          "target": "https://www.mdpi.com/2254-9625/13/2/24",
+          "finalUrl": "https://www.mdpi.com/2254-9625/13/2/24"
+        },
+        {
+          "kind": "pmc",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9955072/",
+          "status": "ok",
+          "detail": "PMC id confirmed via PubMed"
+        },
+        {
+          "kind": "pubmed",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/36826208/",
+          "status": "ok",
+          "detail": "PMID exists (E-utilities)"
+        }
+      ],
+      "issues": [],
+      "notices": []
+    },
+    {
+      "id": "bergmann2020",
+      "verdict": "ok",
+      "year": 2020,
+      "title": "Effects of singing bowl exposure on Karolinska sleepiness scale and pupillographic sleepiness test: A randomised crossover study",
+      "doi": "10.1371/journal.pone.0233982",
+      "pmid": "32479559",
+      "pmcid": "PMC7263600",
+      "url": null,
+      "design": "small-trial",
+      "designLabel": "Pilot or small trial (n < 100)",
+      "strength": 2,
+      "designBasis": "stored type (n = 48)",
+      "links": [
+        {
+          "kind": "doi",
+          "url": "https://doi.org/10.1371/journal.pone.0233982",
+          "status": "ok",
+          "landingBlocked": false,
+          "detail": "DOI registered; landing page: HTTP 200 at journals.plos.org",
+          "target": "https://dx.plos.org/10.1371/journal.pone.0233982",
+          "finalUrl": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0233982"
+        },
+        {
+          "kind": "pmc",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7263600/",
+          "status": "ok",
+          "detail": "PMC id confirmed via PubMed"
+        },
+        {
+          "kind": "pubmed",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/32479559/",
+          "status": "ok",
+          "detail": "PMID exists (E-utilities)"
+        }
+      ],
+      "issues": [],
+      "notices": []
+    },
+    {
+      "id": "goldsby2022",
+      "verdict": "ok",
+      "year": 2022,
+      "title": "Sound Healing: Mood, Emotional, and Spiritual Well-Being Interrelationships",
+      "doi": "10.3390/rel13020123",
+      "pmid": null,
+      "pmcid": null,
+      "url": null,
+      "design": "observational",
+      "designLabel": "Observational / uncontrolled",
+      "strength": 1,
+      "designBasis": "stored type",
+      "links": [
+        {
+          "kind": "doi",
+          "url": "https://doi.org/10.3390/rel13020123",
+          "status": "ok",
+          "landingBlocked": true,
+          "detail": "DOI registered; landing page: www.mdpi.com refuses scripted requests (HTTP 403)",
+          "target": "https://www.mdpi.com/2077-1444/13/2/123",
+          "finalUrl": "https://www.mdpi.com/2077-1444/13/2/123"
+        }
+      ],
+      "issues": [],
+      "notices": []
+    },
+    {
+      "id": "garcia2019",
+      "verdict": "ok",
+      "year": 2019,
+      "title": "Efficacy of binaural auditory beats in cognition, anxiety, and pain perception: a meta-analysis",
+      "doi": "10.1007/s00426-018-1066-8",
+      "pmid": "30073406",
+      "pmcid": null,
+      "url": null,
+      "design": "meta-analysis",
+      "designLabel": "Meta-analysis",
+      "strength": 5,
+      "designBasis": "PubMed publication type",
+      "links": [
+        {
+          "kind": "doi",
+          "url": "https://doi.org/10.1007/s00426-018-1066-8",
+          "status": "ok",
+          "landingBlocked": false,
+          "detail": "DOI registered; landing page: HTTP 200 at link.springer.com",
+          "target": "http://link.springer.com/10.1007/s00426-018-1066-8",
+          "finalUrl": "https://link.springer.com/article/10.1007/s00426-018-1066-8?error=cookies_not_supported&code=7f62ff1b-7502-480e-a85b-7af292cffb07"
+        },
+        {
+          "kind": "pubmed",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/30073406/",
+          "status": "ok",
+          "detail": "PMID exists (E-utilities)"
+        }
+      ],
+      "issues": [],
+      "notices": []
+    },
+    {
+      "id": "ingendoh2023",
+      "verdict": "ok",
+      "year": 2023,
+      "title": "Binaural beats to entrain the brain? A systematic review of the effects of binaural beat stimulation on brain oscillatory activity, and the implications for psychological research and intervention",
+      "doi": "10.1371/journal.pone.0286023",
+      "pmid": "37205669",
+      "pmcid": "PMC10198548",
+      "url": null,
+      "design": "systematic-review",
+      "designLabel": "Systematic review",
+      "strength": 4,
+      "designBasis": "stored type",
+      "links": [
+        {
+          "kind": "doi",
+          "url": "https://doi.org/10.1371/journal.pone.0286023",
+          "status": "ok",
+          "landingBlocked": false,
+          "detail": "DOI registered; landing page: HTTP 200 at journals.plos.org",
+          "target": "https://dx.plos.org/10.1371/journal.pone.0286023",
+          "finalUrl": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0286023"
+        },
+        {
+          "kind": "pmc",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10198548/",
+          "status": "ok",
+          "detail": "PMC id confirmed via PubMed"
+        },
+        {
+          "kind": "pubmed",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/37205669/",
+          "status": "ok",
+          "detail": "PMID exists (E-utilities)"
+        }
+      ],
+      "issues": [],
+      "notices": []
+    },
+    {
+      "id": "kantor2022",
+      "verdict": "ok",
+      "year": 2022,
+      "title": "Exploring vibroacoustic therapy in adults experiencing pain: a scoping review",
+      "doi": "10.1136/bmjopen-2020-046591",
+      "pmid": "35383053",
+      "pmcid": "PMC8984038",
+      "url": null,
+      "design": "scoping-review",
+      "designLabel": "Scoping / narrative review",
+      "strength": 2,
+      "designBasis": "stored type",
+      "links": [
+        {
+          "kind": "doi",
+          "url": "https://doi.org/10.1136/bmjopen-2020-046591",
+          "status": "ok",
+          "landingBlocked": false,
+          "detail": "DOI registered; landing page: HTTP 200 at bmjopen.bmj.com",
+          "target": "https://bmjopen.bmj.com/lookup/doi/10.1136/bmjopen-2020-046591",
+          "finalUrl": "https://bmjopen.bmj.com/content/12/4/e046591"
+        },
+        {
+          "kind": "pmc",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8984038/",
+          "status": "ok",
+          "detail": "PMC id confirmed via PubMed"
+        },
+        {
+          "kind": "pubmed",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/35383053/",
+          "status": "ok",
+          "detail": "PMID exists (E-utilities)"
+        }
+      ],
+      "issues": [],
+      "notices": []
+    },
+    {
+      "id": "braunjanzen2019",
+      "verdict": "retracted-labelled",
+      "year": 2019,
+      "title": "A parallel randomized controlled trial examining the effects of rhythmic sensory stimulation on fibromyalgia symptoms",
+      "doi": "10.1371/journal.pone.0212021",
+      "pmid": "30822311",
+      "pmcid": "PMC6396935",
+      "url": null,
+      "design": "retracted",
+      "designLabel": "Retracted (not counted as evidence)",
+      "strength": null,
+      "designBasis": "retraction notice",
+      "links": [
+        {
+          "kind": "doi",
+          "url": "https://doi.org/10.1371/journal.pone.0212021",
+          "status": "ok",
+          "landingBlocked": false,
+          "detail": "DOI registered; landing page: HTTP 200 at journals.plos.org",
+          "target": "https://dx.plos.org/10.1371/journal.pone.0212021",
+          "finalUrl": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0212021"
+        },
+        {
+          "kind": "pmc",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6396935/",
+          "status": "ok",
+          "detail": "PMC id confirmed via PubMed"
+        },
+        {
+          "kind": "pubmed",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/30822311/",
+          "status": "ok",
+          "detail": "PMID exists (E-utilities)"
+        }
+      ],
+      "issues": [],
+      "notices": [
+        {
+          "status": "retracted",
+          "type": "retraction",
+          "doi": "10.1371/journal.pone.0230395",
+          "source": "retraction-watch",
+          "date": "2020-03-06"
+        },
+        {
+          "status": "retracted",
+          "type": "retraction",
+          "doi": "10.1371/journal.pone.0230395",
+          "source": "publisher",
+          "date": "2020-03-06"
+        },
+        {
+          "status": "retracted",
+          "type": "Retracted Publication",
+          "doi": null,
+          "source": "pubmed",
+          "date": null
+        }
+      ]
+    },
+    {
+      "id": "iaccarino2016",
+      "verdict": "ok",
+      "year": 2016,
+      "title": "Gamma frequency entrainment attenuates amyloid load and modifies microglia",
+      "doi": "10.1038/nature20587",
+      "pmid": "27929004",
+      "pmcid": "PMC5656389",
+      "url": null,
+      "design": "animal",
+      "designLabel": "Animal or lab study",
+      "strength": 1,
+      "designBasis": "stored type",
+      "links": [
+        {
+          "kind": "doi",
+          "url": "https://doi.org/10.1038/nature20587",
+          "status": "ok",
+          "landingBlocked": false,
+          "detail": "DOI registered; landing page: HTTP 200 at www.nature.com",
+          "target": "https://www.nature.com/articles/nature20587",
+          "finalUrl": "https://www.nature.com/articles/nature20587?error=cookies_not_supported&code=2dca95a4-84d6-466b-9168-dffc50a59b6d"
+        },
+        {
+          "kind": "pmc",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5656389/",
+          "status": "ok",
+          "detail": "PMC id confirmed via PubMed"
+        },
+        {
+          "kind": "pubmed",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/27929004/",
+          "status": "ok",
+          "detail": "PMID exists (E-utilities)"
+        }
+      ],
+      "issues": [],
+      "notices": [
+        {
+          "status": "corrected",
+          "type": "correction",
+          "doi": "10.1038/s41586-024-08343-7",
+          "source": "publisher",
+          "date": "2024-11-26"
+        },
+        {
+          "status": "corrected",
+          "type": "correction",
+          "doi": "10.1038/s41586-018-0351-4",
+          "source": "publisher",
+          "date": "2018-07-25"
+        }
+      ]
+    },
+    {
+      "id": "martorell2019",
+      "verdict": "ok",
+      "year": 2019,
+      "title": "Multi-sensory Gamma Stimulation Ameliorates Alzheimer’s-Associated Pathology and Improves Cognition",
+      "doi": "10.1016/j.cell.2019.02.014",
+      "pmid": "30879788",
+      "pmcid": "PMC6774262",
+      "url": null,
+      "design": "animal",
+      "designLabel": "Animal or lab study",
+      "strength": 1,
+      "designBasis": "stored type",
+      "links": [
+        {
+          "kind": "doi",
+          "url": "https://doi.org/10.1016/j.cell.2019.02.014",
+          "status": "ok",
+          "landingBlocked": false,
+          "detail": "DOI registered; landing page: HTTP 200 at linkinghub.elsevier.com",
+          "target": "https://linkinghub.elsevier.com/retrieve/pii/S0092867419301631",
+          "finalUrl": "https://linkinghub.elsevier.com/retrieve/pii/S0092867419301631"
+        },
+        {
+          "kind": "pmc",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6774262/",
+          "status": "ok",
+          "detail": "PMC id confirmed via PubMed"
+        },
+        {
+          "kind": "pubmed",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/30879788/",
+          "status": "ok",
+          "detail": "PMID exists (E-utilities)"
+        }
+      ],
+      "issues": [],
+      "notices": []
+    },
+    {
+      "id": "chan2022",
+      "verdict": "ok",
+      "year": 2022,
+      "title": "Gamma frequency sensory stimulation in mild probable Alzheimer’s dementia patients: Results of feasibility and pilot studies",
+      "doi": "10.1371/journal.pone.0278412",
+      "pmid": "36454969",
+      "pmcid": "PMC9714926",
+      "url": null,
+      "design": "small-trial",
+      "designLabel": "Pilot or small trial (n < 100)",
+      "strength": 2,
+      "designBasis": "stored type (pilot/feasibility)",
+      "links": [
+        {
+          "kind": "doi",
+          "url": "https://doi.org/10.1371/journal.pone.0278412",
+          "status": "ok",
+          "landingBlocked": false,
+          "detail": "DOI registered; landing page: HTTP 200 at journals.plos.org",
+          "target": "https://dx.plos.org/10.1371/journal.pone.0278412",
+          "finalUrl": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0278412"
+        },
+        {
+          "kind": "pmc",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9714926/",
+          "status": "ok",
+          "detail": "PMC id confirmed via PubMed"
+        },
+        {
+          "kind": "pubmed",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/36454969/",
+          "status": "ok",
+          "detail": "PMID exists (E-utilities)"
+        }
+      ],
+      "issues": [],
+      "notices": []
+    },
+    {
+      "id": "calamassi2019",
+      "verdict": "ok",
+      "year": 2019,
+      "title": "Music Tuned to 440 Hz Versus 432 Hz and the Health Effects: A Double-blind Cross-over Pilot Study",
+      "doi": "10.1016/j.explore.2019.04.001",
+      "pmid": "31031095",
+      "pmcid": null,
+      "url": null,
+      "design": "small-trial",
+      "designLabel": "Pilot or small trial (n < 100)",
+      "strength": 2,
+      "designBasis": "stored type (pilot/feasibility)",
+      "links": [
+        {
+          "kind": "doi",
+          "url": "https://doi.org/10.1016/j.explore.2019.04.001",
+          "status": "ok",
+          "landingBlocked": false,
+          "detail": "DOI registered; landing page: HTTP 200 at linkinghub.elsevier.com",
+          "target": "https://linkinghub.elsevier.com/retrieve/pii/S1550830718302763",
+          "finalUrl": "https://linkinghub.elsevier.com/retrieve/pii/S1550830718302763"
+        },
+        {
+          "kind": "pubmed",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/31031095/",
+          "status": "ok",
+          "detail": "PMID exists (E-utilities)"
+        }
+      ],
+      "issues": [],
+      "notices": [
+        {
+          "status": "corrected",
+          "type": "erratum",
+          "doi": "10.1016/j.explore.2020.01.001",
+          "source": "publisher",
+          "date": "2020-01-01"
+        }
+      ]
+    },
+    {
+      "id": "calamassi2020",
+      "verdict": "ok",
+      "year": 2020,
+      "title": "Music tuned to 432 Hz versus music tuned to 440 Hz for improving sleep in patients with spinal cord injuries: a double-blind cross-over pilot study",
+      "doi": "10.23750/abm.v91i12-S.10755",
+      "pmid": "33263352",
+      "pmcid": "PMC8023109",
+      "url": null,
+      "design": "small-trial",
+      "designLabel": "Pilot or small trial (n < 100)",
+      "strength": 2,
+      "designBasis": "stored type (pilot/feasibility)",
+      "links": [
+        {
+          "kind": "doi",
+          "url": "https://doi.org/10.23750/abm.v91i12-S.10755",
+          "status": "ok",
+          "landingBlocked": false,
+          "detail": "DOI registered; landing page: HTTP 200 at mattioli1885journals.com",
+          "target": "https://mattioli1885journals.com/index.php/actabiomedica/article/view/10755",
+          "finalUrl": "https://mattioli1885journals.com/index.php/actabiomedica/article/view/10755"
+        },
+        {
+          "kind": "pmc",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8023109/",
+          "status": "ok",
+          "detail": "PMC id confirmed via PubMed"
+        },
+        {
+          "kind": "pubmed",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/33263352/",
+          "status": "ok",
+          "detail": "PMID exists (E-utilities)"
+        }
+      ],
+      "issues": [
+        {
+          "level": "info",
+          "source": "crossref",
+          "code": "not-in-crossref",
+          "message": "DOI is registered with mEDRA, not Crossref, so title/year/author and retraction checks rely on PubMed."
+        }
+      ],
+      "notices": []
+    },
+    {
+      "id": "akimoto2018",
+      "verdict": "ok",
+      "year": 2018,
+      "title": "Effect of 528 Hz Music on the Endocrine System and Autonomic Nervous System",
+      "doi": "10.4236/health.2018.109088",
+      "pmid": null,
+      "pmcid": null,
+      "url": "https://www.scirp.org/pdf/Health_2018090514214117.pdf",
+      "design": "small-trial",
+      "designLabel": "Pilot or small trial (n < 100)",
+      "strength": 2,
+      "designBasis": "stored type (pilot/feasibility)",
+      "links": [
+        {
+          "kind": "doi",
+          "url": "https://doi.org/10.4236/health.2018.109088",
+          "status": "ok",
+          "landingBlocked": false,
+          "detail": "DOI registered; landing page: HTTP 200 at www.scirp.org",
+          "target": "http://www.scirp.org/journal/doi.aspx?DOI=10.4236/health.2018.109088",
+          "finalUrl": "https://www.scirp.org/journal/paperinformation?paperid=87146"
+        },
+        {
+          "kind": "url",
+          "url": "https://www.scirp.org/pdf/Health_2018090514214117.pdf",
+          "status": "ok",
+          "detail": "HTTP 200",
+          "finalUrl": "https://www.scirp.org/pdf/Health_2018090514214117.pdf"
+        }
+      ],
+      "issues": [],
+      "notices": []
+    },
+    {
+      "id": "rosa1998",
+      "verdict": "ok",
+      "year": 1998,
+      "title": "A close look at therapeutic touch",
+      "doi": "10.1001/jama.279.13.1005",
+      "pmid": "9533499",
+      "pmcid": null,
+      "url": null,
+      "design": "small-trial",
+      "designLabel": "Pilot or small trial (n < 100)",
+      "strength": 2,
+      "designBasis": "stored type (n = 21)",
+      "links": [
+        {
+          "kind": "doi",
+          "url": "https://doi.org/10.1001/jama.279.13.1005",
+          "status": "ok",
+          "landingBlocked": false,
+          "detail": "DOI registered; landing page: HTTP 200 at jamanetwork.com",
+          "target": "http://jama.jamanetwork.com/article.aspx?doi=10.1001/jama.279.13.1005",
+          "finalUrl": "https://jamanetwork.com/journals/jama/fullarticle/187390"
+        },
+        {
+          "kind": "pubmed",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/9533499/",
+          "status": "ok",
+          "detail": "PMID exists (E-utilities)"
+        }
+      ],
+      "issues": [],
+      "notices": []
+    }
+  ],
+  "extraLinks": [
+    {
+      "where": "src/content/studies/aalbers-2017-depression.md",
+      "title": "Music therapy for depression",
+      "url": "https://www.cochrane.org/evidence/CD004517_music-therapy-depression",
+      "status": "ok",
+      "detail": "HTTP 200",
+      "finalUrl": "https://www.cochrane.org/evidence/CD004517_music-therapy-depression"
+    },
+    {
+      "where": "src/content/studies/aalbers-2017-depression.md",
+      "title": "Music therapy for depression",
+      "doi": "10.1002/14651858.CD004517.pub3",
+      "url": "https://doi.org/10.1002/14651858.CD004517.pub3",
+      "status": "ok",
+      "detail": "DOI registered"
+    },
+    {
+      "where": "src/content/studies/akimoto-2018-528hz.md",
+      "title": "Effect of 528 Hz music on the endocrine system and autonomic nervous system",
+      "url": "https://www.scirp.org/pdf/Health_2018090514214117.pdf",
+      "status": "ok",
+      "detail": "HTTP 200",
+      "finalUrl": "https://www.scirp.org/pdf/Health_2018090514214117.pdf"
+    },
+    {
+      "where": "src/content/studies/akimoto-2018-528hz.md",
+      "title": "Effect of 528 Hz music on the endocrine system and autonomic nervous system",
+      "doi": "10.4236/health.2018.109088",
+      "url": "https://doi.org/10.4236/health.2018.109088",
+      "status": "ok",
+      "detail": "DOI registered"
+    },
+    {
+      "where": "src/content/studies/cai-2025-singing-bowls.md",
+      "title": "Therapeutic effects of singing bowls: A systematic review of clinical studies",
+      "url": "https://doi.org/10.1016/j.imr.2025.101144",
+      "status": "ok",
+      "detail": "DOI registered"
+    },
+    {
+      "where": "src/content/studies/chen-2025-chronic-pain.md",
+      "title": "The effect of music therapy for patients with chronic pain: systematic review and meta-analysis",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12042639/",
+      "status": "ok",
+      "detail": "HTTP 200",
+      "finalUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12042639/"
+    },
+    {
+      "where": "src/content/studies/chen-2025-chronic-pain.md",
+      "title": "The effect of music therapy for patients with chronic pain: systematic review and meta-analysis",
+      "doi": "10.1186/s40359-025-02643-x",
+      "url": "https://doi.org/10.1186/s40359-025-02643-x",
+      "status": "ok",
+      "detail": "DOI registered"
+    },
+    {
+      "where": "src/content/studies/garcia-argibay-2019-binaural.md",
+      "title": "Efficacy of binaural auditory beats in cognition, anxiety, and pain perception: a meta-analysis",
+      "url": "https://doi.org/10.1007/s00426-018-1066-8",
+      "status": "ok",
+      "detail": "DOI registered"
+    },
+    {
+      "where": "src/content/studies/goldsby-2017-bowls-meditation.md",
+      "title": "Effects of singing bowl sound meditation on mood, tension, and well-being",
+      "url": "https://doi.org/10.1177/2156587216668109",
+      "status": "ok",
+      "detail": "DOI registered"
+    },
+    {
+      "where": "src/content/studies/jespersen-2022-insomnia.md",
+      "title": "Listening to music for insomnia in adults",
+      "url": "https://www.cochrane.org/evidence/CD010459_music-insomnia-adults",
+      "status": "ok",
+      "detail": "HTTP 200",
+      "finalUrl": "https://www.cochrane.org/evidence/CD010459_music-insomnia-adults"
+    },
+    {
+      "where": "src/content/studies/jespersen-2022-insomnia.md",
+      "title": "Listening to music for insomnia in adults",
+      "doi": "10.1002/14651858.CD010459.pub3",
+      "url": "https://doi.org/10.1002/14651858.CD010459.pub3",
+      "status": "ok",
+      "detail": "DOI registered"
+    },
+    {
+      "where": "src/content/studies/kantor-2022-vat-pain.md",
+      "title": "Exploring vibroacoustic therapy in adults experiencing pain: a scoping review",
+      "url": "https://bmjopen.bmj.com/content/12/4/e046591",
+      "status": "ok",
+      "detail": "HTTP 200",
+      "finalUrl": "https://bmjopen.bmj.com/content/12/4/e046591"
+    },
+    {
+      "where": "src/content/studies/kantor-2022-vat-pain.md",
+      "title": "Exploring vibroacoustic therapy in adults experiencing pain: a scoping review",
+      "doi": "10.1136/bmjopen-2020-046591",
+      "url": "https://doi.org/10.1136/bmjopen-2020-046591",
+      "status": "ok",
+      "detail": "DOI registered"
+    },
+    {
+      "where": "src/content/studies/landry-2014-himalayan-bowl.md",
+      "title": "Effects of listening to a Himalayan singing bowl before and after a directed relaxation session",
+      "url": "https://doi.org/10.4278/ajhp.121031-ARB-528",
+      "status": "ok",
+      "detail": "DOI registered"
+    },
+    {
+      "where": "src/content/studies/nccih-2022-music-health.md",
+      "title": "Music and Health: What You Need To Know",
+      "url": "https://www.nccih.nih.gov/health/music-and-health-what-you-need-to-know",
+      "status": "ok",
+      "detail": "HTTP 200",
+      "finalUrl": "https://www.nccih.nih.gov/health/music-and-health-what-you-need-to-know"
+    },
+    {
+      "where": "src/content/studies/van-der-steen-2025-dementia.md",
+      "title": "Music-based therapeutic interventions for people with dementia",
+      "url": "https://www.cochrane.org/evidence/CD003477_does-music-based-therapy-help-people-dementia",
+      "status": "ok",
+      "detail": "HTTP 200",
+      "finalUrl": "https://www.cochrane.org/evidence/CD003477_does-music-based-therapy-help-people-dementia"
+    },
+    {
+      "where": "src/content/studies/van-der-steen-2025-dementia.md",
+      "title": "Music-based therapeutic interventions for people with dementia",
+      "doi": "10.1002/14651858.CD003477.pub5",
+      "url": "https://doi.org/10.1002/14651858.CD003477.pub5",
+      "status": "ok",
+      "detail": "DOI registered"
+    },
+    {
+      "where": "src/content/news/cochrane-2025-dementia-news.md",
+      "title": "Cochrane: music-based therapy may improve depressive symptoms in dementia",
+      "url": "https://www.cochrane.org/about-us/news/music-based-therapy-may-improve-depressive-symptoms-people-dementia",
+      "status": "ok",
+      "detail": "HTTP 200",
+      "finalUrl": "https://www.cochrane.org/about-us/news/music-based-therapy-may-improve-depressive-symptoms-people-dementia"
+    },
+    {
+      "where": "src/content/news/nccih-clinical-digest.md",
+      "title": "NCCIH Clinical Digest: Music and Health — what the science says",
+      "url": "https://www.nccih.nih.gov/health/providers/digest/music-and-health-science",
+      "status": "ok",
+      "detail": "HTTP 200",
+      "finalUrl": "https://www.nccih.nih.gov/health/providers/digest/music-and-health-science"
+    },
+    {
+      "where": "src/content/news/nccih-music-health-sheet.md",
+      "title": "NCCIH fact sheet: Music and Health",
+      "url": "https://www.nccih.nih.gov/health/music-and-health-what-you-need-to-know",
+      "status": "ok",
+      "detail": "HTTP 200",
+      "finalUrl": "https://www.nccih.nih.gov/health/music-and-health-what-you-need-to-know"
+    },
+    {
+      "where": "src/content/news/nih-cc-nso-concert.md",
+      "title": "NIH Clinical Center: NSO–NIH Sound Health concert brief",
+      "url": "https://www.cc.nih.gov/news/2025/sep-oct/2025-nso-performance",
+      "status": "ok",
+      "detail": "HTTP 200",
+      "finalUrl": "https://www.cc.nih.gov/news/2025/sep-oct/2025-nso-performance"
+    },
+    {
+      "where": "src/content/news/nih-sound-health.md",
+      "title": "NIH Sound Health partnership (music, brain, and health)",
+      "url": "https://www.nih.gov/sound-health",
+      "status": "blocked",
+      "detail": "HTTP 403 (server refuses scripted requests; not evidence the page is gone)",
+      "finalUrl": "https://www.nih.gov/sound-health"
+    },
+    {
+      "where": "src/content/news/popsci-sound-bath-2025.md",
+      "title": "Popular Science: I tried a sound bath to see if it actually made me calmer",
+      "url": "https://www.popsci.com/health/do-sound-baths-work/",
+      "status": "ok",
+      "detail": "HTTP 200",
+      "finalUrl": "https://www.popsci.com/health/do-sound-baths-work/"
+    }
+  ],
+  "missingRefs": [],
+  "unusedCitations": []
+}

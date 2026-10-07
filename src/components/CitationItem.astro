@@ -5,16 +5,18 @@ const { c, n } = Astro.props;
 const links = citationLinks(c);
 const accessLabel = { abstract: 'Checked: abstract', 'full-text': 'Checked: full text', page: 'Checked: official page' }[c.access];
 ---
-<li class="citation" id={`ref-${c.id}`}>
+<li class={c.retraction ? 'citation citation-retracted' : 'citation'} id={`ref-${c.id}`}>
   <p class="citation-ref">
     {n !== undefined && <span class="citation-n">{n}.</span>}
     {c.authors} ({c.year}). <strong>{c.title}</strong>. <em>{c.journal}</em>.
   </p>
   <p class="citation-meta">
+    {c.retraction && <span class="pill pill-retracted">Retracted {c.retraction.date.slice(0, 4)}</span>}
     <span class="pill pill-muted">{c.type}</span>
     <span class="pill pill-muted">{accessLabel}</span>
   </p>
-  <p class="citation-finding">{c.finding}</p>
+  {c.retraction && <p class="citation-retraction"><strong>Retracted.</strong> {c.retraction.note}</p>}
+  <p class="citation-finding">{c.retraction ? 'What the retracted paper had reported: ' : ''}{c.finding}</p>
   <p class="citation-links">
     {links.map((l, i) => (
       <>

@@ -290,10 +290,10 @@ export const topics: Topic[] = [
     rating: 'preliminary',
     ratingScope: 'Device-delivered low-frequency vibration (often 40 Hz), for pain and related symptoms.',
     summary:
-      'Vibroacoustic therapy delivers sound vibration through the body with special beds or chairs. A 2022 scoping review concluded research is "too sparse" to say what helps for pain. A fibromyalgia trial found improvements in both groups but had no sham or no-treatment control.',
+      'Vibroacoustic therapy delivers sound vibration through the body with special beds or chairs. A 2022 scoping review concluded research is "too sparse" to say what helps for pain. A 2019 fibromyalgia trial that is still sometimes quoted was retracted by its journal in 2020 because, with no sham control, its results could not support its claims.',
     whatWeKnow: [
       'Scoping review: 20 studies; 40 Hz most common; sessions 20–45 minutes; RCTs needed.',
-      'Fibromyalgia trial (50 people): symptoms improved in both 40 Hz and complex-wave groups, with no difference between them.',
+      'A 2019 fibromyalgia trial (50 people) reported improvement in two active groups, but PLOS ONE retracted it in 2020 for lacking a sham control. We list it only so you can recognise it; it does not count as evidence.',
     ],
     whatItDoesNotShow: [
       'No well-controlled evidence that it reduces pain beyond placebo or usual care.',

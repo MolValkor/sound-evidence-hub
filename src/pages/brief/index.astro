@@ -1,0 +1,199 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import RatingPill from '../../components/RatingPill.astro';
+import { topics, ratingOrder, type Rating } from '../../data/topics';
+import { citations } from '../../data/citations';
+import { briefLines } from '../../data/brief';
+import status from '../../data/citation-status.json';
+
+const bySlug = Object.fromEntries(topics.map((t) => [t.slug, t]));
+const groupIntro: Record<Rating, string> = {
+  strong: 'Best supported',
+  moderate: 'Supported for specific, short-term uses',
+  preliminary: 'Early or mixed evidence',
+  'not-supported': 'Not supported',
+};
+const groups = ratingOrder.map((r) => ({
+  rating: r,
+  items: briefLines.filter((b) => bySlug[b.slug]?.rating === r),
+}));
+// Build-time guard: every line must map to a topic and real citations.
+for (const b of briefLines) {
+  if (!bySlug[b.slug]) throw new Error(`brief: unknown topic ${b.slug}`);
+  for (const id of b.refs) if (!citations[id]) throw new Error(`brief: unknown citation ${id}`);
+}
+const shortRef = (id: string) => {
+  const c = citations[id];
+  // Organisations ("National Center for Complementary and Integrative Health (NIH)") -> "NCCIH".
+  if (!/,/.test(c.authors) && !/\s[A-Z]{1,4}$/.test(c.authors)) {
+    const org = c.authors.replace(/\s*\(.*\)\s*$/, '');
+    return `${org.split(/\s+/).filter((w) => /^[A-Z]/.test(w)).map((w) => w[0]).join('')} ${c.year}`;
+  }
+  const first = c.authors.split(',')[0].replace(/\s+[A-Z]{1,4}$/, '');
+  return `${first}${c.authors.includes(',') ? ' et al.' : ''} ${c.year}`;
+};
+const checked = new Date(status.checkedAt);
+const checkedLabel = checked.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'America/New_York' });
+const nSources = Object.keys(citations).length;
+// Printed in the PDF, so use the configured public origin rather than a relative link.
+const evidenceUrl = new URL('/evidence/', Astro.site ?? Astro.url);
+const evidenceLabel = `${evidenceUrl.host}${evidenceUrl.pathname}`;
+const retracted = Object.values(citations).filter((c) => c.retraction).length;
+---
+
+<BaseLayout
+  title="Evidence Brief"
+  description="A one-page, plain-language summary of what research does and doesn't support about music, sound baths, singing bowls, binaural beats and frequency claims."
+>
+  <article class="brief">
+    <header class="brief-head">
+      <div>
+        <span class="eyebrow">Sound Evidence · One-page brief</span>
+        <h1>Music, sound &amp; wellbeing <span class="hero-italic">what the research supports</span></h1>
+        <p class="brief-lede">
+          A plain-language summary of {topics.length} common claims, rated from {nSources} published sources.
+          Educational only: not medical advice, and not a substitute for care from a qualified clinician.
+        </p>
+      </div>
+      <div class="brief-actions no-print">
+        <a class="btn btn-primary" href="/evidence-brief.pdf" download>Download PDF</a>
+        <button class="btn btn-ghost" type="button" onclick="window.print()">Print</button>
+      </div>
+    </header>
+
+    <div class="brief-grid">
+      {groups.map(({ rating, items }) => (
+        <section class={`brief-group brief-${rating}`} aria-labelledby={`g-${rating}`}>
+          <h2 id={`g-${rating}`}><RatingPill rating={rating} /> <span>{groupIntro[rating]}</span></h2>
+          <ul>
+            {items.map((b) => (
+              <li>
+                <a class="brief-topic" href={`/evidence/${b.slug}/`}>{bySlug[b.slug].title}.</a>{' '}
+                {b.line}{' '}
+                <span class="brief-refs">({b.refs.map(shortRef).join('; ')})</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ))}
+    </div>
+
+    <div class="brief-cols">
+      <section class="brief-box">
+        <h2>What the research does <em>not</em> show</h2>
+        <ul>
+          <li>That any sound, instrument or frequency treats, cures or prevents a disease.</li>
+          <li>That music-therapy results carry over to sound baths, bowls or recordings. Music therapy is delivered by a credentialed therapist.</li>
+          <li>That a specific frequency (432 Hz, 528 Hz, 40 Hz) does something special in people, or that sound “balances” energy or chakras.</li>
+          <li>That benefits last. Most effects were measured during or right after a session.</li>
+        </ul>
+      </section>
+      <section class="brief-box">
+        <h2>How to talk about it</h2>
+        <dl class="say">
+          <dt>Say</dt><dd>“Many people find sound sessions relaxing, and music has good evidence for easing stress and anxiety in the moment.”</dd>
+          <dt>Avoid</dt><dd>“Sound healing cures anxiety,” “this frequency repairs DNA,” or “a gong bath resets your nervous system.”</dd>
+          <dt>Say</dt><dd>“Music can be a helpful add-on alongside your usual care.”</dd>
+          <dt>Avoid</dt><dd>Suggesting anyone replace medical treatment, medication or therapy with sound.</dd>
+        </dl>
+      </section>
+    </div>
+
+    <section class="brief-limits">
+      <h2>Limitations</h2>
+      <p>
+        Most music trials can't blind participants, so expectation explains part of many effects, and reviews often
+        rate them at high risk of bias. Effects are usually small to medium and short-term, and much of the evidence
+        is self-reported. Ratings are our editorial judgment of published reviews and trials, summarised mainly from
+        abstracts; one cited trial has since been retracted and is not counted. Research changes, so check the
+        dated sources online.
+      </p>
+    </section>
+
+    <footer class="brief-foot">
+      <p>
+        <strong>Sources:</strong> all {nSources} are listed with DOI and PubMed links at
+        <a href={`${evidenceUrl.href}#all-sources`}>{evidenceLabel}</a>.
+        Links, metadata and retraction notices were checked automatically on {checkedLabel}:
+        {status.dead} dead links, {retracted} retraction (labelled), {status.mismatch} metadata mismatches.
+      </p>
+      <p class="brief-credit">
+        A companion resource to <a href="https://themetamusician.com/" rel="noopener noreferrer">The Meta Musician</a>.
+        Educational only. It does not diagnose, treat, cure or prevent any disease.
+      </p>
+    </footer>
+  </article>
+</BaseLayout>
+
+<style>
+  .brief { max-width: var(--max); margin: 0 auto; padding: 2rem 1.25rem 3rem; }
+  .brief-head { display: flex; gap: 1.5rem; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; border-bottom: 3px solid var(--orange); padding-bottom: 1rem; }
+  .brief-head h1 { margin: 0.1rem 0 0.4rem; font-size: clamp(1.8rem, 4vw, 2.6rem); line-height: 1.1; }
+  .brief-head h1 .hero-italic { display: block; font-size: 1.1em; }
+  .brief-lede { color: var(--muted); max-width: 42rem; margin: 0; }
+  .brief-actions { display: flex; gap: 0.6rem; }
+  .brief-actions button { cursor: pointer; font: inherit; }
+
+  .brief-grid { column-count: 2; column-gap: 1.5rem; margin-top: 1.4rem; }
+  .brief-group { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem 1.15rem; break-inside: avoid; margin: 0 0 1rem; display: inline-block; width: 100%; }
+  .brief-group h2 { display: flex; align-items: center; gap: 0.6rem; font-size: 1rem; margin: 0 0 0.6rem; }
+  .brief-group ul { list-style: none; margin: 0; padding: 0; }
+  .brief-group li { font-size: 0.95rem; line-height: 1.45; padding: 0.45rem 0; border-top: 1px dashed var(--border); }
+  .brief-group li:first-child { border-top: 0; padding-top: 0; }
+  .brief-topic { font-family: var(--font-heading); font-weight: 700; color: var(--ink); text-decoration: none; }
+  .brief-topic:hover { color: var(--orange); }
+  .brief-refs { color: var(--muted); font-size: 0.82em; white-space: normal; }
+
+  .brief-cols { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem 1.5rem; margin-top: 1rem; }
+  .brief-box { background: var(--cream-card); border-radius: var(--radius); padding: 1rem 1.15rem; }
+  .brief-box h2, .brief-limits h2 { font-size: 1rem; margin: 0 0 0.5rem; color: var(--terracotta); }
+  .brief-box ul { margin: 0; padding-left: 1.1rem; font-size: 0.93rem; }
+  .brief-box li + li { margin-top: 0.3rem; }
+  .say { display: grid; grid-template-columns: auto 1fr; gap: 0.3rem 0.7rem; margin: 0; font-size: 0.93rem; }
+  .say dt { font-family: var(--font-heading); font-weight: 800; font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; padding-top: 0.15rem; }
+  .say dt:nth-of-type(odd) { color: #1f5e28; }
+  .say dt:nth-of-type(even) { color: var(--terracotta); }
+  .say dd { margin: 0; }
+
+  .brief-limits { margin-top: 1rem; border-left: 3px solid var(--orange); padding: 0.2rem 0 0.2rem 1rem; }
+  .brief-limits p { margin: 0; font-size: 0.93rem; color: var(--ink); }
+  .brief-foot { margin-top: 1.2rem; padding-top: 0.8rem; border-top: 1px solid var(--border); font-size: 0.85rem; color: var(--muted); }
+  .brief-foot p { margin: 0.25rem 0; }
+  .brief-credit { font-style: italic; }
+
+  @media (max-width: 760px) {
+    .brief-grid { column-count: 1; }
+    .brief-cols { grid-template-columns: 1fr; }
+    .brief-head { align-items: flex-start; }
+  }
+
+  /* ---------- Print / PDF: one US Letter page ---------- */
+  @page { size: Letter; margin: 0.45in 0.5in; }
+  @media print {
+    :global(.site-header), :global(.site-footer), :global(.disclaimer-banner), :global(.skip-link), .no-print { display: none !important; }
+    :global(html), :global(body) { background: #fff !important; font-size: 8pt; }
+    :global(body) { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .brief { padding: 0; max-width: none; }
+    .brief-head { padding-bottom: 0.45rem; border-bottom-width: 2px; }
+    .brief-head h1 { font-size: 17pt; margin: 0 0 0.15rem; }
+    .brief-head h1 .hero-italic { display: inline; font-size: 1.15em; margin-left: 0.2em; }
+    .eyebrow { margin-bottom: 0.1rem; font-size: 7pt; }
+    .brief-lede { font-size: 8.4pt; max-width: none; }
+    .brief-grid { margin-top: 0.5rem; column-gap: 0.6rem; }
+    .brief-group { padding: 0.4rem 0.55rem; margin-bottom: 0.45rem; border-radius: 8px; background: #fff; }
+    .brief-group h2 { font-size: 8.8pt; margin-bottom: 0.2rem; gap: 0.4rem; }
+    .brief-group h2 :global(.rating) { font-size: 7pt; padding: 0.1rem 0.45rem 0.1rem 0.35rem; }
+    .brief-group li { font-size: 7.95pt; line-height: 1.32; padding: 0.2rem 0; }
+    .brief-refs { font-size: 6.9pt; }
+    .brief-topic { color: var(--ink); }
+    .brief-cols { margin-top: 0.45rem; gap: 0.45rem 0.6rem; }
+    .brief-box { padding: 0.45rem 0.6rem; border-radius: 8px; break-inside: avoid; }
+    .brief-box h2, .brief-limits h2 { font-size: 8.8pt; margin-bottom: 0.2rem; }
+    .brief-box ul, .say { font-size: 7.95pt; line-height: 1.32; }
+    .say dt { font-size: 6.5pt; }
+    .brief-limits { margin-top: 0.45rem; padding-left: 0.6rem; }
+    .brief-limits p { font-size: 7.95pt; line-height: 1.32; }
+    .brief-foot { margin-top: 0.45rem; padding-top: 0.35rem; font-size: 7.2pt; }
+    .brief-foot a { color: var(--ink); }
+  }
+</style>
