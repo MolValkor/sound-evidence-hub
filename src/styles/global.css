@@ -330,6 +330,9 @@ p:last-child { margin-bottom: 0; }
 .pill-mixed { background: rgba(245, 166, 35, 0.2); color: #8a5a00; }
 .pill-weak { background: rgba(223, 70, 51, 0.15); color: var(--terracotta); }
 .pill-none { background: rgba(42, 34, 28, 0.12); color: var(--ink); }
+.pill-retracted { background: var(--ink, #2A221C); color: #f1ede8; letter-spacing: 0.04em; text-transform: uppercase; }
+.citation-retracted .citation-ref strong { text-decoration: line-through; text-decoration-thickness: 1px; }
+.citation-retraction { margin: 0.35rem 0; padding: 0.5rem 0.75rem; border-left: 3px solid var(--ink, #2A221C); background: rgba(42, 34, 28, 0.06); font-size: 0.92rem; }
 
 .filters {
   display: flex;

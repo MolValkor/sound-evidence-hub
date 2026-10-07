@@ -1,0 +1,566 @@
+{
+ "crossref_wakefield": {
+  "DOI": "10.1016/s0140-6736(97)11096-0",
+  "type": "journal-article",
+  "title": [
+   "RETRACTED: Ileal-lymphoid-nodular hyperplasia, non-specific colitis, and pervasive developmental disorder in children"
+  ],
+  "subtitle": [],
+  "author": [
+   {
+    "given": "AJ",
+    "family": "Wakefield",
+    "sequence": "first"
+   },
+   {
+    "given": "SH",
+    "family": "Murch",
+    "sequence": "additional"
+   },
+   {
+    "given": "A",
+    "family": "Anthony",
+    "sequence": "additional"
+   },
+   {
+    "given": "J",
+    "family": "Linnell",
+    "sequence": "additional"
+   },
+   {
+    "given": "DM",
+    "family": "Casson",
+    "sequence": "additional"
+   },
+   {
+    "given": "M",
+    "family": "Malik",
+    "sequence": "additional"
+   },
+   {
+    "given": "M",
+    "family": "Berelowitz",
+    "sequence": "additional"
+   },
+   {
+    "given": "AP",
+    "family": "Dhillon",
+    "sequence": "additional"
+   },
+   {
+    "given": "MA",
+    "family": "Thomson",
+    "sequence": "additional"
+   },
+   {
+    "given": "P",
+    "family": "Harvey",
+    "sequence": "additional"
+   },
+   {
+    "given": "A",
+    "family": "Valentine",
+    "sequence": "additional"
+   },
+   {
+    "given": "SE",
+    "family": "Davies",
+    "sequence": "additional"
+   },
+   {
+    "given": "JA",
+    "family": "Walker-Smith",
+    "sequence": "additional"
+   }
+  ],
+  "issued": {
+   "date-parts": [
+    [
+     1998,
+     2
+    ]
+   ]
+  },
+  "published-print": {
+   "date-parts": [
+    [
+     1998,
+     2
+    ]
+   ]
+  },
+  "published": {
+   "date-parts": [
+    [
+     1998,
+     2
+    ]
+   ]
+  },
+  "updated-by": [
+   {
+    "DOI": "10.1016/s0140-6736(04)15715-2",
+    "type": "correction",
+    "label": "Correction",
+    "source": "retraction-watch",
+    "updated": {
+     "date-parts": [
+      [
+       2004,
+       3,
+       6
+      ]
+     ],
+     "date-time": "2004-03-06T00:00:00Z",
+     "timestamp": 1078531200000
+    },
+    "record-id": "17269"
+   },
+   {
+    "DOI": "10.1016/s0140-6736(10)60175-4",
+    "type": "retraction",
+    "label": "Retraction",
+    "source": "retraction-watch",
+    "updated": {
+     "date-parts": [
+      [
+       2010,
+       2,
+       6
+      ]
+     ],
+     "date-time": "2010-02-06T00:00:00Z",
+     "timestamp": 1265414400000
+    },
+    "record-id": "4036"
+   }
+  ],
+  "container-title": [
+   "The Lancet"
+  ]
+ },
+ "crossref_cochrane_jespersen": {
+  "DOI": "10.1002/14651858.cd010459.pub3",
+  "type": "journal-article",
+  "title": [
+   "Listening to music for insomnia in adults"
+  ],
+  "subtitle": [],
+  "author": [
+   {
+    "given": "Kira V",
+    "family": "Jespersen",
+    "sequence": "additional"
+   },
+   {
+    "given": "Victor",
+    "family": "Pando-Naude",
+    "sequence": "additional"
+   },
+   {
+    "given": "Julian",
+    "family": "Koenig",
+    "sequence": "additional"
+   },
+   {
+    "given": "Poul",
+    "family": "Jennum",
+    "sequence": "additional"
+   },
+   {
+    "given": "Peter",
+    "family": "Vuust",
+    "sequence": "additional"
+   }
+  ],
+  "issued": {
+   "date-parts": [
+    [
+     2022,
+     8,
+     24
+    ]
+   ]
+  },
+  "published-online": {
+   "date-parts": [
+    [
+     2022,
+     8,
+     24
+    ]
+   ]
+  },
+  "published": {
+   "date-parts": [
+    [
+     2022,
+     8,
+     24
+    ]
+   ]
+  },
+  "update-to": [
+   {
+    "DOI": "10.1002/14651858.cd010459.pub2",
+    "type": "new_version",
+    "label": "New version",
+    "source": "publisher",
+    "updated": {
+     "date-parts": [
+      [
+       2022,
+       8,
+       24
+      ]
+     ],
+     "date-time": "2022-08-24T00:00:00Z",
+     "timestamp": 1661299200000
+    }
+   }
+  ],
+  "container-title": [
+   "Cochrane Database of Systematic Reviews"
+  ]
+ },
+ "crossref_braunjanzen": {
+  "DOI": "10.1371/journal.pone.0212021",
+  "type": "journal-article",
+  "title": [
+   "A parallel randomized controlled trial examining the effects of rhythmic sensory stimulation on fibromyalgia symptoms"
+  ],
+  "subtitle": [],
+  "author": [
+   {
+    "given": "Thenille",
+    "family": "Braun Janzen",
+    "sequence": "first"
+   },
+   {
+    "given": "Denise",
+    "family": "Paneduro",
+    "sequence": "additional"
+   },
+   {
+    "given": "Larry",
+    "family": "Picard",
+    "sequence": "additional"
+   },
+   {
+    "given": "Allan",
+    "family": "Gordon",
+    "sequence": "additional"
+   },
+   {
+    "given": "Lee R.",
+    "family": "Bartel",
+    "sequence": "additional"
+   }
+  ],
+  "issued": {
+   "date-parts": [
+    [
+     2019,
+     3,
+     1
+    ]
+   ]
+  },
+  "published-online": {
+   "date-parts": [
+    [
+     2019,
+     3,
+     1
+    ]
+   ]
+  },
+  "published": {
+   "date-parts": [
+    [
+     2019,
+     3,
+     1
+    ]
+   ]
+  },
+  "updated-by": [
+   {
+    "DOI": "10.1371/journal.pone.0230395",
+    "type": "retraction",
+    "label": "Retraction",
+    "source": "retraction-watch",
+    "updated": {
+     "date-parts": [
+      [
+       2020,
+       3,
+       6
+      ]
+     ],
+     "date-time": "2020-03-06T00:00:00Z",
+     "timestamp": 1583452800000
+    },
+    "record-id": "22831"
+   },
+   {
+    "DOI": "10.1371/journal.pone.0230395",
+    "type": "retraction",
+    "label": "Retraction",
+    "source": "publisher",
+    "updated": {
+     "date-parts": [
+      [
+       2020,
+       3,
+       6
+      ]
+     ],
+     "date-time": "2020-03-06T00:00:00Z",
+     "timestamp": 1583452800000
+    }
+   }
+  ],
+  "container-title": [
+   "PLOS ONE"
+  ]
+ },
+ "crossref_updates_braunjanzen": [
+  {
+   "DOI": "10.1371/journal.pone.0230395",
+   "type": "journal-article",
+   "title": [
+    "Retraction: A parallel randomized controlled trial examining the effects of rhythmic sensory stimulation on fibromyalgia symptoms"
+   ],
+   "author": [
+    {
+     "sequence": "first",
+     "name": "The PLOS ONE Editors"
+    }
+   ],
+   "issued": {
+    "date-parts": [
+     [
+      2020,
+      3,
+      6
+     ]
+    ]
+   },
+   "published-online": {
+    "date-parts": [
+     [
+      2020,
+      3,
+      6
+     ]
+    ]
+   },
+   "published": {
+    "date-parts": [
+     [
+      2020,
+      3,
+      6
+     ]
+    ]
+   },
+   "update-to": [
+    {
+     "DOI": "10.1371/journal.pone.0212021",
+     "type": "retraction",
+     "label": "Retraction",
+     "source": "retraction-watch",
+     "updated": {
+      "date-parts": [
+       [
+        2020,
+        3,
+        6
+       ]
+      ],
+      "date-time": "2020-03-06T00:00:00Z",
+      "timestamp": 1583452800000
+     },
+     "record-id": "22831"
+    },
+    {
+     "DOI": "10.1371/journal.pone.0212021",
+     "type": "retraction",
+     "label": "Retraction",
+     "source": "publisher",
+     "updated": {
+      "date-parts": [
+       [
+        2020,
+        3,
+        6
+       ]
+      ],
+      "date-time": "2020-03-06T00:00:00Z",
+      "timestamp": 1583452800000
+     }
+    }
+   ],
+   "container-title": [
+    "PLOS ONE"
+   ]
+  }
+ ],
+ "pubmed": {
+  "36000763": {
+   "uid": "36000763",
+   "pubdate": "2022 Aug 24",
+   "epubdate": "2022 Aug 24",
+   "title": "Listening to music for insomnia in adults.",
+   "sortfirstauthor": "Jespersen KV",
+   "authors": [
+    {
+     "name": "Jespersen KV",
+     "authtype": "Author",
+     "clusterid": ""
+    },
+    {
+     "name": "Pando-Naude V",
+     "authtype": "Author",
+     "clusterid": ""
+    },
+    {
+     "name": "Koenig J",
+     "authtype": "Author",
+     "clusterid": ""
+    }
+   ],
+   "pubtype": [
+    "Journal Article",
+    "Research Support, Non-U.S. Gov't",
+    "Systematic Review"
+   ],
+   "articleids": [
+    {
+     "idtype": "pubmed",
+     "idtypen": 1,
+     "value": "36000763"
+    },
+    {
+     "idtype": "pmc",
+     "idtypen": 8,
+     "value": "PMC9400393"
+    },
+    {
+     "idtype": "pmcid",
+     "idtypen": 5,
+     "value": "pmc-id: PMC9400393;"
+    },
+    {
+     "idtype": "doi",
+     "idtypen": 3,
+     "value": "10.1002/14651858.CD010459.pub3"
+    }
+   ]
+  },
+  "30822311": {
+   "uid": "30822311",
+   "pubdate": "2019",
+   "epubdate": "2019 Mar 1",
+   "title": "A parallel randomized controlled trial examining the effects of rhythmic sensory stimulation on fibromyalgia symptoms.",
+   "sortfirstauthor": "Braun Janzen T",
+   "authors": [
+    {
+     "name": "Braun Janzen T",
+     "authtype": "Author",
+     "clusterid": ""
+    },
+    {
+     "name": "Paneduro D",
+     "authtype": "Author",
+     "clusterid": ""
+    },
+    {
+     "name": "Picard L",
+     "authtype": "Author",
+     "clusterid": ""
+    }
+   ],
+   "pubtype": [
+    "Journal Article",
+    "Randomized Controlled Trial",
+    "Research Support, Non-U.S. Gov't",
+    "Retracted Publication"
+   ],
+   "articleids": [
+    {
+     "idtype": "pubmed",
+     "idtypen": 1,
+     "value": "30822311"
+    },
+    {
+     "idtype": "pmc",
+     "idtypen": 8,
+     "value": "PMC6396935"
+    },
+    {
+     "idtype": "pmcid",
+     "idtypen": 5,
+     "value": "pmc-id: PMC6396935;"
+    },
+    {
+     "idtype": "doi",
+     "idtypen": 3,
+     "value": "10.1371/journal.pone.0212021"
+    },
+    {
+     "idtype": "pii",
+     "idtypen": 4,
+     "value": "PONE-D-18-20446"
+    }
+   ]
+  },
+  "9500320": {
+   "uid": "9500320",
+   "pubdate": "1998 Feb 28",
+   "epubdate": "",
+   "title": "Ileal-lymphoid-nodular hyperplasia, non-specific colitis, and pervasive developmental disorder in children.",
+   "sortfirstauthor": "Wakefield AJ",
+   "authors": [
+    {
+     "name": "Wakefield AJ",
+     "authtype": "Author",
+     "clusterid": ""
+    },
+    {
+     "name": "Murch SH",
+     "authtype": "Author",
+     "clusterid": ""
+    },
+    {
+     "name": "Anthony A",
+     "authtype": "Author",
+     "clusterid": ""
+    }
+   ],
+   "pubtype": [
+    "Journal Article",
+    "Research Support, Non-U.S. Gov't",
+    "Retracted Publication"
+   ],
+   "articleids": [
+    {
+     "idtype": "pubmed",
+     "idtypen": 1,
+     "value": "9500320"
+    },
+    {
+     "idtype": "doi",
+     "idtypen": 3,
+     "value": "10.1016/s0140-6736(97)11096-0"
+    },
+    {
+     "idtype": "pii",
+     "idtypen": 4,
+     "value": "S0140673697110960"
+    }
+   ]
+  }
+ }
+}

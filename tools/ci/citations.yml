@@ -1,0 +1,94 @@
+# Citation checks for Sound Evidence.
+#
+# INSTALL: move this file to .github/workflows/citations.yml. (It lives in tools/ci/
+# because the token used to open this PR can't write to .github/workflows/.)
+#
+# - On PRs that touch citations/topics/content/checker: unit tests + live citation check.
+# - Weekly (Monday 13:00 UTC): live check so new retractions or dead links surface
+#   even when nobody edits the site.
+# - The job FAILS on dead links, unlabelled retractions, DOI/PMID metadata mismatches
+#   or topics pointing at missing citation ids. Weak-evidence flags are reported only.
+# - Read-only: it never commits, deploys, or touches Netlify. The report is attached
+#   as an artifact and printed in the job summary.
+#
+# Optional repo variable: CROSSREF_MAILTO (puts requests in Crossref's polite pool).
+# Optional secret: NCBI_API_KEY (raises PubMed's rate limit; not needed for ~40 PMIDs).
+
+name: Citations
+
+on:
+  pull_request:
+    paths:
+      - 'src/data/**'
+      - 'src/content/**'
+      - 'tools/citations/**'
+      - 'package.json'
+      - 'package-lock.json'
+  schedule:
+    - cron: '0 13 * * 1'
+  workflow_dispatch:
+    inputs:
+      strict:
+        description: 'Also fail on overrated claims, redirects and unverified links'
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: citations-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  unit-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - name: Checker unit tests (mocked network)
+        run: npm run test:citations
+
+  check:
+    needs: unit-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      CROSSREF_MAILTO: ${{ vars.CROSSREF_MAILTO }}
+      NCBI_API_KEY: ${{ secrets.NCBI_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      # Reuse API answers between runs so we don't hammer Crossref/PubMed.
+      # Entries also expire on their own (metadata 7 days, links 3 days, notices 2 days).
+      - name: Restore citation cache
+        uses: actions/cache@v4
+        with:
+          path: .cache/citations
+          key: citations-${{ github.run_id }}
+          restore-keys: citations-
+      - name: Check citations
+        id: check
+        run: npm run check:citations -- ${{ inputs.strict && '--strict' || '' }}
+      - name: Job summary
+        if: always()
+        run: |
+          if [ -f docs/citation-report.md ]; then cat docs/citation-report.md >> "$GITHUB_STEP_SUMMARY"; fi
+      - name: Upload report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: citation-report
+          path: |
+            docs/citation-report.md
+            docs/citation-report.json
+          retention-days: 30

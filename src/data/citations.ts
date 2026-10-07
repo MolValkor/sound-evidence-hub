@@ -21,6 +21,10 @@ export interface Citation {
   url?: string; // used when there is no DOI/PMID (agency pages, standards)
   access: Access;
   finding: string; // what the source reported, paraphrased
+  // Set when the journal has retracted the paper. We keep it listed (labelled) so
+  // readers who meet it elsewhere can see it was withdrawn; it never counts as support.
+  // `npm run check:citations` fails on any retraction that is not recorded here.
+  retraction?: { noticeDoi: string; date: string; note: string };
 }
 
 export const citations: Record<string, Citation> = {
@@ -475,6 +479,11 @@ export const citations: Record<string, Citation> = {
     access: 'abstract',
     finding:
       '50 people with fibromyalgia got 40 Hz or complex gamma-range vibration 5 days a week for 5 weeks. Symptoms, pain interference, depression and sleep improved from baseline in both groups, with no difference between groups — and there was no untreated or sham control.',
+    retraction: {
+      noticeDoi: '10.1371/journal.pone.0230395',
+      date: '2020-03-06',
+      note: 'PLOS ONE’s editors retracted it in March 2020: without a sham control group, effects could not be separated from placebo, so the claims were "not adequately supported by the results." Two authors disagreed with the retraction.',
+    },
   },
 
   // ---------- 40 Hz gamma ----------
@@ -585,6 +594,7 @@ export function citationLinks(c: Citation) {
   if (c.pmid) links.push({ label: 'PubMed', href: `https://pubmed.ncbi.nlm.nih.gov/${c.pmid}/` });
   if (c.pmcid) links.push({ label: 'Free full text', href: `https://pmc.ncbi.nlm.nih.gov/articles/${c.pmcid}/` });
   if (c.url) links.push({ label: c.doi ? 'PDF' : 'Source', href: c.url });
+  if (c.retraction) links.push({ label: 'Retraction notice', href: `https://doi.org/${c.retraction.noticeDoi}` });
   return links;
 }
 

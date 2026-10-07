@@ -13,3 +13,6 @@ dist/
 *.log
 .vscode/
 .idea/
+
+# citation checker cache
+.cache/
