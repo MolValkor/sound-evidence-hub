@@ -1,9 +1,10 @@
 ---
-title: "Music for insomnia in adults"
-authors: "Jespersen KV, et al."
+title: "Listening to music for insomnia in adults"
+authors: "Jespersen KV, Pando-Naude V, Koenig J, Jennum P, Vuust P"
 year: 2022
 journal: "Cochrane Database of Systematic Reviews, Issue 8, Art. No.: CD010459.pub3"
 citationId: "CD010459"
+doi: "10.1002/14651858.CD010459.pub3"
 url: "https://www.cochrane.org/evidence/CD010459_music-insomnia-adults"
 intervention: music-listening
 outcomes: [sleep-quality, insomnia-severity]

@@ -3,6 +3,7 @@ title: "Effect of 528 Hz music on the endocrine system and autonomic nervous sys
 authors: "Akimoto K, Hu A, Yamaguchi T, Kobayashi H"
 year: 2018
 journal: "Health 10:1159–1170 (SCIRP)"
+doi: "10.4236/health.2018.109088"
 url: "https://www.scirp.org/pdf/Health_2018090514214117.pdf"
 intervention: music-listening
 outcomes: [cortisol, oxytocin, mood, autonomic]

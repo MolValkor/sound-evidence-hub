@@ -1,0 +1,8 @@
+---
+import { ratingLabel, type Rating } from '../data/topics';
+interface Props { rating: Rating; large?: boolean }
+const { rating, large = false } = Astro.props;
+---
+<span class={`rating rating-${rating}${large ? ' rating-lg' : ''}`}>
+  <span class="rating-dot" aria-hidden="true"></span>{ratingLabel[rating]}
+</span>

@@ -1,0 +1,82 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import RatingPill from '../../components/RatingPill.astro';
+import CitationItem from '../../components/CitationItem.astro';
+import { topics, ratingBlurb, type Topic } from '../../data/topics';
+import { citations } from '../../data/citations';
+
+export function getStaticPaths() {
+  return topics.map((topic) => ({ params: { slug: topic.slug }, props: { topic } }));
+}
+
+interface Props { topic: Topic }
+const { topic } = Astro.props;
+const refs = topic.citations.map((id) => citations[id]);
+const idx = topics.findIndex((t) => t.slug === topic.slug);
+const prev = topics[idx - 1];
+const next = topics[idx + 1];
+---
+
+<BaseLayout title={topic.title} description={`${topic.title}: ${topic.summary.slice(0, 150)}…`}>
+  <article>
+    <section class="page-hero">
+      <div class="container prose">
+        <p class="small"><a href="/evidence/">← Evidence table</a></p>
+        <span class="eyebrow">{topic.category}</span>
+        <h1>{topic.title}</h1>
+        <p class="claim-quote">The claim: “{topic.claim}”</p>
+        <div class="verdict">
+          <div>
+            <p class="verdict-label">Our rating</p>
+            <RatingPill rating={topic.rating} large />
+          </div>
+          <div>
+            <p class="verdict-label">Applies to</p>
+            <p class="small">{topic.ratingScope}</p>
+          </div>
+        </div>
+        <p class="small muted">{ratingBlurb[topic.rating]} <a href="/how-to-read/">About the scale</a></p>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:0.5rem">
+      <div class="container prose">
+        <h2>In plain language</h2>
+        <p class="lede-sm">{topic.summary}</p>
+
+        <div class="two-col">
+          <div class="callout callout-yes">
+            <h3>What the evidence shows</h3>
+            <ul>{topic.whatWeKnow.map((x) => <li>{x}</li>)}</ul>
+          </div>
+          <div class="callout callout-no">
+            <h3>What it doesn’t show</h3>
+            <ul>{topic.whatItDoesNotShow.map((x) => <li>{x}</li>)}</ul>
+          </div>
+        </div>
+
+        <h2>Saying it accurately</h2>
+        <div class="say-grid">
+          <div class="say say-yes"><span class="say-tag">Accurate</span><p>“{topic.sayThis}”</p></div>
+          <div class="say say-no"><span class="say-tag">Overclaims</span><p>“{topic.notThis}”</p></div>
+        </div>
+        <p class="small muted">More on this in <a href="/for-practitioners/">For practitioners</a>.</p>
+
+        <h2 id="sources">Sources ({refs.length})</h2>
+        <ol class="citation-list">
+          {refs.map((c, i) => <CitationItem c={c} n={i + 1} />)}
+        </ol>
+
+        <div class="callout small">
+          <strong>Not medical advice.</strong> This page summarizes published research for education. It doesn’t
+          diagnose, treat, cure or prevent any condition. Talk with a qualified clinician about your own health.
+        </div>
+
+        <nav class="pager" aria-label="More topics">
+          {prev ? <a href={`/evidence/${prev.slug}/`}>← {prev.title}</a> : <span></span>}
+          {next ? <a href={`/evidence/${next.slug}/`}>{next.title} →</a> : <span></span>}
+        </nav>
+      </div>
+    </section>
+  </article>
+</BaseLayout>

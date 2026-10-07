@@ -1,0 +1,190 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import RatingPill from '../../components/RatingPill.astro';
+import { topics, ratingLabel, ratingBlurb, ratingOrder } from '../../data/topics';
+import { citations, primaryHref } from '../../data/citations';
+
+const sorted = [...topics].sort((a, b) => ratingOrder.indexOf(a.rating) - ratingOrder.indexOf(b.rating));
+const categories = [...new Set(topics.map((t) => t.category))];
+const allCitations = Object.values(citations).sort((a, b) => b.year - a.year || a.authors.localeCompare(b.authors));
+const topicsFor = (id: string) => topics.filter((t) => t.citations.includes(id));
+---
+
+<BaseLayout
+  title="Evidence table"
+  description="Searchable table of sound-healing and music claims, each with an honest evidence rating and verified peer-reviewed citations."
+>
+  <section class="page-hero">
+    <div class="container">
+      <span class="eyebrow">Evidence table</span>
+      <h1>What the research <span class="hero-italic">actually</span> says</h1>
+      <p class="lede">
+        {topics.length} common claims about music, sound and healing, each rated on the same four-step scale
+        and linked to the studies behind it. Search, filter, then open a topic for the details.
+      </p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0.5rem">
+    <div class="container">
+      <div class="legend evidence-legend" aria-label="Rating scale">
+        {ratingOrder.map((r) => (
+          <div class="legend-item">
+            <RatingPill rating={r} />
+            <p class="small muted">{ratingBlurb[r]}</p>
+          </div>
+        ))}
+      </div>
+      <p class="small"><a href="/how-to-read/">How we rate evidence →</a></p>
+
+      <div class="table-tools" role="search">
+        <label class="search-label">
+          <span class="sr-only">Search topics</span>
+          <input id="topic-search" type="search" placeholder="Search claims, e.g. sleep, 432, bowls, vagus…" autocomplete="off" />
+        </label>
+        <div class="filters" role="group" aria-label="Filter by rating">
+          <button class="filter-btn is-active" type="button" data-rating="all">All ratings</button>
+          {ratingOrder.map((r) => (
+            <button class="filter-btn" type="button" data-rating={r}>{ratingLabel[r]}</button>
+          ))}
+        </div>
+        <label class="select-label">
+          <span>Type</span>
+          <select id="topic-category">
+            <option value="all">All types</option>
+            {categories.map((c) => <option value={c}>{c}</option>)}
+          </select>
+        </label>
+      </div>
+
+      <div class="table-wrap">
+        <table class="evidence-table" id="evidence-table">
+          <thead>
+            <tr>
+              <th scope="col">Topic</th>
+              <th scope="col">Rating</th>
+              <th scope="col">Rating applies to</th>
+              <th scope="col">Sources</th>
+            </tr>
+          </thead>
+          <tbody>
+            {sorted.map((t) => (
+              <tr
+                data-rating={t.rating}
+                data-category={t.category}
+                data-search={[t.title, t.claim, t.summary, t.category, ...t.keywords].join(' ').toLowerCase()}
+              >
+                <td data-label="Topic">
+                  <a class="topic-link" href={`/evidence/${t.slug}/`}>{t.title}</a>
+                  <span class="small muted claim">“{t.claim}”</span>
+                </td>
+                <td data-label="Rating"><RatingPill rating={t.rating} /></td>
+                <td data-label="Rating applies to" class="small">{t.ratingScope}</td>
+                <td data-label="Sources" class="small nowrap">
+                  <a href={`/evidence/${t.slug}/#sources`}>{t.citations.length} source{t.citations.length > 1 ? 's' : ''}</a>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="muted small" id="topic-empty" hidden>No topics match. Try a broader word, or clear the filters.</p>
+      <p class="muted small" id="topic-count" aria-live="polite"></p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0" id="all-sources">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>All sources ({allCitations.length})</h2>
+          <p class="muted small">
+            Every source was checked against PubMed, Crossref or the publisher/agency page. Links go to the DOI,
+            PubMed record or free full text.
+          </p>
+        </div>
+        <label class="search-label search-sm">
+          <span class="sr-only">Search sources</span>
+          <input id="source-search" type="search" placeholder="Filter sources by author, year, journal…" autocomplete="off" />
+        </label>
+      </div>
+      <div class="table-wrap">
+        <table class="evidence-table sources-table" id="sources-table">
+          <thead>
+            <tr>
+              <th scope="col">Source</th>
+              <th scope="col">Design</th>
+              <th scope="col">Used in</th>
+            </tr>
+          </thead>
+          <tbody>
+            {allCitations.map((c) => (
+              <tr data-search={[c.authors, c.year, c.title, c.journal, c.type, c.doi ?? '', c.pmid ?? ''].join(' ').toLowerCase()}>
+                <td data-label="Source">
+                  <a href={primaryHref(c)} rel="noopener noreferrer" target="_blank">{c.title}</a>
+                  <span class="small muted claim">{c.authors.split(',')[0]}{c.authors.includes(',') ? ' et al.' : ''} · {c.year} · {c.journal}</span>
+                </td>
+                <td data-label="Design" class="small">{c.type}</td>
+                <td data-label="Used in" class="small">
+                  {topicsFor(c.id).map((t, i) => (
+                    <>{i > 0 && ', '}<a href={`/evidence/${t.slug}/`}>{t.title}</a></>
+                  ))}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const search = document.getElementById('topic-search') as HTMLInputElement | null;
+    const category = document.getElementById('topic-category') as HTMLSelectElement | null;
+    const ratingBtns = document.querySelectorAll<HTMLButtonElement>('[data-rating]');
+    const rows = document.querySelectorAll<HTMLTableRowElement>('#evidence-table tbody tr');
+    const empty = document.getElementById('topic-empty');
+    const count = document.getElementById('topic-count');
+    let rating = 'all';
+
+    function apply() {
+      const q = (search?.value || '').trim().toLowerCase();
+      const cat = category?.value || 'all';
+      let shown = 0;
+      rows.forEach((row) => {
+        const ok =
+          (rating === 'all' || row.dataset.rating === rating) &&
+          (cat === 'all' || row.dataset.category === cat) &&
+          (!q || q.split(/\s+/).every((w) => (row.dataset.search || '').includes(w)));
+        row.hidden = !ok;
+        if (ok) shown += 1;
+      });
+      if (empty) empty.hidden = shown > 0;
+      if (count) count.textContent = `Showing ${shown} of ${rows.length} topics`;
+    }
+
+    ratingBtns.forEach((btn) =>
+      btn.addEventListener('click', () => {
+        ratingBtns.forEach((b) => b.classList.remove('is-active'));
+        btn.classList.add('is-active');
+        rating = btn.dataset.rating || 'all';
+        apply();
+      }),
+    );
+    search?.addEventListener('input', apply);
+    category?.addEventListener('change', apply);
+
+    const params = new URLSearchParams(location.search);
+    if (params.get('q') && search) search.value = params.get('q') || '';
+    apply();
+
+    const sourceSearch = document.getElementById('source-search') as HTMLInputElement | null;
+    const sourceRows = document.querySelectorAll<HTMLTableRowElement>('#sources-table tbody tr');
+    sourceSearch?.addEventListener('input', () => {
+      const q = sourceSearch.value.trim().toLowerCase();
+      sourceRows.forEach((row) => {
+        row.hidden = !!q && !q.split(/\s+/).every((w) => (row.dataset.search || '').includes(w));
+      });
+    });
+  </script>
+</BaseLayout>

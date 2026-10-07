@@ -4,6 +4,7 @@ authors: "Aalbers S, et al."
 year: 2017
 journal: "Cochrane Database of Systematic Reviews, Issue 11, Art. No.: CD004517.pub3"
 citationId: "CD004517"
+doi: "10.1002/14651858.CD004517.pub3"
 url: "https://www.cochrane.org/evidence/CD004517_music-therapy-depression"
 intervention: music-therapy
 outcomes: [depression, anxiety, functioning]

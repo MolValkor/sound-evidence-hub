@@ -1,0 +1,26 @@
+---
+import { citationLinks, type Citation } from '../data/citations';
+interface Props { c: Citation; n?: number }
+const { c, n } = Astro.props;
+const links = citationLinks(c);
+const accessLabel = { abstract: 'Checked: abstract', 'full-text': 'Checked: full text', page: 'Checked: official page' }[c.access];
+---
+<li class="citation" id={`ref-${c.id}`}>
+  <p class="citation-ref">
+    {n !== undefined && <span class="citation-n">{n}.</span>}
+    {c.authors} ({c.year}). <strong>{c.title}</strong>. <em>{c.journal}</em>.
+  </p>
+  <p class="citation-meta">
+    <span class="pill pill-muted">{c.type}</span>
+    <span class="pill pill-muted">{accessLabel}</span>
+  </p>
+  <p class="citation-finding">{c.finding}</p>
+  <p class="citation-links">
+    {links.map((l, i) => (
+      <>
+        {i > 0 && <span aria-hidden="true"> · </span>}
+        <a href={l.href} rel="noopener noreferrer" target="_blank">{l.label}{l.label === 'DOI' ? `: ${c.doi}` : l.label === 'PubMed' ? ` ${c.pmid}` : ''}</a>
+      </>
+    ))}
+  </p>
+</li>

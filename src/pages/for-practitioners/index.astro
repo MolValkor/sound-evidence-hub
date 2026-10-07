@@ -1,0 +1,114 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import RatingPill from '../../components/RatingPill.astro';
+import { topics, ratingOrder } from '../../data/topics';
+const sorted = [...topics].sort((a, b) => ratingOrder.indexOf(a.rating) - ratingOrder.indexOf(b.rating));
+---
+
+<BaseLayout
+  title="For practitioners"
+  description="How sound practitioners can describe benefits honestly and accurately: phrase bank, red flags and what regulators expect."
+>
+  <section class="page-hero">
+    <div class="container prose">
+      <span class="eyebrow">For practitioners</span>
+      <h1>Talking about benefits <span class="hero-italic">honestly</span></h1>
+      <p class="lede">
+        Sound work doesn’t need exaggerated claims to be valuable. Clients trust practitioners who are clear about
+        what a session can and can’t do. Here’s how to say it accurately.
+      </p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0.5rem">
+    <div class="container prose">
+      <h2>Six principles</h2>
+      <ol class="ladder">
+        <li>
+          <strong>Describe the experience, not a cure.</strong> “A guided hour of rest and sound that many people find
+          deeply relaxing” is true and appealing. “Heals anxiety” isn’t supported.
+        </li>
+        <li>
+          <strong>Match the claim to the evidence.</strong> Use the <a href="/evidence/">evidence table</a>. Preliminary
+          evidence calls for words like “early research suggests.” Not-supported claims shouldn’t be made.
+        </li>
+        <li>
+          <strong>Don’t borrow evidence.</strong> Strong results for recorded music around surgery, or for credentialed
+          music therapy, don’t transfer to singing bowls, gongs, 432 Hz or vibration beds.
+        </li>
+        <li>
+          <strong>Use “music therapy” only for music therapy.</strong> The American Music Therapy Association defines it as
+          the clinical, evidence-based use of music interventions within a therapeutic relationship by a credentialed
+          professional who has completed an approved program. NIH’s NCCIH notes the term refers to the therapist’s training
+          and credentials, not a type of activity. “Sound bath,” “sound meditation” or “sound practice” are accurate alternatives.
+        </li>
+        <li>
+          <strong>Keep clients connected to care.</strong> Present sound work as a complement, never a replacement. Encourage
+          anyone with a health condition to keep working with their clinicians.
+        </li>
+        <li>
+          <strong>Mind safety.</strong> NCCIH notes that very loud music can contribute to noise-induced hearing loss and that
+          some music can stir up strong memories or distress. Keep volume comfortable and let people opt out.
+        </li>
+      </ol>
+
+      <h2>What U.S. regulators expect (plain-language summary)</h2>
+      <p>
+        The U.S. Federal Trade Commission’s
+        <a href="https://www.ftc.gov/business-guidance/resources/health-products-compliance-guidance" rel="noopener noreferrer" target="_blank">Health Products Compliance Guidance</a>
+        (2022) applies to health-related claims in advertising, including on social media. Key points:
+      </p>
+      <ul>
+        <li>Health claims need “competent and reliable scientific evidence.” Randomized controlled human trials are generally what experts would require, and many flawed studies don’t add up to good evidence.</li>
+        <li>Testimonials aren’t a shortcut: you can’t say through a client’s story what you couldn’t prove directly. “Results not typical” disclaimers don’t fix a misleading testimonial.</li>
+        <li>Traditional use (“used for centuries in…”) can be described, but it needs the same substantiation if it implies a health benefit. Otherwise, clearly say the benefit isn’t backed by scientific evidence.</li>
+      </ul>
+      <p class="small muted">This is a summary for education, not legal advice. For your specific marketing, consult a qualified attorney.</p>
+
+      <h2>Phrase bank</h2>
+      <p>Accurate alternatives for common claims, drawn from each topic page.</p>
+    </div>
+
+    <div class="container">
+      <div class="table-wrap">
+        <table class="evidence-table phrase-table">
+          <thead>
+            <tr>
+              <th scope="col">Topic</th>
+              <th scope="col">Rating</th>
+              <th scope="col">Say this</th>
+              <th scope="col">Not this</th>
+            </tr>
+          </thead>
+          <tbody>
+            {sorted.map((t) => (
+              <tr>
+                <td data-label="Topic"><a class="topic-link" href={`/evidence/${t.slug}/`}>{t.title}</a></td>
+                <td data-label="Rating"><RatingPill rating={t.rating} /></td>
+                <td data-label="Say this" class="small say-cell-yes">“{t.sayThis}”</td>
+                <td data-label="Not this" class="small say-cell-no">“{t.notThis}”</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="container prose" style="margin-top:2rem">
+      <h2>Red-flag words</h2>
+      <p>If copy includes these, check it against the evidence table first:</p>
+      <ul class="tag-list">
+        <li>cures</li><li>heals [a condition]</li><li>treats</li><li>detoxifies</li><li>repairs DNA</li>
+        <li>resets the nervous system</li><li>raises your vibration</li><li>clinically proven</li>
+        <li>miracle frequency</li><li>replaces medication</li><li>music therapy (without credentials)</li>
+      </ul>
+
+      <h2>Sources for this page</h2>
+      <ul class="small">
+        <li>American Music Therapy Association. <a href="https://www.musictherapy.org/about/musictherapy/" rel="noopener noreferrer" target="_blank">What is Music Therapy?</a></li>
+        <li>NCCIH. <a href="https://www.nccih.nih.gov/health/music-and-health-what-you-need-to-know" rel="noopener noreferrer" target="_blank">Music and Health: What You Need To Know</a> (updated Sept 2022).</li>
+        <li>U.S. Federal Trade Commission. <a href="https://www.ftc.gov/system/files/ftc_gov/pdf/Health-Products-Compliance-Guidance.pdf" rel="noopener noreferrer" target="_blank">Health Products Compliance Guidance</a> (PDF, Dec 2022).</li>
+      </ul>
+    </div>
+  </section>
+</BaseLayout>
