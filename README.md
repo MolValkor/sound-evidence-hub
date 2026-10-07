@@ -40,6 +40,14 @@ npm run build    # writes to dist/
 npm run preview  # preview the production build
 ```
 
+## Evidence topics (main content)
+
+- `src/data/topics.ts`: one entry per claim, with `rating` (`strong` / `moderate` / `preliminary` / `not-supported`), scope, summary, bullets, phrasing and citation ids.
+- `src/data/citations.ts`: the verified citation registry (DOI / PMID / PMCID, what was read, finding).
+- `docs/CITATION-VERIFICATION.md`: how each source was verified, plus link-check results.
+
+**Rule:** add a citation only after confirming it in PubMed/Crossref and reading at least the abstract. Never paraphrase numbers you haven't seen in the source.
+
 ## Add content
 
 | Collection | Path | Notes |
@@ -53,7 +61,11 @@ Schema lives in `src/content/config.ts`. After adding files, restart `astro dev`
 
 ## Routes
 
-- `/` — Home
+- `/` — Home (topic grid + rating counts)
+- `/evidence/` — **Searchable / filterable evidence table** (14 claims) + all-sources table
+- `/evidence/[slug]/` — Topic page: rating, plain-language summary, what it does/doesn't show, accurate vs overclaiming phrasing, verified sources
+- `/how-to-read/` — How to read the evidence + rating scale + disclaimer
+- `/for-practitioners/` — Ethical benefit language, FTC summary, phrase bank
 - `/studies/` — Filterable study cards (+ `/studies/[slug]/`)
 - `/news/` — News briefs
 - `/experiments/` — Exploratory writeups
@@ -76,7 +88,7 @@ Fonts (Google Fonts, loaded in `BaseLayout.astro`):
 
 - **Manrope** — headings
 - **Karla** — body
-- **Great Vibes** — sparse script accent (hero italic); free substitute echoing Meta Musician’s soft script look (do **not** use proprietary Sloop Script)
+- **Sloop Script One** → **Great Vibes** — italic H1 accent. The CSS stack asks for `"Sloop Script One"` first, but Sloop is a commercial font that isn't on Google Fonts, so visitors see the free **Great Vibes** fallback until a licensed web-font kit (e.g. Adobe Fonts) is added to `BaseLayout.astro`.
 
 ## Editorial / FTC posture
 
@@ -89,7 +101,7 @@ Fonts (Google Fonts, loaded in `BaseLayout.astro`):
 
 ## Deploy (Netlify)
 
-1. Connect the repo (push is handled separately from this scaffold — Primark / deploy owner pushes).
+1. Connect the repo (or deploy manually). Note: the Netlify site is not currently linked to this repo, so PRs don't create deploy previews.
 2. Build command: `npm run build`
 3. Publish directory: `dist`
 4. Set the real `site` URL in `astro.config.mjs` (see above).
@@ -97,12 +109,6 @@ Fonts (Google Fonts, loaded in `BaseLayout.astro`):
 
 Do **not** leave `https://soundevidence.example.com` or any other `.example.com` site value.
 
-## Seed sources
+## Sources
 
-Study and news paraphrases draw from Magos packs:
-
-- `/workspace/forge-handoff/sound-healing-evidence.md`
-- `/workspace/research/sound-healing-evidence.md`
-- `/workspace/research/forge-evidence-hub-seed.md`
-
-Always verify numbers against the original papers/pages before publishing updates.
+All numbers must be checked against the original papers/pages before publishing updates. See `docs/CITATION-VERIFICATION.md`.

@@ -2,7 +2,10 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import StudyCard from '../components/StudyCard.astro';
 import SubscribeForm from '../components/SubscribeForm.astro';
+import RatingPill from '../components/RatingPill.astro';
 import { getCollection } from 'astro:content';
+import { topics, ratingOrder } from '../data/topics';
+import { citations } from '../data/citations';
 
 const studies = (await getCollection('studies'))
   .sort((a, b) => b.data.year - a.data.year);
@@ -10,42 +13,79 @@ const featured = studies.filter((s) => s.data.featured).slice(0, 4);
 const news = (await getCollection('news'))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
   .slice(0, 3);
+const sortedTopics = [...topics].sort((a, b) => ratingOrder.indexOf(a.rating) - ratingOrder.indexOf(b.rating));
+const counts = ratingOrder.map((r) => ({ r, n: topics.filter((t) => t.rating === r).length }));
+const nSources = Object.keys(citations).length;
 ---
 
 <BaseLayout
   title="Sound Evidence"
-  description="Honest research companion on music therapy, sound practices, and wellbeing. Educational — not medical advice."
+  description="An honest, searchable library of the research behind sound healing, music and wellbeing claims. Educational, not medical advice."
 >
   <section class="hero">
     <div class="container hero-grid">
       <div>
-        <span class="eyebrow">Research companion</span>
+        <span class="eyebrow">Sound healing, fact-checked</span>
         <h1>
           Sound Evidence
-          <span class="hero-italic"> — clear notes, careful claims</span>
+          <span class="hero-italic">what the research really says</span>
         </h1>
         <p class="lede">
-          A polished library of peer-reviewed landmarks and institutional briefs on music,
-          singing bowls, and related practices — written for education, not sales.
-          We favor adjunct and short-term language, label weak evidence honestly, and
-          never claim treat or cure.
+          Music and sound can do real good, and some claims about them go far beyond the science. This library sorts
+          the claims people make about sound baths, singing bowls, binaural beats, 432 Hz and music therapy by how
+          well the evidence actually supports them.
         </p>
         <div class="btn-row">
-          <a class="btn btn-primary" href="/studies/">Browse studies</a>
-          <a class="btn btn-ghost" href="/about/">How we label evidence</a>
+          <a class="btn btn-primary" href="/evidence/">Open the evidence table</a>
+          <a class="btn btn-ghost" href="/how-to-read/">How to read the evidence</a>
         </div>
       </div>
       <aside class="hero-card">
         <h2>At a glance</h2>
-        <ul class="small">
-          <li><strong>Stronger lanes:</strong> short-term adjunct music for mood, perceived pain, subjective sleep</li>
-          <li><strong>Weak lanes:</strong> singing bowls, VAT for pain — high bias / sparse trials</li>
-          <li><strong>Out of bounds:</strong> 432/528-as-medicine, energy-field cure claims</li>
-        </ul>
+        <p class="small">{topics.length} claims rated, {nSources} sources checked against PubMed, Crossref or the original publisher.</p>
+        <div class="rating-summary">
+          {counts.map(({ r, n }) => (
+            <span><RatingPill rating={r} /> <strong>{n}</strong></span>
+          ))}
+        </div>
         <p class="small muted" style="margin-top:1rem">
-          Music therapy (credentialed) ≠ sound baths. We keep those files separate.
+          Strongest: music for anxiety and pain around surgery. Not supported: 432/528 Hz healing and
+          energy-field claims.
         </p>
       </aside>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0.5rem">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>Browse by claim</h2>
+          <p class="muted">Each topic has a plain-language verdict, what it does and doesn’t show, and linked sources.</p>
+        </div>
+        <a href="/evidence/">Searchable table →</a>
+      </div>
+      <div class="topic-grid">
+        {sortedTopics.map((t) => (
+          <a class="topic-card" href={`/evidence/${t.slug}/`}>
+            <RatingPill rating={t.rating} />
+            <h3>{t.title}</h3>
+            <p>“{t.claim}”</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="container">
+      <div class="callout" style="display:flex;flex-wrap:wrap;gap:1rem 2rem;align-items:center;justify-content:space-between">
+        <div style="max-width:40rem">
+          <h2 style="margin-bottom:0.3rem">Work with sound?</h2>
+          <p class="small muted">A phrase bank and plain-language guide to describing benefits accurately, with what U.S. regulators expect from health claims.</p>
+        </div>
+        <a class="btn btn-primary" href="/for-practitioners/">For practitioners</a>
+      </div>
     </div>
   </section>
 
@@ -54,9 +94,9 @@ const news = (await getCollection('news'))
       <div class="section-head">
         <div>
           <h2>Featured study cards</h2>
-          <p class="muted">Paraphrased from sources Magos opened — verify against originals.</p>
+          <p class="muted">Longer notes on landmark reviews. Always check the original paper.</p>
         </div>
-        <a href="/studies/">All studies →</a>
+        <a href="/studies/">All study cards →</a>
       </div>
       <div class="card-grid">
         {featured.map((study) => <StudyCard study={study} />)}

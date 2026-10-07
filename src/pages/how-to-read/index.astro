@@ -1,0 +1,91 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import RatingPill from '../../components/RatingPill.astro';
+import { ratingBlurb, ratingOrder } from '../../data/topics';
+---
+
+<BaseLayout
+  title="How to read the evidence"
+  description="A short guide to study designs, bias, effect sizes and the four-step rating scale used on Sound Evidence."
+>
+  <section class="page-hero">
+    <div class="container prose">
+      <span class="eyebrow">Guide</span>
+      <h1>How to read <span class="hero-italic">the evidence</span></h1>
+      <p class="lede">
+        Not all “studies show” statements are equal. Here’s a five-minute guide to what makes a finding
+        trustworthy, and how we turn research into a rating.
+      </p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0.5rem">
+    <div class="container prose">
+      <h2>1. The evidence ladder</h2>
+      <p>From weakest to strongest, roughly:</p>
+      <ol class="ladder">
+        <li><strong>Testimonials and personal stories.</strong> Real experiences, but they can’t tell you what caused a change.</li>
+        <li><strong>Theory, lab and animal studies.</strong> Useful for ideas (for example, 40 Hz research in mice), but results often don’t carry over to people.</li>
+        <li><strong>Before-and-after studies with no control group.</strong> People often feel better after any calm hour of rest. Without a comparison group, we can’t tell what did the work.</li>
+        <li><strong>Small randomized or crossover trials.</strong> Better: chance decides who gets what. But small samples swing easily, and “pilot” means “first look.”</li>
+        <li><strong>Large, well-run randomized controlled trials (RCTs).</strong> The best single-study design for testing whether something works.</li>
+        <li><strong>Systematic reviews and meta-analyses</strong> (Cochrane reviews are a well-known example). These gather all the trials on a question and judge their quality. One review is worth more than any single exciting study.</li>
+      </ol>
+
+      <h2>2. Five questions to ask any study</h2>
+      <ul>
+        <li><strong>Compared with what?</strong> Silence, rest, ordinary music, or nothing at all? A sound bath compared with sitting in a waiting room isn’t a fair test of the sound.</li>
+        <li><strong>Could people tell which group they were in?</strong> In music research, people almost always can, so expectation (the placebo effect) can account for part of the result. Reviews often rate these trials as having a <em>high risk of bias</em> for this reason. That doesn’t make them worthless; it makes them less certain.</li>
+        <li><strong>How big was the effect?</strong> “Statistically significant” only means probably not chance. Effect sizes are often reported as <em>d</em>, <em>g</em> or SMD. By common convention about 0.2 is small, 0.5 medium and 0.8 large.</li>
+        <li><strong>What was measured, and for how long?</strong> Feeling calmer right after a session is different from lower blood pressure a month later. Self-reported outcomes (how you feel) and objective ones (what a device measures) sometimes disagree, as in the sleep research.</li>
+        <li><strong>Who delivered it?</strong> Music therapy by a credentialed therapist, recorded music on headphones, a singing-bowl session and a vibration bed are different interventions. Evidence for one doesn’t transfer to another.</li>
+      </ul>
+
+      <h2>3. Certainty labels you’ll see in reviews</h2>
+      <p>
+        Cochrane and many other reviews use the GRADE system to rate how confident they are in a result:
+        <strong>high</strong>, <strong>moderate</strong>, <strong>low</strong> or <strong>very low</strong>
+        certainty. “Moderate” means the true effect is probably close to the estimate. “Low” or “very low” means
+        the true effect may be quite different. When a review gives a certainty rating, we report it.
+      </p>
+
+      <h2>4. Our four-step rating</h2>
+      <div class="legend legend-stack">
+        {ratingOrder.map((r) => (
+          <div class="legend-item">
+            <RatingPill rating={r} />
+            <p class="small">{ratingBlurb[r]}</p>
+          </div>
+        ))}
+      </div>
+      <p>
+        A rating always applies to a <em>specific</em> claim and outcome, shown on each topic page as
+        “Applies to.” For example, music for anxiety around surgery is rated Strong, but that doesn’t make
+        432 Hz music, singing bowls or “sound healing” in general strong.
+      </p>
+
+      <h2>5. How we check sources</h2>
+      <ul>
+        <li>Every citation was looked up in PubMed, Crossref or on the publisher or agency page, and its title, authors, journal, year and DOI were confirmed.</li>
+        <li>Numbers on this site come only from the abstract or full text we actually read. Each source is labeled “Checked: abstract,” “full text” or “official page.”</li>
+        <li>We don’t quote studies we couldn’t open, and we don’t round weak findings up.</li>
+        <li>Spot an error or a newer review? Please tell us. Ratings will change as evidence does.</li>
+      </ul>
+
+      <h2 id="disclaimer">Disclaimer</h2>
+      <div class="callout">
+        <p>
+          <strong>Educational only, not medical advice.</strong> Sound Evidence summarizes published research for
+          learning. Nothing here diagnoses, treats, cures or prevents any disease, and it isn’t a substitute for
+          care from a qualified health professional. Don’t stop or change any treatment based on what you read here.
+          If you have a health concern, talk with your doctor or another licensed clinician.
+        </p>
+      </div>
+
+      <div class="btn-row">
+        <a class="btn btn-primary" href="/evidence/">Open the evidence table</a>
+        <a class="btn btn-ghost" href="/for-practitioners/">For practitioners</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
