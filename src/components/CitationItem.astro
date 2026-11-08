@@ -1,0 +1,43 @@
+---
+import { citationLinks, type Citation } from '../data/citations';
+import { formatReviewDate } from '../data/topics';
+interface Props { c: Citation; n?: number }
+const { c, n } = Astro.props;
+const links = citationLinks(c);
+const accessLabel = { abstract: 'Checked: abstract', 'full-text': 'Checked: full text', page: 'Checked: official page' }[c.access];
+---
+<li class={c.retraction ? 'citation citation-retracted' : 'citation'} id={`ref-${c.id}`}>
+  <p class="citation-ref">
+    {n !== undefined && <span class="citation-n">{n}.</span>}
+    {c.authors} ({c.year}). <strong>{c.title}</strong>. <em>{c.journal}</em>.
+  </p>
+  <p class="citation-meta">
+    {c.retraction && <span class="pill pill-retracted">Retracted {c.retraction.date.slice(0, 4)}</span>}
+    <span class="pill pill-muted">{c.type}</span>
+    <span class="pill pill-muted">{accessLabel}</span>
+  </p>
+  {c.retraction && (
+    <div class="citation-retraction">
+      <p><strong>Retracted {formatReviewDate(c.retraction.date)}.</strong> {c.retraction.note}</p>
+      {c.retraction.records && (
+        <ul>
+          {c.retraction.records.map((record) => (
+            <li><strong>{record.source}.</strong> {record.detail}</li>
+          ))}
+        </ul>
+      )}
+      {c.retraction.confirmedOn && (
+        <p class="small muted">Retraction record re-checked {formatReviewDate(c.retraction.confirmedOn)} against those sources. Not used as evidence.</p>
+      )}
+    </div>
+  )}
+  <p class="citation-finding">{c.retraction ? 'What the retracted paper had reported: ' : ''}{c.finding}</p>
+  <p class="citation-links">
+    {links.map((l, i) => (
+      <>
+        {i > 0 && <span aria-hidden="true"> · </span>}
+        <a href={l.href} rel="noopener noreferrer" target="_blank">{l.label}{l.label === 'DOI' ? `: ${c.doi}` : l.label === 'PubMed' ? ` ${c.pmid}` : ''}</a>
+      </>
+    ))}
+  </p>
+</li>

@@ -24,4 +24,4 @@ Greater decline in systolic blood pressure (p = .044) and heart rate (p = .003) 
 
 ## Honest framing
 
-**Abstract-only** paraphrase from Magos handoff — full text not obtained. Cite as a small, exploratory autonomic signal nested inside relaxation, not evidence that bowls treat hypertension or cardiovascular disease. Evidence strength: **weak**.
+**Abstract-only** paraphrase — full text not obtained. Cite as a small, exploratory autonomic signal nested inside relaxation, not evidence that bowls treat hypertension or cardiovascular disease. Evidence strength: **weak**.

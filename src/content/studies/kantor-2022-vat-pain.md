@@ -1,6 +1,6 @@
 ---
 title: "Exploring vibroacoustic therapy in adults experiencing pain: a scoping review"
-authors: "Kantor J, et al."
+authors: "Kantor J, Campbell EA, Kantorová L, et al."
 year: 2022
 journal: "BMJ Open 12:e046591"
 doi: "10.1136/bmjopen-2020-046591"

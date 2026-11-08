@@ -16,7 +16,7 @@ featured: false
 
 ## What this is
 
-Meta-analysis of binaural-beat experiments (two slightly different pure tones, one per ear). **Full text paywalled** — this card paraphrases Magos’s abstract-level notes only (DOI 10.1007/s00426-018-1066-8).
+Meta-analysis of binaural-beat experiments (two slightly different pure tones, one per ear). **Full text paywalled** — this card paraphrases the published abstract only (DOI 10.1007/s00426-018-1066-8).
 
 ## Abstract-level findings
 

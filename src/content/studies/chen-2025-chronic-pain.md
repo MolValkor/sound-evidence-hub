@@ -1,8 +1,9 @@
 ---
-title: "Music-based interventions for chronic pain (meta-analysis)"
-authors: "Chen et al."
+title: "The effect of music therapy for patients with chronic pain: systematic review and meta-analysis"
+authors: "Chen S, Yuan Q, Wang C, Ye J, et al."
 year: 2025
 journal: "BMC Psychology 13:455"
+doi: "10.1186/s40359-025-02643-x"
 url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC12042639/"
 intervention: music-listening
 outcomes: [chronic-pain, depression, anxiety, quality-of-life]

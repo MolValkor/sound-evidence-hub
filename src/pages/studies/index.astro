@@ -42,11 +42,11 @@ const studies = (await getCollection('studies')).sort((a, b) => b.data.year - a.
   </section>
 
   <script>
-    const buttons = document.querySelectorAll('.filter-btn');
-    const cards = document.querySelectorAll('#study-grid .card');
+    const buttons = document.querySelectorAll<HTMLButtonElement>('.filter-btn');
+    const cards = document.querySelectorAll<HTMLElement>('#study-grid .card');
     const empty = document.getElementById('filter-empty');
 
-    function applyFilter(value) {
+    function applyFilter(value: string) {
       let visible = 0;
       cards.forEach((card) => {
         let show = value === 'all';
