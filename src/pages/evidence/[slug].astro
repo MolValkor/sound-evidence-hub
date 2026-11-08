@@ -2,7 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import RatingPill from '../../components/RatingPill.astro';
 import CitationItem from '../../components/CitationItem.astro';
-import { topics, ratingBlurb, type Topic } from '../../data/topics';
+import { topics, ratingBlurb, frameLabel, reviewedDate, formatReviewDate, type Topic } from '../../data/topics';
 import { citations } from '../../data/citations';
 
 export function getStaticPaths() {
@@ -35,6 +35,8 @@ const next = topics[idx + 1];
             <p class="small">{topic.ratingScope}</p>
           </div>
         </div>
+        <p class="small"><strong>{frameLabel(topic)}</strong> · Reviewed {formatReviewDate(reviewedDate(topic.slug))}</p>
+        {topic.factNote && <p class="small fact-note">{topic.factNote}</p>}
         <p class="small muted">{ratingBlurb[topic.rating]} <a href="/how-to-read/">About the scale</a></p>
       </div>
     </section>

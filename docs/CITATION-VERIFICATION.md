@@ -94,3 +94,19 @@ Bot-blocked in the headless browser (existence confirmed by DOI handle API / E-u
 - Most numbers come from **abstracts**. Full texts behind paywalls (e.g., Hole 2015, Lee 2016, Garcia-Argibay 2019, Landry 2014) were not read.
 - No gong-specific controlled trial was found. The gongs topic rests on two uncontrolled observational reports.
 - Ratings are editorial judgments by this site, using the scale on `/how-to-read/`. They are not GRADE ratings.
+
+## Re-check on 2026-11-08
+
+This pass did not re-read every paper. It re-opened the sources below and left the other topic text at the 7 Oct 2026 review date.
+
+**Retraction, confirmed again before it is described as retracted.** Braun Janzen et al. 2019, DOI [10.1371/journal.pone.0212021](https://doi.org/10.1371/journal.pone.0212021), PMID 30822311:
+
+- The PLOS ONE notice (DOI [10.1371/journal.pone.0230395](https://doi.org/10.1371/journal.pone.0230395), published 6 March 2020) says the trial had two active groups and no sham control, so effects could not be separated from placebo. The editors wrote that the claims were “not adequately supported by the results.” Authors TBJ and LRB did not agree with the retraction.
+- Crossref `updated-by` on the article DOI records that retraction from both the publisher and Retraction Watch, dated 2020-03-06. The notice’s `update-to` points back at 10.1371/journal.pone.0212021.
+- PubMed lists the publication type Retracted Publication.
+
+The vibroacoustic topic is rated **Uncertain**. The retracted trial is listed so readers can recognise it, and it is excluded from the evidence grade. Kantor et al. 2022 (PMID 35383053) was re-read: the abstract says research is “too sparse to identify properties of VAT that are beneficial for pain management.”
+
+Also re-read, with no change to the numbers already on the site: Bradt 2013 preoperative anxiety (PMID 23740695; 26 trials, 2,051 people, STAI-S difference 5.72, high risk of bias from lack of blinding), Hole 2015 (PMID 26277246; 73 RCTs; pain, anxiety, and analgesia use reduced; length of stay not different), Kühlmann 2018 (PMID 29665028; 92 RCTs, 7,385 patients; about 21 mm anxiety and 10 mm pain on a 100 mm scale; risk of bias moderate to high), Jespersen 2022 (PMID 36000763; PSQI mean difference −2.79, moderate certainty; objective sleep in 3 studies / 136 people did not improve), Rosa 1998 (PMID 9533499; 123 of 280 trials, 44%), and the NCCIH Reiki fact sheet (no scientific evidence for the energy field; Reiki has not been clearly shown effective for any health purpose).
+
+A passing link check does not validate the scientific claims. HTTP 404/410 are dead links. HTTP 403 and network errors are manual-review flags, not invalid citations.

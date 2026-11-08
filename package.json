@@ -9,12 +9,15 @@
     "build": "astro build",
     "preview": "astro preview",
     "check:citations": "node tools/citations/check.mjs",
-    "test:citations": "node --test tools/citations/test/*.test.mjs"
+    "test:citations": "node --test tools/citations/test/*.test.mjs",
+    "typecheck": "astro check"
   },
   "dependencies": {
     "astro": "4.16.18"
   },
   "devDependencies": {
-    "esbuild": "0.21.5"
+    "@astrojs/check": "^0.9.4",
+    "esbuild": "0.21.5",
+    "typescript": "^5.6.3"
   }
 }

@@ -11,6 +11,7 @@ import {
   detectNotices,
   gradeEvidence,
   isAcknowledgedRetraction,
+  retractionDateIssue,
   summarize,
 } from './lib.mjs';
 
@@ -120,6 +121,7 @@ export async function checkCitation(http, c, pubmed) {
         detail: `${handle.exists ? 'DOI registered' : 'DOI handle unconfirmed'}; landing page: ${landing}`,
         target: handle.target ?? p.finalUrl,
         finalUrl: p.finalUrl,
+        cached: Boolean(p.cached),
       });
     }
     const cr = await crossrefWork(http, c.doi);
@@ -156,7 +158,7 @@ export async function checkCitation(http, c, pubmed) {
   if (c.url) {
     const p = await http.probe(c.url, { ttl: TTL.links });
     const cls = classifyLink(c.url, p);
-    links.push({ kind: 'url', url: c.url, ...cls, finalUrl: p.finalUrl, chain: p.chain });
+    links.push({ kind: 'url', url: c.url, ...cls, finalUrl: p.finalUrl, chain: p.chain, cached: Boolean(p.cached) });
   }
 
   if (!c.doi && !c.pmid && !c.url) issues.push({ level: 'error', source: 'registry', code: 'no-identifier', message: 'Citation has no DOI, PMID or URL.' });
@@ -167,6 +169,8 @@ export async function checkCitation(http, c, pubmed) {
   if (c.retraction && !notices.retracted) {
     issues.push({ level: 'warn', source: 'registry', code: 'retraction-not-found', message: `Registry marks this as retracted (${c.retraction.noticeDoi}) but no retraction notice was found this run.` });
   }
+  const dateIssue = retractionDateIssue(c, notices);
+  if (dateIssue) issues.push(dateIssue);
   const result = {
     id: c.id,
     authors: c.authors,
@@ -200,7 +204,7 @@ export async function checkExtraLink(http, item) {
   }
   const p = await http.probe(item.url, { ttl: TTL.links });
   const cls = classifyLink(item.url, p);
-  return { ...item, ...cls, finalUrl: p.finalUrl };
+  return { ...item, ...cls, finalUrl: p.finalUrl, cached: Boolean(p.cached) };
 }
 
 export async function runChecks(http, { citations, topics, extraLinks = [] }, { concurrency = 4, log = () => {} } = {}) {

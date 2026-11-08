@@ -1,7 +1,7 @@
 // Render checker results as Markdown (for humans / PR comments) and a compact JSON
 // status file the site can import (e.g. "39 sources checked on <date>").
 
-import { WEAK_MAX } from './lib.mjs';
+import { WEAK_MAX, manualFlags } from './lib.mjs';
 
 const ICON = { ok: '✅', redirect: '↪️', dead: '❌', retracted: '⛔', 'retracted-labelled': '🏷️', mismatch: '⚠️', unverified: '❔' };
 const esc = (s) => String(s ?? '').replace(/\|/g, '\\|').replace(/\n/g, ' ');
@@ -29,9 +29,11 @@ export function renderMarkdown(run, { checkedAt }) {
   L.push(`| Claims rated strong/moderate on weak designs only (overrated) | ${s.overratedClaims} |`);
   L.push(`| Other linked sources (study cards, news) | ${s.extraLinks} (dead: ${s.extraDead}) |`);
   L.push(`| DOI landing pages that refuse scripts (DOI itself confirmed registered) | ${s.landingBlocked} |`);
+  L.push(`| Manual-review flags (blocked page, network error, or correction — not failures) | ${s.manualReview ?? 0} |`);
+  if (s.freshness) L.push(`| Source URL checks (live this run / reused from cache) | ${s.freshness.live} / ${s.freshness.cached} |`);
   if (s.missingRefs) L.push(`| Topic references to missing citation ids | ${s.missingRefs} |`);
   L.push('');
-  L.push("The run **fails** (exit 1) on dead links, retractions the site doesn't label yet, metadata mismatches or missing citation ids. `--strict` also fails on overrated claims, unverified links and redirects.", '');
+  L.push("The run **fails** (exit 1) on dead links (HTTP 404 or 410), retractions the site doesn't label yet, metadata mismatches or missing citation ids. A blocked page (HTTP 403 and similar) or a network error is a manual-review flag, not an invalid citation. `--strict` also fails on overrated claims, unverified links and redirects.", '');
 
   const problems = run.results.filter((r) => r.verdict !== 'ok');
   L.push('## Needs attention', '');
@@ -45,6 +47,20 @@ export function renderMarkdown(run, { checkedAt }) {
     for (const n of r.notices.notices) L.push(`- **notice** ${n.status} (${n.type}${n.doi ? `, ${n.doi}` : ''}, via ${n.source}${n.date ? `, ${n.date}` : ''})`);
     L.push('');
   }
+
+  const flags = [];
+  for (const r of run.results) {
+    for (const f of manualFlags(r)) flags.push({ id: r.id, ...f });
+  }
+  for (const l of run.extraLinks) {
+    for (const f of manualFlags({ links: [l], notices: { notices: [] }, issues: [] })) flags.push({ id: l.where ?? l.url, ...f });
+  }
+  L.push('## Manual review', '');
+  L.push('A person should look at these. None of them means the citation is invalid. HTTP 404 and 410 are the dead-link failures above. HTTP 403 (and other bot-blocks) and network errors mean the checker could not read the page.', '');
+  const review = flags.filter((f) => f.level === 'review');
+  if (!review.length) L.push('No manual-review flags on this run.', '');
+  else for (const f of review) L.push(`- \`${f.id}\` **${f.code}**: ${esc(f.message)}`);
+  L.push('');
 
   const notes = run.results.filter((r) => r.verdict === 'ok' && (r.issues.length || r.notices.notices.length));
   if (notes.length) {
@@ -108,5 +124,20 @@ export function renderJson(run, { checkedAt }) {
 /** Tiny public status object the site can import without shipping the full report. */
 export function renderStatus(run, { checkedAt }) {
   const s = run.summary;
-  return { checkedAt, citations: s.citations, ok: s.ok, redirect: s.redirect, dead: s.dead, retracted: s.retracted, retractedUnlabelled: s.retractedUnlabelled, mismatch: s.mismatch, unverified: s.unverified, corrections: s.corrections, weakClaims: s.weakClaims };
+  return {
+    checkedAt,
+    citations: s.citations,
+    ok: s.ok,
+    redirect: s.redirect,
+    dead: s.dead,
+    retracted: s.retracted,
+    retractedUnlabelled: s.retractedUnlabelled,
+    mismatch: s.mismatch,
+    unverified: s.unverified,
+    corrections: s.corrections,
+    weakClaims: s.weakClaims,
+    manualReview: s.manualReview ?? 0,
+    linksLive: s.freshness?.live ?? null,
+    linksCached: s.freshness?.cached ?? null,
+  };
 }

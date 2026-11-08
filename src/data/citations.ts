@@ -24,7 +24,14 @@ export interface Citation {
   // Set when the journal has retracted the paper. We keep it listed (labelled) so
   // readers who meet it elsewhere can see it was withdrawn; it never counts as support.
   // `npm run check:citations` fails on any retraction that is not recorded here.
-  retraction?: { noticeDoi: string; date: string; note: string };
+  retraction?: {
+    noticeDoi: string;
+    date: string;
+    note: string;
+    publisher?: string;
+    confirmedOn?: string;
+    records?: { source: string; detail: string }[];
+  };
 }
 
 export const citations: Record<string, Citation> = {
@@ -482,7 +489,14 @@ export const citations: Record<string, Citation> = {
     retraction: {
       noticeDoi: '10.1371/journal.pone.0230395',
       date: '2020-03-06',
-      note: 'PLOS ONE’s editors retracted it in March 2020: without a sham control group, effects could not be separated from placebo, so the claims were "not adequately supported by the results." Two authors disagreed with the retraction.',
+      publisher: 'PLOS ONE',
+      confirmedOn: '2026-11-08',
+      note: 'The PLOS ONE editors retracted this article on 6 March 2020. The trial compared two active vibration protocols and had no sham control, so effects could not be separated from placebo. The notice says the claims were “not adequately supported by the results.” Authors TBJ and LRB did not agree with the retraction. This paper is not evidence of benefit.',
+      records: [
+        { source: 'PLOS ONE notice', detail: 'Published 6 March 2020. DOI 10.1371/journal.pone.0230395.' },
+        { source: 'Crossref', detail: 'updated-by retraction from the publisher and from Retraction Watch, both dated 2020-03-06.' },
+        { source: 'PubMed', detail: 'PMID 30822311 is tagged Retracted Publication.' },
+      ],
     },
   },
 

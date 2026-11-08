@@ -1,5 +1,6 @@
 ---
 import { citationLinks, type Citation } from '../data/citations';
+import { formatReviewDate } from '../data/topics';
 interface Props { c: Citation; n?: number }
 const { c, n } = Astro.props;
 const links = citationLinks(c);
@@ -15,7 +16,21 @@ const accessLabel = { abstract: 'Checked: abstract', 'full-text': 'Checked: full
     <span class="pill pill-muted">{c.type}</span>
     <span class="pill pill-muted">{accessLabel}</span>
   </p>
-  {c.retraction && <p class="citation-retraction"><strong>Retracted.</strong> {c.retraction.note}</p>}
+  {c.retraction && (
+    <div class="citation-retraction">
+      <p><strong>Retracted {formatReviewDate(c.retraction.date)}.</strong> {c.retraction.note}</p>
+      {c.retraction.records && (
+        <ul>
+          {c.retraction.records.map((record) => (
+            <li><strong>{record.source}.</strong> {record.detail}</li>
+          ))}
+        </ul>
+      )}
+      {c.retraction.confirmedOn && (
+        <p class="small muted">Retraction record re-checked {formatReviewDate(c.retraction.confirmedOn)} against those sources. Not used as evidence.</p>
+      )}
+    </div>
+  )}
   <p class="citation-finding">{c.retraction ? 'What the retracted paper had reported: ' : ''}{c.finding}</p>
   <p class="citation-links">
     {links.map((l, i) => (

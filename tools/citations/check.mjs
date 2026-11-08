@@ -45,7 +45,8 @@ const s = run.summary;
 const { requests, cacheHits } = http.stats();
 console.log(
   `citations: ${s.citations} | ok ${s.ok} | redirect ${s.redirect} | dead ${s.dead} | retracted ${s.retracted} | mismatch ${s.mismatch} | unverified ${s.unverified}` +
-    ` | weak-only claims ${s.weakClaims} (overrated ${s.overratedClaims}) | other links ${s.extraLinks} (dead ${s.extraDead})` +
+    ` | weak-only claims ${s.weakClaims} (overrated ${s.overratedClaims}) | manual-review ${s.manualReview} | other links ${s.extraLinks} (dead ${s.extraDead})` +
+    ` | url checks live ${s.freshness.live} / cached ${s.freshness.cached}` +
     ` | http ${requests}, cache hits ${cacheHits}`,
 );
 if (!args.has('--no-write')) console.log('Report: docs/citation-report.md (+ .json)');

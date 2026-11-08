@@ -255,10 +255,11 @@ const BLOCKED = new Set([202, 203, 401, 403, 405, 406, 418, 429, 451, 503]);
 export function classifyLink(url, probe) {
   if (!probe) return { status: 'unreachable', detail: 'no response' };
   if (probe.error) {
-    const dns = /ENOTFOUND|EAI_AGAIN|getaddrinfo/i.test(`${probe.error.code} ${probe.error.message}`);
-    return dns
-      ? { status: 'dead', detail: `DNS lookup failed (${probe.error.code ?? probe.error.message})` }
-      : { status: 'unreachable', detail: `${probe.error.code ?? 'error'}: ${probe.error.message}` };
+    // DNS, timeout, and connection failures are failed fetches, not proof the page is gone.
+    return {
+      status: 'unreachable',
+      detail: `Network error (${probe.error.code ?? 'error'}): ${probe.error.message ?? 'request failed'}`,
+    };
   }
   const s = probe.status;
   if (s === 404 || s === 410) return { status: 'dead', detail: `HTTP ${s}` };
@@ -380,8 +381,76 @@ export function assessTopics(topics, grades) {
 // ---------------------------------------------------------------------------
 
 /**
+ * Compare a registry retraction date with notice dates from Crossref.
+ * Returns a warning issue, or null when they match or no dated notice was found.
+ */
+export function retractionDateIssue(citation, notices) {
+  if (!citation?.retraction?.date || !notices?.retracted) return null;
+  const dates = (notices.notices ?? []).filter((n) => n.status === 'retracted' && n.date).map((n) => n.date);
+  if (!dates.length || dates.includes(citation.retraction.date)) return null;
+  return {
+    level: 'warn',
+    source: 'registry',
+    code: 'retraction-date',
+    message: `Registry retraction date ${citation.retraction.date} does not match notice date ${dates.join(' or ')}.`,
+  };
+}
+
+/**
+ * Flags a person should look at. They do not by themselves make a citation invalid.
+ * - blocked: HTTP 403/429/bot-check. The server refused the script.
+ * - network: the fetch failed. That is not a 404.
+ * - correction: a published correction or erratum; confirm quoted numbers.
+ * - landing-blocked (info): publisher HTML blocked a script, but the DOI or PMID was confirmed.
+ */
+export function manualFlags(result) {
+  const flags = [];
+  const links = result.links ?? [];
+  for (const l of links) {
+    if (l.landingBlocked && l.status !== 'blocked') {
+      flags.push({
+        level: 'info',
+        code: 'landing-blocked',
+        message: `${l.kind ?? 'link'} ${l.url ?? ''}: publisher page refused a scripted request. The DOI or PMID check still stands. Not an invalid citation.`.trim(),
+      });
+    } else if (l.status === 'blocked') {
+      flags.push({
+        level: 'review',
+        code: 'blocked',
+        message: `${l.kind ?? 'link'} ${l.url ?? ''}: ${l.detail ?? 'request blocked'}. Not counted as a dead citation.`.trim(),
+      });
+    }
+    if (l.status === 'unreachable') {
+      flags.push({
+        level: 'review',
+        code: 'network',
+        message: `${l.kind ?? 'link'} ${l.url ?? ''}: ${l.detail ?? 'request failed'}. A failed fetch is not an invalid citation.`.trim(),
+      });
+    }
+  }
+  for (const n of result.notices?.notices ?? []) {
+    if (n.status === 'corrected') {
+      flags.push({
+        level: 'review',
+        code: 'correction',
+        message: `Published ${n.type}${n.doi ? ` (${n.doi})` : ''}${n.date ? ` dated ${n.date}` : ''}. Check that numbers quoted on the site still match.`,
+      });
+    }
+  }
+  if ((result.issues ?? []).some((i) => i.code === 'retraction-not-found' || i.code === 'retraction-date')) {
+    flags.push({
+      level: 'review',
+      code: 'retraction-metadata',
+      message: 'Retraction metadata on the site did not match what this run found. Confirm the notice before keeping the label.',
+    });
+  }
+  return flags;
+}
+
+/**
  * Overall verdict for one citation from its individual checks.
- * Priority: retracted > dead > mismatch > redirect > blocked/unverified > ok.
+ * Priority: retracted > dead (404/410) > mismatch > redirect > unverified (network) > ok.
+ * A blocked page (403 and similar) stays ok here and is reported via manualFlags.
  */
 export function citationVerdict(r) {
   if (r.notices?.retracted) return r.retractionAcknowledged ? 'retracted-labelled' : 'retracted';
@@ -395,6 +464,9 @@ export function citationVerdict(r) {
 
 export function summarize(results, topicAssessments, extraLinks = []) {
   const count = (pred) => results.filter(pred).length;
+  const extraAsResults = extraLinks.map((l) => ({ links: [l], notices: { notices: [] }, issues: [] }));
+  const reviewFlags = [...results, ...extraAsResults].flatMap((r) => manualFlags(r)).filter((f) => f.level === 'review');
+  const probed = [...results.flatMap((r) => r.links ?? []), ...extraLinks].filter((l) => typeof l.cached === 'boolean');
   return {
     citations: results.length,
     ok: count((r) => r.verdict === 'ok'),
@@ -412,6 +484,12 @@ export function summarize(results, topicAssessments, extraLinks = []) {
     overratedClaims: topicAssessments.filter((t) => t.status === 'overrated').length,
     extraLinks: extraLinks.length,
     extraDead: extraLinks.filter((l) => l.status === 'dead').length,
+    manualReview: reviewFlags.length,
+    freshness: {
+      checked: probed.length,
+      live: probed.filter((l) => l.cached === false).length,
+      cached: probed.filter((l) => l.cached === true).length,
+    },
   };
 }
 

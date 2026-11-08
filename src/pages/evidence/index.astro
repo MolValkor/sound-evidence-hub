@@ -1,8 +1,9 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import RatingPill from '../../components/RatingPill.astro';
-import { topics, ratingLabel, ratingBlurb, ratingOrder } from '../../data/topics';
+import { topics, ratingLabel, ratingBlurb, ratingOrder, reviewedDate, formatReviewDate } from '../../data/topics';
 import { citations, primaryHref } from '../../data/citations';
+import status from '../../data/citation-status.json';
 
 const sorted = [...topics].sort((a, b) => ratingOrder.indexOf(a.rating) - ratingOrder.indexOf(b.rating));
 const categories = [...new Set(topics.map((t) => t.category))];
@@ -19,7 +20,7 @@ const topicsFor = (id: string) => topics.filter((t) => t.citations.includes(id))
       <span class="eyebrow">Evidence table</span>
       <h1>What the research <span class="hero-italic">actually</span> says</h1>
       <p class="lede">
-        {topics.length} common claims about music, sound and healing, each rated on the same four-step scale
+        {topics.length} common claims about music, sound and healing, each rated on the same scale
         and linked to the studies behind it. Search, filter, then open a topic for the details.
       </p>
     </div>
@@ -36,6 +37,12 @@ const topicsFor = (id: string) => topics.filter((t) => t.citations.includes(id))
         ))}
       </div>
       <p class="small"><a href="/how-to-read/">How we rate evidence →</a></p>
+      <p class="small muted">
+        Strong and Moderate are research-supported for the named outcome. Uncertain means the studies are too sparse to say it helps.
+        Spiritual beliefs and documented facts, such as ISO pitch, are labelled as such.
+        Source URLs checked {formatReviewDate(status.checkedAt)}. HTTP 404 and 410 are dead links; a 403 or a network error is not.
+        {status.retracted} retracted source is labelled and excluded. “Reviewed” is a separate reading date.
+      </p>
 
       <div class="table-tools" role="search">
         <label class="search-label">
@@ -64,6 +71,7 @@ const topicsFor = (id: string) => topics.filter((t) => t.citations.includes(id))
               <th scope="col">Topic</th>
               <th scope="col">Rating</th>
               <th scope="col">Rating applies to</th>
+              <th scope="col">Reviewed</th>
               <th scope="col">Sources</th>
             </tr>
           </thead>
@@ -78,8 +86,12 @@ const topicsFor = (id: string) => topics.filter((t) => t.citations.includes(id))
                   <a class="topic-link" href={`/evidence/${t.slug}/`}>{t.title}</a>
                   <span class="small muted claim">“{t.claim}”</span>
                 </td>
-                <td data-label="Rating"><RatingPill rating={t.rating} /></td>
+                <td data-label="Rating">
+                  <RatingPill rating={t.rating} />
+                  {t.frame === 'spiritual-belief' && <span class="small muted claim">Spiritual belief, not a scientific finding</span>}
+                </td>
                 <td data-label="Rating applies to" class="small">{t.ratingScope}</td>
+                <td data-label="Reviewed" class="small nowrap">{formatReviewDate(reviewedDate(t.slug))}</td>
                 <td data-label="Sources" class="small nowrap">
                   <a href={`/evidence/${t.slug}/#sources`}>{t.citations.length} source{t.citations.length > 1 ? 's' : ''}</a>
                 </td>
@@ -141,7 +153,7 @@ const topicsFor = (id: string) => topics.filter((t) => t.citations.includes(id))
   <script>
     const search = document.getElementById('topic-search') as HTMLInputElement | null;
     const category = document.getElementById('topic-category') as HTMLSelectElement | null;
-    const ratingBtns = document.querySelectorAll<HTMLButtonElement>('[data-rating]');
+    const ratingBtns = document.querySelectorAll<HTMLButtonElement>('.filters .filter-btn');
     const rows = document.querySelectorAll<HTMLTableRowElement>('#evidence-table tbody tr');
     const empty = document.getElementById('topic-empty');
     const count = document.getElementById('topic-count');

@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-10-07T15:42:08.019Z",
+  "checkedAt": "2026-11-08T17:47:30.461Z",
   "citations": 39,
   "ok": 38,
   "redirect": 0,
@@ -9,5 +9,8 @@
   "mismatch": 0,
   "unverified": 0,
   "corrections": 2,
-  "weakClaims": 5
+  "weakClaims": 5,
+  "manualReview": 6,
+  "linksLive": 52,
+  "linksCached": 0
 }

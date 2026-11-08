@@ -52,12 +52,35 @@ test('probe falls back to GET when HEAD is refused', async () => {
   assert.deepEqual(calls, ['HEAD https://site.example/p', 'GET https://site.example/p']);
 });
 
+test('probe keeps HTTP 403 when GET is also forbidden, and reports 404 when the page is gone', async () => {
+  const forbidden = stubFetch({
+    'HEAD https://site.example/p': new Response(null, { status: 403 }),
+    'GET https://site.example/p': new Response('no', { status: 403 }),
+  });
+  const http403 = createHttp({ fetchImpl: forbidden.fetchImpl, sleep: noSleep, hostIntervalMs: {} });
+  const blocked = await http403.probe('https://site.example/p');
+  assert.equal(blocked.status, 403);
+  assert.equal(blocked.error, undefined);
+  assert.deepEqual(forbidden.calls, ['HEAD https://site.example/p', 'GET https://site.example/p']);
+
+  const missing = stubFetch({
+    'HEAD https://site.example/missing': new Response(null, { status: 405 }),
+    'GET https://site.example/missing': new Response('missing', { status: 404 }),
+  });
+  const http404 = createHttp({ fetchImpl: missing.fetchImpl, sleep: noSleep, hostIntervalMs: {} });
+  const dead = await http404.probe('https://site.example/missing');
+  assert.equal(dead.status, 404);
+  assert.equal(dead.method, 'GET');
+});
+
 test('probe reports network errors instead of throwing', async () => {
   const err = Object.assign(new TypeError('fetch failed'), { cause: { code: 'ENOTFOUND', message: 'getaddrinfo ENOTFOUND gone.example' } });
   const { fetchImpl } = stubFetch({ '*': () => err });
   const http = createHttp({ fetchImpl, sleep: noSleep, hostIntervalMs: {} });
   const p = await http.probe('https://gone.example/');
+  assert.equal(p.status, null);
   assert.equal(p.error.code, 'ENOTFOUND');
+  assert.notEqual(p.status, 404);
 });
 
 test('disk cache serves repeat requests and expires by TTL; 5xx is never cached', async () => {

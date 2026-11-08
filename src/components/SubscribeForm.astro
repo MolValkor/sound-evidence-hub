@@ -15,8 +15,8 @@ const { heading = 'Get occasional research briefs' } = Astro.props;
     class="form"
     name="newsletter"
     method="POST"
-    netlify
-    netlify-honeypot="bot-field"
+    data-netlify="true"
+    data-netlify-honeypot="bot-field"
     action="/newsletters/success/"
   >
     <input type="hidden" name="form-name" value="newsletter" />

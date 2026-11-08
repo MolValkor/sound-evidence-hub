@@ -2,7 +2,8 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import {
   assessTopics, citationVerdict, classifyLink, compareCrossref, comparePubmed, detectNotices, exitCodeFor,
-  firstAuthorFamily, gradeEvidence, isAcknowledgedRetraction, normalizeText, sameResource, summarize, titleSimilarity,
+  firstAuthorFamily, gradeEvidence, isAcknowledgedRetraction, manualFlags, normalizeText, retractionDateIssue,
+  sameResource, summarize, titleSimilarity,
 } from '../lib.mjs';
 import { fx } from './helpers.mjs';
 
@@ -115,7 +116,7 @@ test('classifyLink: dead, blocked, redirect, unreachable', () => {
   // Temporary (302) redirects and cosmetic changes are not "fix the URL" findings.
   assert.equal(classifyLink('https://a.org/x', { status: 200, finalUrl: 'https://b.org/y', chain: [{ status: 302 }] }).status, 'ok');
   assert.equal(classifyLink('http://a.org/x', { status: 200, finalUrl: 'https://www.a.org/x/', chain: [{ status: 301 }] }).status, 'ok');
-  assert.equal(classifyLink('https://gone.invalid/', { error: { code: 'ENOTFOUND', message: 'getaddrinfo ENOTFOUND' } }).status, 'dead');
+  assert.equal(classifyLink('https://gone.invalid/', { error: { code: 'ENOTFOUND', message: 'getaddrinfo ENOTFOUND' } }).status, 'unreachable');
   assert.equal(classifyLink('https://slow.org/', { error: { code: 'UND_ERR_CONNECT_TIMEOUT', message: 'timeout' } }).status, 'unreachable');
   assert.equal(classifyLink('https://a.org/', { status: 503, finalUrl: 'https://a.org/', chain: [] }).status, 'blocked');
   assert.equal(classifyLink('https://a.org/', { status: 500, finalUrl: 'https://a.org/', chain: [] }).status, 'unreachable');
@@ -162,6 +163,61 @@ test('assessTopics flags overrated, weak-only and thin "strong" claims', () => {
   assert.deepEqual(out.map((t) => t.status), ['overrated', 'weak-only', 'thin-strong', 'ok', 'weak-only']);
   assert.equal(out[0].weakOnly, true);
   assert.equal(out[4].maxStrength, null);
+});
+
+test('404 is dead; 403 and network failures are not invalid citations', () => {
+  const dead = classifyLink('https://a.org/missing', { status: 404, finalUrl: 'https://a.org/missing', chain: [] });
+  const gone = classifyLink('https://a.org/gone', { status: 410, finalUrl: 'https://a.org/gone', chain: [] });
+  const forbidden = classifyLink('https://a.org/secret', { status: 403, finalUrl: 'https://a.org/secret', chain: [] });
+  const dns = classifyLink('https://missing.example/', { error: { code: 'ENOTFOUND', message: 'getaddrinfo ENOTFOUND missing.example' } });
+  const timeout = classifyLink('https://slow.example/', { error: { code: 'UND_ERR_CONNECT_TIMEOUT', message: 'connect timeout' } });
+  assert.equal(dead.status, 'dead');
+  assert.match(dead.detail, /404/);
+  assert.equal(gone.status, 'dead');
+  assert.equal(forbidden.status, 'blocked');
+  assert.match(forbidden.detail, /403/);
+  assert.equal(dns.status, 'unreachable');
+  assert.match(dns.detail, /ENOTFOUND/);
+  assert.equal(timeout.status, 'unreachable');
+
+  const verdict = (status) => citationVerdict({
+    links: [{ status, kind: 'url', url: 'https://a.org/x', detail: `HTTP ${status}` }],
+    issues: [],
+    notices: { retracted: false, notices: [] },
+  });
+  assert.equal(verdict('dead'), 'dead');
+  assert.equal(verdict('blocked'), 'ok');
+  assert.equal(verdict('unreachable'), 'unverified');
+
+  const blocked = manualFlags({ links: [{ status: 'blocked', kind: 'url', url: 'https://a.org/x', detail: 'HTTP 403' }], notices: { notices: [] }, issues: [] });
+  assert.ok(blocked.some((f) => f.code === 'blocked' && f.level === 'review'));
+  const network = manualFlags({ links: [{ status: 'unreachable', kind: 'url', url: 'https://a.org/x', detail: 'ENOTFOUND' }], notices: { notices: [] }, issues: [] });
+  assert.ok(network.some((f) => f.code === 'network' && f.level === 'review'));
+  assert.equal(manualFlags({ links: [{ status: 'dead', kind: 'url', url: 'https://a.org/x' }], notices: { notices: [] }, issues: [] }).length, 0);
+
+  const deadRun = summarize([{ verdict: 'dead', links: [], issues: [], notices: { notices: [] }, grade: {} }], []);
+  assert.equal(exitCodeFor(deadRun), 1);
+  const blockedRun = summarize([{
+    verdict: 'ok',
+    links: [{ status: 'blocked', kind: 'url', url: 'https://a.org/x', detail: 'HTTP 403', cached: false }],
+    issues: [],
+    notices: { notices: [] },
+    grade: {},
+  }], [], [{ status: 'blocked', kind: 'url', url: 'https://nih.example/', where: 'src/content/news/x.md', detail: 'HTTP 403', cached: false }]);
+  assert.equal(exitCodeFor(blockedRun), 0, '403 does not fail the run');
+  assert.equal(blockedRun.manualReview, 2);
+  assert.equal(blockedRun.freshness.live, 2);
+  assert.equal(blockedRun.dead, 0);
+
+  const mismatch = retractionDateIssue(
+    { retraction: { noticeDoi: '10.1371/journal.pone.0230395', date: '2020-01-01' } },
+    { retracted: true, notices: [{ status: 'retracted', doi: '10.1371/journal.pone.0230395', date: '2020-03-06' }] },
+  );
+  assert.equal(mismatch.code, 'retraction-date');
+  assert.equal(retractionDateIssue(
+    { retraction: { noticeDoi: '10.1371/journal.pone.0230395', date: '2020-03-06' } },
+    { retracted: true, notices: [{ status: 'retracted', doi: '10.1371/journal.pone.0230395', date: '2020-03-06' }] },
+  ), null);
 });
 
 test('verdicts, summary and exit code', () => {

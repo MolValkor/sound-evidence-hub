@@ -6,7 +6,7 @@ import { ratingBlurb, ratingOrder } from '../../data/topics';
 
 <BaseLayout
   title="How to read the evidence"
-  description="A short guide to study designs, bias, effect sizes and the four-step rating scale used on Sound Evidence."
+  description="A short guide to study designs, bias, effect sizes and the rating scale used on Sound Evidence."
 >
   <section class="page-hero">
     <div class="container prose">
@@ -49,7 +49,7 @@ import { ratingBlurb, ratingOrder } from '../../data/topics';
         the true effect may be quite different. When a review gives a certainty rating, we report it.
       </p>
 
-      <h2>4. Our four-step rating</h2>
+      <h2>4. Our rating scale</h2>
       <div class="legend legend-stack">
         {ratingOrder.map((r) => (
           <div class="legend-item">
@@ -63,6 +63,16 @@ import { ratingBlurb, ratingOrder } from '../../data/topics';
         “Applies to.” For example, music for anxiety around surgery is rated Strong, but that doesn’t make
         432 Hz music, singing bowls or “sound healing” in general strong.
       </p>
+
+      <h2>Claim kinds</h2>
+      <ul>
+        <li><strong>Research-supported</strong> (Strong or Moderate): the benefit shows up in reviews for the outcome named on the page. Quality still varies, and none of it is a cure.</li>
+        <li><strong>Preliminary or uncertain:</strong> early signals, or studies too sparse to say whether it helps. A small uncontrolled study is not generalised.</li>
+        <li><strong>Not supported:</strong> the health claim lacks credible evidence.</li>
+        <li><strong>Traditional or spiritual belief:</strong> meaningful to some people as practice or metaphor. Not an established scientific fact. Chakras are labelled this way.</li>
+        <li><strong>Documented fact:</strong> a standard or historical record, such as ISO 16 setting A = 440 Hz. That is not evidence that a frequency heals.</li>
+      </ul>
+      <p class="small muted">Each topic shows the date a person compared the text with the sources. A link check is not that review.</p>
 
       <h2>5. How we check sources</h2>
       <ul>

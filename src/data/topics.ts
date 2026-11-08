@@ -2,8 +2,10 @@
 // Ratings follow the scale explained on /how-to-read/. Every citation id must exist
 // in ./citations.ts. Keep summaries consistent with the verified `finding` text there.
 
-export type Rating = 'strong' | 'moderate' | 'preliminary' | 'not-supported';
+export type Rating = 'strong' | 'moderate' | 'preliminary' | 'uncertain' | 'not-supported';
 export type Category = 'Outcomes' | 'Practices & tools' | 'Frequency & energy claims';
+/** Set only when the rating alone would mislabel the claim. */
+export type ClaimFrame = 'spiritual-belief';
 
 export interface Topic {
   slug: string;
@@ -19,27 +21,65 @@ export interface Topic {
   notThis: string; // phrasing to avoid
   citations: string[];
   keywords: string[];
+  frame?: ClaimFrame;
+  /** A standards or historical fact inside the topic. Not a health result. */
+  factNote?: string;
 }
 
 export const ratingLabel: Record<Rating, string> = {
   strong: 'Strong',
   moderate: 'Moderate',
   preliminary: 'Preliminary',
+  uncertain: 'Uncertain',
   'not-supported': 'Not supported',
 };
 
 export const ratingBlurb: Record<Rating, string> = {
   strong:
-    'Consistent benefit across several systematic reviews or meta-analyses of many randomized trials. The effect is real, though not necessarily large, and the trials still have limitations.',
+    'Research-supported. The same benefit appears in several systematic reviews of many randomized trials. Effects can be modest, trials are rarely blinded, and this is not a cure.',
   moderate:
-    'Benefit shown in at least one good systematic review (often Cochrane) with moderate-certainty findings for a specific outcome, but evidence is narrower, smaller, shorter-term or less consistent.',
+    'Research-supported for a narrower outcome: at least one careful review, but the finding is smaller, shorter-term, or less certain.',
   preliminary:
-    'Early signals from small, uncontrolled, single-session, animal or high-risk-of-bias studies. Worth studying; not enough to promise results.',
+    'Preliminary. Early signals from small, uncontrolled, single-session, animal, or high-risk-of-bias studies. Not enough to promise a result.',
+  uncertain:
+    'Uncertain. Studies exist, but they are too sparse, mixed, or biased to say whether this helps.',
   'not-supported':
-    'The specific claim lacks credible evidence, or careful tests have contradicted the mechanism it depends on.',
+    'Not supported. The health claim lacks credible evidence, or careful tests contradict the mechanism it depends on.',
 };
 
-export const ratingOrder: Rating[] = ['strong', 'moderate', 'preliminary', 'not-supported'];
+export const ratingOrder: Rating[] = ['strong', 'moderate', 'preliminary', 'uncertain', 'not-supported'];
+
+/**
+ * Dates a person compared the claim text with the cited abstracts or publisher pages.
+ * 2026-10-07 is the original verification pass. 2026-11-08 means those sources were
+ * opened again for this preview. Other topics were not re-read on that date.
+ */
+const reviewedOn: Record<string, string> = {
+  'surgery-anxiety-pain': '2026-11-08',
+  sleep: '2026-11-08',
+  vibroacoustic: '2026-11-08',
+  'chakras-energy': '2026-11-08',
+};
+
+export function reviewedDate(slug: string): string {
+  return reviewedOn[slug] ?? '2026-10-07';
+}
+
+export function formatReviewDate(iso: string): string {
+  const [y, m, d] = iso.slice(0, 10).split('-').map(Number);
+  const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  if (!y || !m || !d) return iso.slice(0, 10);
+  return `${d} ${months[m - 1]} ${y}`;
+}
+
+/** Short label for the kind of claim, alongside the evidence rating. */
+export function frameLabel(topic: Topic): string {
+  if (topic.frame === 'spiritual-belief') return 'Traditional / spiritual belief — not an established scientific fact';
+  if (topic.rating === 'strong' || topic.rating === 'moderate') return 'Research-supported';
+  if (topic.rating === 'preliminary') return 'Preliminary';
+  if (topic.rating === 'uncertain') return 'Uncertain';
+  return 'Not supported';
+}
 
 export const topics: Topic[] = [
   {
@@ -48,7 +88,7 @@ export const topics: Topic[] = [
     claim: 'Music calms patients and eases pain before, during and after medical procedures.',
     category: 'Outcomes',
     rating: 'strong',
-    ratingScope: 'Recorded music as an add-on to usual surgical care, for self-reported anxiety and pain.',
+    ratingScope: 'Recorded music added to usual surgical care, for self-reported anxiety and pain. Trials are mostly unblinded. Not a replacement for anaesthesia or pain medicine.',
     summary:
       'This is the best-supported claim on the site. Three large reviews covering 26, 73 and 92 randomized trials all found that listening to music around surgery lowers anxiety and pain, and one found people needed somewhat less pain medication. The trials mostly used ordinary recorded music on headphones, not sound baths or special frequencies.',
     whatWeKnow: [
@@ -287,19 +327,19 @@ export const topics: Topic[] = [
     title: 'Vibroacoustic therapy',
     claim: 'Low-frequency vibration (beds, chairs, mats) relieves pain.',
     category: 'Practices & tools',
-    rating: 'preliminary',
-    ratingScope: 'Device-delivered low-frequency vibration (often 40 Hz), for pain and related symptoms.',
+    rating: 'uncertain',
+    ratingScope: 'Device-delivered low-frequency vibration (often 40 Hz), for pain. The retracted 2019 trial is excluded.',
     summary:
-      'Vibroacoustic therapy delivers sound vibration through the body with special beds or chairs. A 2022 scoping review concluded research is "too sparse" to say what helps for pain. A 2019 fibromyalgia trial that is still sometimes quoted was retracted by its journal in 2020 because, with no sham control, its results could not support its claims.',
+      'Vibroacoustic therapy delivers low-frequency sound vibration through a bed, chair, or mat. A 2022 scoping review concluded the research is “too sparse” to say what, if anything, helps pain. A 2019 fibromyalgia trial that is still quoted online was retracted by PLOS ONE on 6 March 2020 because it had no sham control. That trial is not evidence of benefit.',
     whatWeKnow: [
-      'Scoping review: 20 studies; 40 Hz most common; sessions 20–45 minutes; RCTs needed.',
-      'A 2019 fibromyalgia trial (50 people) reported improvement in two active groups, but PLOS ONE retracted it in 2020 for lacking a sham control. We list it only so you can recognise it; it does not count as evidence.',
+      'Scoping review of 20 studies (from 430 records): 40 Hz was the most common frequency, and sessions were usually 20–45 minutes. The authors’ conclusion: research is “too sparse” to identify VAT properties that help pain. They call for randomized trials.',
     ],
     whatItDoesNotShow: [
-      'No well-controlled evidence that it reduces pain beyond placebo or usual care.',
-      'Vibroacoustic research is about devices; it doesn’t transfer to singing bowls or sound baths.',
+      'No well-controlled evidence that vibration reduces pain beyond placebo or usual care.',
+      'A 2019 fibromyalgia trial (50 people, two active groups, no sham) reported improvement from baseline. PLOS ONE retracted it on 6 March 2020. It is listed so you can recognise it. It does not count as evidence.',
+      'Device vibration research does not transfer to singing bowls or sound baths.',
     ],
-    sayThis: 'Vibroacoustic therapy is an interesting area of research with early, uncontrolled results.',
+    sayThis: 'Vibroacoustic therapy for pain is an open question. The research is too sparse to say that it helps.',
     notThis: 'Vibration therapy is proven to relieve chronic pain.',
     citations: ['kantor2022', 'braunjanzen2019'],
     keywords: ['vibroacoustic', 'VAT', 'vibration', '40 Hz', 'sound bed', 'fibromyalgia'],
@@ -334,6 +374,7 @@ export const topics: Topic[] = [
     claim: '432 Hz is "the natural frequency," and 528 Hz / solfeggio tones heal DNA and the body.',
     category: 'Frequency & energy claims',
     rating: 'not-supported',
+    factNote: 'Documented technical fact, not a health result: ISO 16 sets standard musical pitch at A = 440 Hz.',
     ratingScope: 'Health or healing claims for 432 Hz tuning and solfeggio frequencies (e.g., 528 Hz).',
     summary:
       'Standard tuning (A = 440 Hz) is a musicians’ convention, not a health decision. The only studies comparing 432 Hz or 528 Hz with 440 Hz are tiny pilots (9 to 33 people) with small, short-term differences such as a few beats per minute in heart rate. The authors of the 528 Hz study themselves write that solfeggio claims have no scientific basis. Nothing supports claims about DNA repair, "healing frequencies" or being "in tune with the universe."',
@@ -359,6 +400,7 @@ export const topics: Topic[] = [
     claim: 'Specific tones balance chakras, clear energy blockages or heal the biofield.',
     category: 'Frequency & energy claims',
     rating: 'not-supported',
+    frame: 'spiritual-belief',
     ratingScope: 'Claims that sound acts on chakras, an energy field or a biofield to heal.',
     summary:
       'These claims depend on a human energy field that has never been demonstrated. NIH’s complementary-health center says there is no scientific evidence that such a field exists, and a classic blinded test found experienced practitioners couldn’t detect it better than chance. Chakras can be meaningful as a spiritual or contemplative framework, but they are not a measurable health mechanism.',

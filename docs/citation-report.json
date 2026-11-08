@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-10-07T15:42:08.019Z",
+  "checkedAt": "2026-11-08T17:47:30.461Z",
   "summary": {
     "citations": 39,
     "ok": 38,
@@ -17,8 +17,14 @@
     "overratedClaims": 0,
     "extraLinks": 23,
     "extraDead": 0,
+    "manualReview": 6,
+    "freshness": {
+      "checked": 52,
+      "live": 52,
+      "cached": 0
+    },
     "missingRefs": 0,
-    "landingBlocked": 9
+    "landingBlocked": 17
   },
   "topics": [
     {
@@ -186,7 +192,7 @@
     {
       "slug": "vibroacoustic",
       "title": "Vibroacoustic therapy",
-      "rating": "preliminary",
+      "rating": "uncertain",
       "citations": [
         "kantor2022",
         "braunjanzen2019"
@@ -196,7 +202,7 @@
       "reviewLevelSources": 0,
       "weakOnly": true,
       "status": "weak-only",
-      "message": "Supported only by weak designs (Scoping / narrative review). Rating \"preliminary\" is consistent with that."
+      "message": "Supported only by weak designs (Scoping / narrative review). Rating \"uncertain\" is consistent with that."
     },
     {
       "slug": "gamma-40hz",
@@ -267,7 +273,8 @@
           "url": "https://www.nccih.nih.gov/health/music-and-health-what-you-need-to-know",
           "status": "ok",
           "detail": "HTTP 200",
-          "finalUrl": "https://www.nccih.nih.gov/health/music-and-health-what-you-need-to-know"
+          "finalUrl": "https://www.nccih.nih.gov/health/music-and-health-what-you-need-to-know",
+          "cached": false
         }
       ],
       "issues": [],
@@ -292,7 +299,8 @@
           "url": "https://www.nccih.nih.gov/health/reiki",
           "status": "ok",
           "detail": "HTTP 200",
-          "finalUrl": "https://www.nccih.nih.gov/health/reiki"
+          "finalUrl": "https://www.nccih.nih.gov/health/reiki",
+          "cached": false
         }
       ],
       "issues": [],
@@ -315,9 +323,10 @@
         {
           "kind": "url",
           "url": "https://www.iso.org/standard/3601.html",
-          "status": "ok",
-          "detail": "HTTP 200",
-          "finalUrl": "https://www.iso.org/standard/3601.html"
+          "status": "blocked",
+          "detail": "HTTP 403 (server refuses scripted requests; not evidence the page is gone)",
+          "finalUrl": "https://www.iso.org/standard/3601.html",
+          "cached": false
         }
       ],
       "issues": [],
@@ -341,10 +350,11 @@
           "kind": "doi",
           "url": "https://doi.org/10.1080/17437199.2019.1627897",
           "status": "ok",
-          "landingBlocked": false,
-          "detail": "DOI registered; landing page: HTTP 200 at www.tandfonline.com",
+          "landingBlocked": true,
+          "detail": "DOI registered; landing page: www.tandfonline.com refuses scripted requests (HTTP 403)",
           "target": "https://www.tandfonline.com/doi/full/10.1080/17437199.2019.1627897",
-          "finalUrl": "https://www.tandfonline.com/action/cookieAbsent"
+          "finalUrl": "https://www.tandfonline.com/doi/full/10.1080/17437199.2019.1627897",
+          "cached": false
         },
         {
           "kind": "pubmed",
@@ -374,10 +384,11 @@
           "kind": "doi",
           "url": "https://doi.org/10.1080/17437199.2020.1846580",
           "status": "ok",
-          "landingBlocked": false,
-          "detail": "DOI registered; landing page: HTTP 200 at www.tandfonline.com",
+          "landingBlocked": true,
+          "detail": "DOI registered; landing page: www.tandfonline.com refuses scripted requests (HTTP 403)",
           "target": "https://www.tandfonline.com/doi/full/10.1080/17437199.2020.1846580",
-          "finalUrl": "https://www.tandfonline.com/action/cookieAbsent"
+          "finalUrl": "https://www.tandfonline.com/doi/full/10.1080/17437199.2020.1846580",
+          "cached": false
         },
         {
           "kind": "pubmed",
@@ -410,7 +421,8 @@
           "landingBlocked": true,
           "detail": "DOI registered; landing page: doi.wiley.com refuses scripted requests (HTTP 403)",
           "target": "http://doi.wiley.com/10.1002/14651858.CD006908.pub2",
-          "finalUrl": "http://doi.wiley.com/10.1002/14651858.CD006908.pub2"
+          "finalUrl": "http://doi.wiley.com/10.1002/14651858.CD006908.pub2",
+          "cached": false
         },
         {
           "kind": "pmc",
@@ -449,7 +461,8 @@
           "landingBlocked": false,
           "detail": "DOI registered; landing page: HTTP 200 at linkinghub.elsevier.com",
           "target": "https://linkinghub.elsevier.com/retrieve/pii/S0140673615601696",
-          "finalUrl": "https://linkinghub.elsevier.com/retrieve/pii/S0140673615601696"
+          "finalUrl": "https://linkinghub.elsevier.com/retrieve/pii/S0140673615601696",
+          "cached": false
         },
         {
           "kind": "pubmed",
@@ -479,10 +492,11 @@
           "kind": "doi",
           "url": "https://doi.org/10.1002/bjs.10853",
           "status": "ok",
-          "landingBlocked": false,
-          "detail": "DOI registered; landing page: HTTP 200 at academic.oup.com",
+          "landingBlocked": true,
+          "detail": "DOI registered; landing page: academic.oup.com refuses scripted requests (HTTP 403)",
           "target": "https://academic.oup.com/bjs/article/105/7/773-783/6123225",
-          "finalUrl": "https://academic.oup.com/bjs/article/105/7/773/6123225"
+          "finalUrl": "https://academic.oup.com/bjs/article/105/7/773-783/6123225",
+          "cached": false
         },
         {
           "kind": "pmc",
@@ -521,7 +535,8 @@
           "landingBlocked": true,
           "detail": "DOI registered; landing page: doi.wiley.com refuses scripted requests (HTTP 403)",
           "target": "http://doi.wiley.com/10.1002/14651858.CD010459.pub3",
-          "finalUrl": "http://doi.wiley.com/10.1002/14651858.CD010459.pub3"
+          "finalUrl": "http://doi.wiley.com/10.1002/14651858.CD010459.pub3",
+          "cached": false
         },
         {
           "kind": "pmc",
@@ -557,10 +572,11 @@
           "kind": "doi",
           "url": "https://doi.org/10.1093/jmt/thw012",
           "status": "ok",
-          "landingBlocked": false,
-          "detail": "DOI registered; landing page: HTTP 200 at academic.oup.com",
+          "landingBlocked": true,
+          "detail": "DOI registered; landing page: academic.oup.com refuses scripted requests (HTTP 403)",
           "target": "https://academic.oup.com/jmt/article/53/4/430/2348275",
-          "finalUrl": "https://academic.oup.com/jmt/article-abstract/53/4/430/2348275?redirectedFrom=fulltext"
+          "finalUrl": "https://academic.oup.com/jmt/article/53/4/430/2348275",
+          "cached": false
         },
         {
           "kind": "pubmed",
@@ -615,9 +631,10 @@
           "url": "https://doi.org/10.1186/s40359-025-02643-x",
           "status": "ok",
           "landingBlocked": false,
-          "detail": "DOI registered; landing page: HTTP 200 at link.springer.com",
+          "detail": "DOI registered; landing page: HTTP 200 at idp.springer.com",
           "target": "https://bmcpsychology.biomedcentral.com/articles/10.1186/s40359-025-02643-x",
-          "finalUrl": "https://link.springer.com/article/10.1186/s40359-025-02643-x?error=cookies_not_supported&code=7dbd8333-65b4-48d9-a0d2-4622d60faee1"
+          "finalUrl": "https://idp.springer.com/transit?redirect_uri=https%3A%2F%2Flink.springer.com%2Farticle%2F10.1186%2Fs40359-025-02643-x&code=1de6d957-3c64-419b-9e16-083be0b6cfc3",
+          "cached": false
         },
         {
           "kind": "pmc",
@@ -656,7 +673,8 @@
           "landingBlocked": false,
           "detail": "DOI registered; landing page: HTTP 200 at link.springer.com",
           "target": "http://bmccardiovascdisord.biomedcentral.com/articles/10.1186/s12872-016-0244-0",
-          "finalUrl": "https://link.springer.com/article/10.1186/s12872-016-0244-0?error=cookies_not_supported&code=b381b639-5b85-4b24-adfc-1992c76e7cbf"
+          "finalUrl": "https://link.springer.com/article/10.1186/s12872-016-0244-0",
+          "cached": false
         },
         {
           "kind": "pmc",
@@ -695,7 +713,8 @@
           "landingBlocked": false,
           "detail": "DOI registered; landing page: HTTP 200 at linkinghub.elsevier.com",
           "target": "https://linkinghub.elsevier.com/retrieve/pii/S0167527316306623",
-          "finalUrl": "https://linkinghub.elsevier.com/retrieve/pii/S0167527316306623"
+          "finalUrl": "https://linkinghub.elsevier.com/retrieve/pii/S0167527316306623",
+          "cached": false
         },
         {
           "kind": "pubmed",
@@ -728,7 +747,8 @@
           "landingBlocked": false,
           "detail": "DOI registered; landing page: HTTP 200 at linkinghub.elsevier.com",
           "target": "https://linkinghub.elsevier.com/retrieve/pii/S1744388119302889",
-          "finalUrl": "https://linkinghub.elsevier.com/retrieve/pii/S1744388119302889"
+          "finalUrl": "https://linkinghub.elsevier.com/retrieve/pii/S1744388119302889",
+          "cached": false
         },
         {
           "kind": "pubmed",
@@ -761,7 +781,8 @@
           "landingBlocked": true,
           "detail": "DOI registered; landing page: doi.wiley.com refuses scripted requests (HTTP 403)",
           "target": "http://doi.wiley.com/10.1002/14651858.CD006577.pub3",
-          "finalUrl": "http://doi.wiley.com/10.1002/14651858.CD006577.pub3"
+          "finalUrl": "http://doi.wiley.com/10.1002/14651858.CD006577.pub3",
+          "cached": false
         },
         {
           "kind": "pmc",
@@ -800,7 +821,8 @@
           "landingBlocked": true,
           "detail": "DOI registered; landing page: doi.wiley.com refuses scripted requests (HTTP 403)",
           "target": "http://doi.wiley.com/10.1002/14651858.CD004517.pub3",
-          "finalUrl": "http://doi.wiley.com/10.1002/14651858.CD004517.pub3"
+          "finalUrl": "http://doi.wiley.com/10.1002/14651858.CD004517.pub3",
+          "cached": false
         },
         {
           "kind": "pmc",
@@ -839,7 +861,8 @@
           "landingBlocked": false,
           "detail": "DOI registered; landing page: HTTP 200 at journals.plos.org",
           "target": "https://dx.plos.org/10.1371/journal.pone.0240862",
-          "finalUrl": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0240862"
+          "finalUrl": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0240862",
+          "cached": false
         },
         {
           "kind": "pmc",
@@ -878,7 +901,8 @@
           "landingBlocked": true,
           "detail": "DOI registered; landing page: doi.wiley.com refuses scripted requests (HTTP 403)",
           "target": "http://doi.wiley.com/10.1002/14651858.CD006911.pub4",
-          "finalUrl": "http://doi.wiley.com/10.1002/14651858.CD006911.pub4"
+          "finalUrl": "http://doi.wiley.com/10.1002/14651858.CD006911.pub4",
+          "cached": false
         },
         {
           "kind": "pmc",
@@ -917,7 +941,8 @@
           "landingBlocked": true,
           "detail": "DOI registered; landing page: doi.wiley.com refuses scripted requests (HTTP 403)",
           "target": "http://doi.wiley.com/10.1002/14651858.CD003477.pub5",
-          "finalUrl": "http://doi.wiley.com/10.1002/14651858.CD003477.pub5"
+          "finalUrl": "http://doi.wiley.com/10.1002/14651858.CD003477.pub5",
+          "cached": false
         },
         {
           "kind": "pmc",
@@ -956,7 +981,8 @@
           "landingBlocked": true,
           "detail": "DOI registered; landing page: doi.wiley.com refuses scripted requests (HTTP 403)",
           "target": "http://doi.wiley.com/10.1002/14651858.CD004381.pub4",
-          "finalUrl": "http://doi.wiley.com/10.1002/14651858.CD004381.pub4"
+          "finalUrl": "http://doi.wiley.com/10.1002/14651858.CD004381.pub4",
+          "cached": false
         },
         {
           "kind": "pmc",
@@ -995,7 +1021,8 @@
           "landingBlocked": false,
           "detail": "DOI registered; landing page: HTTP 200 at linkinghub.elsevier.com",
           "target": "https://linkinghub.elsevier.com/retrieve/pii/S096522991931756X",
-          "finalUrl": "https://linkinghub.elsevier.com/retrieve/pii/S096522991931756X"
+          "finalUrl": "https://linkinghub.elsevier.com/retrieve/pii/S096522991931756X",
+          "cached": false
         },
         {
           "kind": "pubmed",
@@ -1028,7 +1055,8 @@
           "landingBlocked": false,
           "detail": "DOI registered; landing page: HTTP 200 at linkinghub.elsevier.com",
           "target": "https://linkinghub.elsevier.com/retrieve/pii/S2213422025000241",
-          "finalUrl": "https://linkinghub.elsevier.com/retrieve/pii/S2213422025000241"
+          "finalUrl": "https://linkinghub.elsevier.com/retrieve/pii/S2213422025000241",
+          "cached": false
         },
         {
           "kind": "pmc",
@@ -1064,10 +1092,11 @@
           "kind": "doi",
           "url": "https://doi.org/10.1177/2156587216668109",
           "status": "ok",
-          "landingBlocked": false,
-          "detail": "DOI registered; landing page: HTTP 200 at journals.sagepub.com",
+          "landingBlocked": true,
+          "detail": "DOI registered; landing page: journals.sagepub.com refuses scripted requests (HTTP 403)",
           "target": "http://journals.sagepub.com/doi/10.1177/2156587216668109",
-          "finalUrl": "https://journals.sagepub.com/action/cookieAbsent"
+          "finalUrl": "https://journals.sagepub.com/doi/10.1177/2156587216668109",
+          "cached": false
         },
         {
           "kind": "pmc",
@@ -1103,10 +1132,11 @@
           "kind": "doi",
           "url": "https://doi.org/10.4278/ajhp.121031-ARB-528",
           "status": "ok",
-          "landingBlocked": false,
-          "detail": "DOI registered; landing page: HTTP 200 at journals.sagepub.com",
+          "landingBlocked": true,
+          "detail": "DOI registered; landing page: journals.sagepub.com refuses scripted requests (HTTP 403)",
           "target": "https://journals.sagepub.com/doi/10.4278/ajhp.121031-ARB-528",
-          "finalUrl": "https://journals.sagepub.com/action/cookieAbsent"
+          "finalUrl": "https://journals.sagepub.com/doi/10.4278/ajhp.121031-ARB-528",
+          "cached": false
         },
         {
           "kind": "pubmed",
@@ -1139,7 +1169,8 @@
           "landingBlocked": true,
           "detail": "DOI registered; landing page: www.mdpi.com refuses scripted requests (HTTP 403)",
           "target": "https://www.mdpi.com/2254-9625/13/2/24",
-          "finalUrl": "https://www.mdpi.com/2254-9625/13/2/24"
+          "finalUrl": "https://www.mdpi.com/2254-9625/13/2/24",
+          "cached": false
         },
         {
           "kind": "pmc",
@@ -1178,7 +1209,8 @@
           "landingBlocked": false,
           "detail": "DOI registered; landing page: HTTP 200 at journals.plos.org",
           "target": "https://dx.plos.org/10.1371/journal.pone.0233982",
-          "finalUrl": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0233982"
+          "finalUrl": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0233982",
+          "cached": false
         },
         {
           "kind": "pmc",
@@ -1217,7 +1249,8 @@
           "landingBlocked": true,
           "detail": "DOI registered; landing page: www.mdpi.com refuses scripted requests (HTTP 403)",
           "target": "https://www.mdpi.com/2077-1444/13/2/123",
-          "finalUrl": "https://www.mdpi.com/2077-1444/13/2/123"
+          "finalUrl": "https://www.mdpi.com/2077-1444/13/2/123",
+          "cached": false
         }
       ],
       "issues": [],
@@ -1244,7 +1277,8 @@
           "landingBlocked": false,
           "detail": "DOI registered; landing page: HTTP 200 at link.springer.com",
           "target": "http://link.springer.com/10.1007/s00426-018-1066-8",
-          "finalUrl": "https://link.springer.com/article/10.1007/s00426-018-1066-8?error=cookies_not_supported&code=7f62ff1b-7502-480e-a85b-7af292cffb07"
+          "finalUrl": "https://link.springer.com/article/10.1007/s00426-018-1066-8",
+          "cached": false
         },
         {
           "kind": "pubmed",
@@ -1277,7 +1311,8 @@
           "landingBlocked": false,
           "detail": "DOI registered; landing page: HTTP 200 at journals.plos.org",
           "target": "https://dx.plos.org/10.1371/journal.pone.0286023",
-          "finalUrl": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0286023"
+          "finalUrl": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0286023",
+          "cached": false
         },
         {
           "kind": "pmc",
@@ -1313,10 +1348,11 @@
           "kind": "doi",
           "url": "https://doi.org/10.1136/bmjopen-2020-046591",
           "status": "ok",
-          "landingBlocked": false,
-          "detail": "DOI registered; landing page: HTTP 200 at bmjopen.bmj.com",
+          "landingBlocked": true,
+          "detail": "DOI registered; landing page: bmjopen.bmj.com refuses scripted requests (HTTP 403)",
           "target": "https://bmjopen.bmj.com/lookup/doi/10.1136/bmjopen-2020-046591",
-          "finalUrl": "https://bmjopen.bmj.com/content/12/4/e046591"
+          "finalUrl": "https://bmjopen.bmj.com/lookup/doi/10.1136/bmjopen-2020-046591",
+          "cached": false
         },
         {
           "kind": "pmc",
@@ -1355,7 +1391,8 @@
           "landingBlocked": false,
           "detail": "DOI registered; landing page: HTTP 200 at journals.plos.org",
           "target": "https://dx.plos.org/10.1371/journal.pone.0212021",
-          "finalUrl": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0212021"
+          "finalUrl": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0212021",
+          "cached": false
         },
         {
           "kind": "pmc",
@@ -1414,9 +1451,10 @@
           "url": "https://doi.org/10.1038/nature20587",
           "status": "ok",
           "landingBlocked": false,
-          "detail": "DOI registered; landing page: HTTP 200 at www.nature.com",
+          "detail": "DOI registered; landing page: HTTP 200 at idp.nature.com",
           "target": "https://www.nature.com/articles/nature20587",
-          "finalUrl": "https://www.nature.com/articles/nature20587?error=cookies_not_supported&code=2dca95a4-84d6-466b-9168-dffc50a59b6d"
+          "finalUrl": "https://idp.nature.com/transit?redirect_uri=https%3A%2F%2Fwww.nature.com%2Farticles%2Fnature20587&code=25a60b59-fe37-437c-b8d4-876bc92fb5d6",
+          "cached": false
         },
         {
           "kind": "pmc",
@@ -1470,7 +1508,8 @@
           "landingBlocked": false,
           "detail": "DOI registered; landing page: HTTP 200 at linkinghub.elsevier.com",
           "target": "https://linkinghub.elsevier.com/retrieve/pii/S0092867419301631",
-          "finalUrl": "https://linkinghub.elsevier.com/retrieve/pii/S0092867419301631"
+          "finalUrl": "https://linkinghub.elsevier.com/retrieve/pii/S0092867419301631",
+          "cached": false
         },
         {
           "kind": "pmc",
@@ -1509,7 +1548,8 @@
           "landingBlocked": false,
           "detail": "DOI registered; landing page: HTTP 200 at journals.plos.org",
           "target": "https://dx.plos.org/10.1371/journal.pone.0278412",
-          "finalUrl": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0278412"
+          "finalUrl": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0278412",
+          "cached": false
         },
         {
           "kind": "pmc",
@@ -1548,7 +1588,8 @@
           "landingBlocked": false,
           "detail": "DOI registered; landing page: HTTP 200 at linkinghub.elsevier.com",
           "target": "https://linkinghub.elsevier.com/retrieve/pii/S1550830718302763",
-          "finalUrl": "https://linkinghub.elsevier.com/retrieve/pii/S1550830718302763"
+          "finalUrl": "https://linkinghub.elsevier.com/retrieve/pii/S1550830718302763",
+          "cached": false
         },
         {
           "kind": "pubmed",
@@ -1589,7 +1630,8 @@
           "landingBlocked": false,
           "detail": "DOI registered; landing page: HTTP 200 at mattioli1885journals.com",
           "target": "https://mattioli1885journals.com/index.php/actabiomedica/article/view/10755",
-          "finalUrl": "https://mattioli1885journals.com/index.php/actabiomedica/article/view/10755"
+          "finalUrl": "https://mattioli1885journals.com/index.php/actabiomedica/article/view/10755",
+          "cached": false
         },
         {
           "kind": "pmc",
@@ -1635,14 +1677,16 @@
           "landingBlocked": false,
           "detail": "DOI registered; landing page: HTTP 200 at www.scirp.org",
           "target": "http://www.scirp.org/journal/doi.aspx?DOI=10.4236/health.2018.109088",
-          "finalUrl": "https://www.scirp.org/journal/paperinformation?paperid=87146"
+          "finalUrl": "https://www.scirp.org/journal/paperinformation?paperid=87146",
+          "cached": false
         },
         {
           "kind": "url",
           "url": "https://www.scirp.org/pdf/Health_2018090514214117.pdf",
           "status": "ok",
           "detail": "HTTP 200",
-          "finalUrl": "https://www.scirp.org/pdf/Health_2018090514214117.pdf"
+          "finalUrl": "https://www.scirp.org/pdf/Health_2018090514214117.pdf",
+          "cached": false
         }
       ],
       "issues": [],
@@ -1666,10 +1710,11 @@
           "kind": "doi",
           "url": "https://doi.org/10.1001/jama.279.13.1005",
           "status": "ok",
-          "landingBlocked": false,
-          "detail": "DOI registered; landing page: HTTP 200 at jamanetwork.com",
+          "landingBlocked": true,
+          "detail": "DOI registered; landing page: jamanetwork.com refuses scripted requests (HTTP 403)",
           "target": "http://jama.jamanetwork.com/article.aspx?doi=10.1001/jama.279.13.1005",
-          "finalUrl": "https://jamanetwork.com/journals/jama/fullarticle/187390"
+          "finalUrl": "https://jamanetwork.com/article.aspx?doi=10.1001/jama.279.13.1005",
+          "cached": false
         },
         {
           "kind": "pubmed",
@@ -1689,7 +1734,8 @@
       "url": "https://www.cochrane.org/evidence/CD004517_music-therapy-depression",
       "status": "ok",
       "detail": "HTTP 200",
-      "finalUrl": "https://www.cochrane.org/evidence/CD004517_music-therapy-depression"
+      "finalUrl": "https://www.cochrane.org/evidence/CD004517_music-therapy-depression",
+      "cached": false
     },
     {
       "where": "src/content/studies/aalbers-2017-depression.md",
@@ -1705,7 +1751,8 @@
       "url": "https://www.scirp.org/pdf/Health_2018090514214117.pdf",
       "status": "ok",
       "detail": "HTTP 200",
-      "finalUrl": "https://www.scirp.org/pdf/Health_2018090514214117.pdf"
+      "finalUrl": "https://www.scirp.org/pdf/Health_2018090514214117.pdf",
+      "cached": false
     },
     {
       "where": "src/content/studies/akimoto-2018-528hz.md",
@@ -1728,7 +1775,8 @@
       "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12042639/",
       "status": "ok",
       "detail": "HTTP 200",
-      "finalUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12042639/"
+      "finalUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12042639/",
+      "cached": false
     },
     {
       "where": "src/content/studies/chen-2025-chronic-pain.md",
@@ -1758,7 +1806,8 @@
       "url": "https://www.cochrane.org/evidence/CD010459_music-insomnia-adults",
       "status": "ok",
       "detail": "HTTP 200",
-      "finalUrl": "https://www.cochrane.org/evidence/CD010459_music-insomnia-adults"
+      "finalUrl": "https://www.cochrane.org/evidence/CD010459_music-insomnia-adults",
+      "cached": false
     },
     {
       "where": "src/content/studies/jespersen-2022-insomnia.md",
@@ -1772,9 +1821,10 @@
       "where": "src/content/studies/kantor-2022-vat-pain.md",
       "title": "Exploring vibroacoustic therapy in adults experiencing pain: a scoping review",
       "url": "https://bmjopen.bmj.com/content/12/4/e046591",
-      "status": "ok",
-      "detail": "HTTP 200",
-      "finalUrl": "https://bmjopen.bmj.com/content/12/4/e046591"
+      "status": "blocked",
+      "detail": "HTTP 403 (server refuses scripted requests; not evidence the page is gone)",
+      "finalUrl": "https://bmjopen.bmj.com/content/12/4/e046591",
+      "cached": false
     },
     {
       "where": "src/content/studies/kantor-2022-vat-pain.md",
@@ -1797,7 +1847,8 @@
       "url": "https://www.nccih.nih.gov/health/music-and-health-what-you-need-to-know",
       "status": "ok",
       "detail": "HTTP 200",
-      "finalUrl": "https://www.nccih.nih.gov/health/music-and-health-what-you-need-to-know"
+      "finalUrl": "https://www.nccih.nih.gov/health/music-and-health-what-you-need-to-know",
+      "cached": false
     },
     {
       "where": "src/content/studies/van-der-steen-2025-dementia.md",
@@ -1805,7 +1856,8 @@
       "url": "https://www.cochrane.org/evidence/CD003477_does-music-based-therapy-help-people-dementia",
       "status": "ok",
       "detail": "HTTP 200",
-      "finalUrl": "https://www.cochrane.org/evidence/CD003477_does-music-based-therapy-help-people-dementia"
+      "finalUrl": "https://www.cochrane.org/evidence/CD003477_does-music-based-therapy-help-people-dementia",
+      "cached": false
     },
     {
       "where": "src/content/studies/van-der-steen-2025-dementia.md",
@@ -1821,7 +1873,8 @@
       "url": "https://www.cochrane.org/about-us/news/music-based-therapy-may-improve-depressive-symptoms-people-dementia",
       "status": "ok",
       "detail": "HTTP 200",
-      "finalUrl": "https://www.cochrane.org/about-us/news/music-based-therapy-may-improve-depressive-symptoms-people-dementia"
+      "finalUrl": "https://www.cochrane.org/about-us/news/music-based-therapy-may-improve-depressive-symptoms-people-dementia",
+      "cached": false
     },
     {
       "where": "src/content/news/nccih-clinical-digest.md",
@@ -1829,7 +1882,8 @@
       "url": "https://www.nccih.nih.gov/health/providers/digest/music-and-health-science",
       "status": "ok",
       "detail": "HTTP 200",
-      "finalUrl": "https://www.nccih.nih.gov/health/providers/digest/music-and-health-science"
+      "finalUrl": "https://www.nccih.nih.gov/health/providers/digest/music-and-health-science",
+      "cached": false
     },
     {
       "where": "src/content/news/nccih-music-health-sheet.md",
@@ -1837,7 +1891,8 @@
       "url": "https://www.nccih.nih.gov/health/music-and-health-what-you-need-to-know",
       "status": "ok",
       "detail": "HTTP 200",
-      "finalUrl": "https://www.nccih.nih.gov/health/music-and-health-what-you-need-to-know"
+      "finalUrl": "https://www.nccih.nih.gov/health/music-and-health-what-you-need-to-know",
+      "cached": false
     },
     {
       "where": "src/content/news/nih-cc-nso-concert.md",
@@ -1845,7 +1900,8 @@
       "url": "https://www.cc.nih.gov/news/2025/sep-oct/2025-nso-performance",
       "status": "ok",
       "detail": "HTTP 200",
-      "finalUrl": "https://www.cc.nih.gov/news/2025/sep-oct/2025-nso-performance"
+      "finalUrl": "https://www.cc.nih.gov/news/2025/sep-oct/2025-nso-performance",
+      "cached": false
     },
     {
       "where": "src/content/news/nih-sound-health.md",
@@ -1853,7 +1909,8 @@
       "url": "https://www.nih.gov/sound-health",
       "status": "blocked",
       "detail": "HTTP 403 (server refuses scripted requests; not evidence the page is gone)",
-      "finalUrl": "https://www.nih.gov/sound-health"
+      "finalUrl": "https://www.nih.gov/sound-health",
+      "cached": false
     },
     {
       "where": "src/content/news/popsci-sound-bath-2025.md",
@@ -1861,7 +1918,8 @@
       "url": "https://www.popsci.com/health/do-sound-baths-work/",
       "status": "ok",
       "detail": "HTTP 200",
-      "finalUrl": "https://www.popsci.com/health/do-sound-baths-work/"
+      "finalUrl": "https://www.popsci.com/health/do-sound-baths-work/",
+      "cached": false
     }
   ],
   "missingRefs": [],

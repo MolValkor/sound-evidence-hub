@@ -49,8 +49,8 @@ const nSources = Object.keys(citations).length;
           ))}
         </div>
         <p class="small muted" style="margin-top:1rem">
-          Strongest: music for anxiety and pain around surgery. Not supported: 432/528 Hz healing and
-          energy-field claims.
+          Strongest: music for anxiety and pain around surgery. Not supported as medicine: 432/528 Hz healing.
+          Chakras are labelled as a spiritual belief, not a scientific finding.
         </p>
       </aside>
     </div>
@@ -68,7 +68,10 @@ const nSources = Object.keys(citations).length;
       <div class="topic-grid">
         {sortedTopics.map((t) => (
           <a class="topic-card" href={`/evidence/${t.slug}/`}>
-            <RatingPill rating={t.rating} />
+            <span class="topic-pills">
+              <RatingPill rating={t.rating} />
+              {t.frame === 'spiritual-belief' && <span class="pill pill-muted">Spiritual belief</span>}
+            </span>
             <h3>{t.title}</h3>
             <p>“{t.claim}”</p>
           </a>

@@ -67,7 +67,7 @@ For every entry in `src/data/citations.ts` it:
 - grades each source's **study design** (meta-analysis → systematic review → RCT → pilot/small trial → observational/animal; agency overviews and standards aren't graded) and flags claims that rest only on weak designs, and any claim rated strong/moderate on weak designs alone;
 - also link-checks the `url`/`doi` fields in study cards and news items.
 
-It exits **1** on dead links, retractions the site doesn't already label, metadata mismatches, or topics citing a missing id. A retracted paper is "labelled" by adding a `retraction` field to its citation entry; the site then shows a *Retracted* badge and the checker stops counting it as evidence. Answers are cached (metadata 7 days, links 3 days, notices 2 days) and requests are throttled per host. Optional env: `CROSSREF_MAILTO`, `NCBI_API_KEY`.
+It exits **1** on dead links (HTTP 404 or 410), retractions the site doesn't already label, metadata mismatches, or topics citing a missing id. HTTP 403 (and other bot-blocks) and network errors are manual-review flags: a failed or refused fetch is not an invalid citation. A retracted paper is "labelled" by adding a `retraction` field to its citation entry; the site then shows a *Retracted* badge and the checker stops counting it as evidence. Answers are cached (metadata 7 days, links 3 days, notices 2 days) and requests are throttled per host. Optional env: `CROSSREF_MAILTO`, `NCBI_API_KEY`.
 
 CI: `tools/ci/citations.yml` runs the tests and the live check on PRs and weekly. **Move it to `.github/workflows/citations.yml` to enable it.**
 

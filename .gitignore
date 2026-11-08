@@ -16,3 +16,6 @@ dist/
 
 # citation checker cache
 .cache/
+
+# local Netlify CLI folder
+.netlify
